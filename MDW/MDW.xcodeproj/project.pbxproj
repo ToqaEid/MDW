@@ -7,25 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E549F6E3FBB9E67365E43B5 /* libPods-MDW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A713882B04D1CD33F898899 /* libPods-MDW.a */; };
 		CC1948561E9ABAE900039C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1948551E9ABAE900039C97 /* main.m */; };
 		CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1948581E9ABAEA00039C97 /* AppDelegate.m */; };
-		CC19485C1E9ABAEA00039C97 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC19485B1E9ABAEA00039C97 /* ViewController.m */; };
 		CC19485F1E9ABAEA00039C97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19485D1E9ABAEA00039C97 /* Main.storyboard */; };
 		CC1948611E9ABAEA00039C97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC1948601E9ABAEA00039C97 /* Assets.xcassets */; };
 		CC1948641E9ABAEA00039C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */; };
+		CC4C66951E9E3EDA00186523 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4C66911E9E3EDA00186523 /* background.png */; };
+		CC4C66961E9E3EDA00186523 /* leftSideMenuBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4C66921E9E3EDA00186523 /* leftSideMenuBackground.png */; };
+		CC4C66971E9E3EDA00186523 /* myContactBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4C66931E9E3EDA00186523 /* myContactBackground.png */; };
+		CC4C66981E9E3EDA00186523 /* myTicketBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = CC4C66941E9E3EDA00186523 /* myTicketBackground.png */; };
+		CC4C669D1E9E435E00186523 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669C1E9E435E00186523 /* ViewController.m */; };
+		CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669F1E9E44F100186523 /* JETSSideMenu.m */; };
+		CC4C66A41E9E453200186523 /* QRBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C66A31E9E453200186523 /* QRBarController.m */; };
+		CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A713882B04D1CD33F898899 /* libPods-MDW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDW.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C3216A7F669473E805AD772 /* Pods-MDW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1948511E9ABAE900039C97 /* MDW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC1948551E9ABAE900039C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC1948571E9ABAEA00039C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CC1948581E9ABAEA00039C97 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CC19485A1E9ABAEA00039C97 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CC19485B1E9ABAEA00039C97 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CC19485E1E9ABAEA00039C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC1948601E9ABAEA00039C97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC1948631E9ABAEA00039C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC1948651E9ABAEA00039C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4C66911E9E3EDA00186523 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = Resources/UIViewImages/background.png; sourceTree = "<group>"; };
+		CC4C66921E9E3EDA00186523 /* leftSideMenuBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftSideMenuBackground.png; path = Resources/UIViewImages/leftSideMenuBackground.png; sourceTree = "<group>"; };
+		CC4C66931E9E3EDA00186523 /* myContactBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myContactBackground.png; path = Resources/UIViewImages/myContactBackground.png; sourceTree = "<group>"; };
+		CC4C66941E9E3EDA00186523 /* myTicketBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myTicketBackground.png; path = Resources/UIViewImages/myTicketBackground.png; sourceTree = "<group>"; };
+		CC4C669B1E9E435E00186523 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ProfileInformation/ViewController.h; sourceTree = "<group>"; };
+		CC4C669C1E9E435E00186523 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ProfileInformation/ViewController.m; sourceTree = "<group>"; };
+		CC4C669E1E9E44F100186523 /* JETSSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JETSSideMenu.h; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.h; sourceTree = "<group>"; };
+		CC4C669F1E9E44F100186523 /* JETSSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JETSSideMenu.m; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.m; sourceTree = "<group>"; };
+		CC4C66A21E9E453200186523 /* QRBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRBarController.h; path = Classes/QRCode/QRBarController.h; sourceTree = "<group>"; };
+		CC4C66A31E9E453200186523 /* QRBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRBarController.m; path = Classes/QRCode/QRBarController.m; sourceTree = "<group>"; };
+		CCF768691E9B20C000134359 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
+		CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
+		FDF06576071D1EBEB52F8FE0 /* Pods-MDW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +54,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E549F6E3FBB9E67365E43B5 /* libPods-MDW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A5688AE558A1B8FF5453EEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A713882B04D1CD33F898899 /* libPods-MDW.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		259C0A4A540CBBE78370DC5D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4C3216A7F669473E805AD772 /* Pods-MDW.debug.xcconfig */,
+				FDF06576071D1EBEB52F8FE0 /* Pods-MDW.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CC1948481E9ABAE900039C97 = {
 			isa = PBXGroup;
 			children = (
+				CCF7686D1E9B210900134359 /* SWRevealViewController */,
 				CC1948531E9ABAE900039C97 /* MDW */,
 				CC1948521E9ABAE900039C97 /* Products */,
+				259C0A4A540CBBE78370DC5D /* Pods */,
+				1A5688AE558A1B8FF5453EEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +100,10 @@
 		CC1948531E9ABAE900039C97 /* MDW */ = {
 			isa = PBXGroup;
 			children = (
+				CC4C66991E9E407700186523 /* ViewController */,
+				CC4C668F1E9E3E1A00186523 /* Resources */,
 				CC1948571E9ABAEA00039C97 /* AppDelegate.h */,
 				CC1948581E9ABAEA00039C97 /* AppDelegate.m */,
-				CC19485A1E9ABAEA00039C97 /* ViewController.h */,
-				CC19485B1E9ABAEA00039C97 /* ViewController.m */,
 				CC19485D1E9ABAEA00039C97 /* Main.storyboard */,
 				CC1948601E9ABAEA00039C97 /* Assets.xcassets */,
 				CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */,
@@ -79,6 +121,95 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CC4C668B1E9E269200186523 /* QRBar */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C66A31E9E453200186523 /* QRBarController.m */,
+				CC4C66A21E9E453200186523 /* QRBarController.h */,
+			);
+			name = QRBar;
+			sourceTree = "<group>";
+		};
+		CC4C668F1E9E3E1A00186523 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C66901E9E3E3500186523 /* UIViewImages */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CC4C66901E9E3E3500186523 /* UIViewImages */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C66911E9E3EDA00186523 /* background.png */,
+				CC4C66921E9E3EDA00186523 /* leftSideMenuBackground.png */,
+				CC4C66931E9E3EDA00186523 /* myContactBackground.png */,
+				CC4C66941E9E3EDA00186523 /* myTicketBackground.png */,
+			);
+			name = UIViewImages;
+			sourceTree = "<group>";
+		};
+		CC4C66991E9E407700186523 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CCF7686F1E9B26D400134359 /* SideMenuTableViewController */,
+				CC4C669A1E9E429A00186523 /* ProfileInformation */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		CC4C669A1E9E429A00186523 /* ProfileInformation */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C66A61E9E454A00186523 /* View */,
+				CC4C66A51E9E453E00186523 /* Controller */,
+				CC4C66A11E9E450900186523 /* Model */,
+			);
+			name = ProfileInformation;
+			sourceTree = "<group>";
+		};
+		CC4C66A11E9E450900186523 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC4C66A51E9E453E00186523 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C668B1E9E269200186523 /* QRBar */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CC4C66A61E9E454A00186523 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C669B1E9E435E00186523 /* ViewController.h */,
+				CC4C669C1E9E435E00186523 /* ViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CCF7686D1E9B210900134359 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */,
+				CCF768691E9B20C000134359 /* SWRevealViewController.h */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
+		CCF7686F1E9B26D400134359 /* SideMenuTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C669E1E9E44F100186523 /* JETSSideMenu.h */,
+				CC4C669F1E9E44F100186523 /* JETSSideMenu.m */,
+			);
+			name = SideMenuTableViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +217,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC1948681E9ABAEA00039C97 /* Build configuration list for PBXNativeTarget "MDW" */;
 			buildPhases = (
+				D49413D761D64668D22DC375 /* [CP] Check Pods Manifest.lock */,
 				CC19484D1E9ABAE900039C97 /* Sources */,
 				CC19484E1E9ABAE900039C97 /* Frameworks */,
 				CC19484F1E9ABAE900039C97 /* Resources */,
+				305A5205E6FD55C5FAF7A29A /* [CP] Embed Pods Frameworks */,
+				2772D19C66D0A46A9B53AFAC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,21 +271,76 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC1948641E9ABAEA00039C97 /* LaunchScreen.storyboard in Resources */,
+				CC4C66981E9E3EDA00186523 /* myTicketBackground.png in Resources */,
+				CC4C66951E9E3EDA00186523 /* background.png in Resources */,
+				CC4C66961E9E3EDA00186523 /* leftSideMenuBackground.png in Resources */,
 				CC1948611E9ABAEA00039C97 /* Assets.xcassets in Resources */,
+				CC4C66971E9E3EDA00186523 /* myContactBackground.png in Resources */,
 				CC19485F1E9ABAEA00039C97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2772D19C66D0A46A9B53AFAC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MDW/Pods-MDW-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		305A5205E6FD55C5FAF7A29A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MDW/Pods-MDW-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D49413D761D64668D22DC375 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CC19484D1E9ABAE900039C97 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC19485C1E9ABAEA00039C97 /* ViewController.m in Sources */,
+				CC4C66A41E9E453200186523 /* QRBarController.m in Sources */,
+				CC4C669D1E9E435E00186523 /* ViewController.m in Sources */,
+				CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */,
 				CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */,
 				CC1948561E9ABAE900039C97 /* main.m in Sources */,
+				CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +452,7 @@
 		};
 		CC1948691E9ABAEA00039C97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C3216A7F669473E805AD772 /* Pods-MDW.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MDW/Info.plist;
@@ -274,6 +464,7 @@
 		};
 		CC19486A1E9ABAEA00039C97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDF06576071D1EBEB52F8FE0 /* Pods-MDW.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MDW/Info.plist;
@@ -302,6 +493,7 @@
 				CC19486A1E9ABAEA00039C97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

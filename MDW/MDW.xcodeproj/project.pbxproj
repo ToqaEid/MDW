@@ -20,6 +20,15 @@
 		CC4C669D1E9E435E00186523 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669C1E9E435E00186523 /* ViewController.m */; };
 		CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669F1E9E44F100186523 /* JETSSideMenu.m */; };
 		CC4C66A41E9E453200186523 /* QRBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C66A31E9E453200186523 /* QRBarController.m */; };
+		CC9A1AFC1E9FEEBA00654590 /* ExhiptorsDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1AF31E9FEEBA00654590 /* ExhiptorsDTO.m */; };
+		CC9A1AFD1E9FEEBA00654590 /* Mobile.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1AF51E9FEEBA00654590 /* Mobile.m */; };
+		CC9A1AFE1E9FEEBA00654590 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1AF71E9FEEBA00654590 /* Phone.m */; };
+		CC9A1AFF1E9FEEBA00654590 /* SessionDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1AF91E9FEEBA00654590 /* SessionDTO.m */; };
+		CC9A1B001E9FEEBA00654590 /* SpeakerDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1AFB1E9FEEBA00654590 /* SpeakerDTO.m */; };
+		CC9A1B031E9FEECF00654590 /* AttendeeDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1B021E9FEECF00654590 /* AttendeeDTO.m */; };
+		CC9A1B0A1E9FEEEA00654590 /* exhiptorDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1B051E9FEEEA00654590 /* exhiptorDAO.m */; };
+		CC9A1B0B1E9FEEEA00654590 /* sessionDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1B071E9FEEEA00654590 /* sessionDAO.m */; };
+		CC9A1B0C1E9FEEEA00654590 /* speakerDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9A1B091E9FEEEA00654590 /* speakerDAO.m */; };
 		CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +53,24 @@
 		CC4C669F1E9E44F100186523 /* JETSSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JETSSideMenu.m; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.m; sourceTree = "<group>"; };
 		CC4C66A21E9E453200186523 /* QRBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRBarController.h; path = Classes/QRCode/QRBarController.h; sourceTree = "<group>"; };
 		CC4C66A31E9E453200186523 /* QRBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRBarController.m; path = Classes/QRCode/QRBarController.m; sourceTree = "<group>"; };
+		CC9A1AF21E9FEEBA00654590 /* ExhiptorsDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExhiptorsDTO.h; path = ../../../ExhiptorsDTO.h; sourceTree = "<group>"; };
+		CC9A1AF31E9FEEBA00654590 /* ExhiptorsDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExhiptorsDTO.m; path = ../../../ExhiptorsDTO.m; sourceTree = "<group>"; };
+		CC9A1AF41E9FEEBA00654590 /* Mobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mobile.h; path = ../../../Mobile.h; sourceTree = "<group>"; };
+		CC9A1AF51E9FEEBA00654590 /* Mobile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Mobile.m; path = ../../../Mobile.m; sourceTree = "<group>"; };
+		CC9A1AF61E9FEEBA00654590 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Phone.h; path = ../../../Phone.h; sourceTree = "<group>"; };
+		CC9A1AF71E9FEEBA00654590 /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Phone.m; path = ../../../Phone.m; sourceTree = "<group>"; };
+		CC9A1AF81E9FEEBA00654590 /* SessionDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionDTO.h; path = ../../../SessionDTO.h; sourceTree = "<group>"; };
+		CC9A1AF91E9FEEBA00654590 /* SessionDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionDTO.m; path = ../../../SessionDTO.m; sourceTree = "<group>"; };
+		CC9A1AFA1E9FEEBA00654590 /* SpeakerDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeakerDTO.h; path = ../../../SpeakerDTO.h; sourceTree = "<group>"; };
+		CC9A1AFB1E9FEEBA00654590 /* SpeakerDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeakerDTO.m; path = ../../../SpeakerDTO.m; sourceTree = "<group>"; };
+		CC9A1B011E9FEECF00654590 /* AttendeeDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttendeeDTO.h; path = ../../../AttendeeDTO.h; sourceTree = "<group>"; };
+		CC9A1B021E9FEECF00654590 /* AttendeeDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttendeeDTO.m; path = ../../../AttendeeDTO.m; sourceTree = "<group>"; };
+		CC9A1B041E9FEEEA00654590 /* exhiptorDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exhiptorDAO.h; path = ../../../exhiptorDAO.h; sourceTree = "<group>"; };
+		CC9A1B051E9FEEEA00654590 /* exhiptorDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = exhiptorDAO.m; path = ../../../exhiptorDAO.m; sourceTree = "<group>"; };
+		CC9A1B061E9FEEEA00654590 /* sessionDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sessionDAO.h; path = ../../../sessionDAO.h; sourceTree = "<group>"; };
+		CC9A1B071E9FEEEA00654590 /* sessionDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = sessionDAO.m; path = ../../../sessionDAO.m; sourceTree = "<group>"; };
+		CC9A1B081E9FEEEA00654590 /* speakerDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = speakerDAO.h; path = ../../../speakerDAO.h; sourceTree = "<group>"; };
+		CC9A1B091E9FEEEA00654590 /* speakerDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = speakerDAO.m; path = ../../../speakerDAO.m; sourceTree = "<group>"; };
 		CCF768691E9B20C000134359 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
 		FDF06576071D1EBEB52F8FE0 /* Pods-MDW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +127,8 @@
 		CC1948531E9ABAE900039C97 /* MDW */ = {
 			isa = PBXGroup;
 			children = (
+				CC56A5251E9FE2BF0051F5AB /* DAO */,
+				CC56A5241E9FE2AC0051F5AB /* DTO */,
 				CC4C66991E9E407700186523 /* ViewController */,
 				CC4C668F1E9E3E1A00186523 /* Resources */,
 				CC1948571E9ABAEA00039C97 /* AppDelegate.h */,
@@ -190,6 +219,38 @@
 				CC4C669C1E9E435E00186523 /* ViewController.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		CC56A5241E9FE2AC0051F5AB /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				CC9A1B011E9FEECF00654590 /* AttendeeDTO.h */,
+				CC9A1B021E9FEECF00654590 /* AttendeeDTO.m */,
+				CC9A1AF21E9FEEBA00654590 /* ExhiptorsDTO.h */,
+				CC9A1AF31E9FEEBA00654590 /* ExhiptorsDTO.m */,
+				CC9A1AF41E9FEEBA00654590 /* Mobile.h */,
+				CC9A1AF51E9FEEBA00654590 /* Mobile.m */,
+				CC9A1AF61E9FEEBA00654590 /* Phone.h */,
+				CC9A1AF71E9FEEBA00654590 /* Phone.m */,
+				CC9A1AF81E9FEEBA00654590 /* SessionDTO.h */,
+				CC9A1AF91E9FEEBA00654590 /* SessionDTO.m */,
+				CC9A1AFA1E9FEEBA00654590 /* SpeakerDTO.h */,
+				CC9A1AFB1E9FEEBA00654590 /* SpeakerDTO.m */,
+			);
+			name = DTO;
+			sourceTree = "<group>";
+		};
+		CC56A5251E9FE2BF0051F5AB /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				CC9A1B041E9FEEEA00654590 /* exhiptorDAO.h */,
+				CC9A1B051E9FEEEA00654590 /* exhiptorDAO.m */,
+				CC9A1B061E9FEEEA00654590 /* sessionDAO.h */,
+				CC9A1B071E9FEEEA00654590 /* sessionDAO.m */,
+				CC9A1B081E9FEEEA00654590 /* speakerDAO.h */,
+				CC9A1B091E9FEEEA00654590 /* speakerDAO.m */,
+			);
+			name = DAO;
 			sourceTree = "<group>";
 		};
 		CCF7686D1E9B210900134359 /* SWRevealViewController */ = {
@@ -335,10 +396,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9A1AFE1E9FEEBA00654590 /* Phone.m in Sources */,
+				CC9A1AFC1E9FEEBA00654590 /* ExhiptorsDTO.m in Sources */,
 				CC4C66A41E9E453200186523 /* QRBarController.m in Sources */,
 				CC4C669D1E9E435E00186523 /* ViewController.m in Sources */,
+				CC9A1AFD1E9FEEBA00654590 /* Mobile.m in Sources */,
+				CC9A1B031E9FEECF00654590 /* AttendeeDTO.m in Sources */,
 				CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */,
+				CC9A1B0C1E9FEEEA00654590 /* speakerDAO.m in Sources */,
+				CC9A1B001E9FEEBA00654590 /* SpeakerDTO.m in Sources */,
+				CC9A1AFF1E9FEEBA00654590 /* SessionDTO.m in Sources */,
 				CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */,
+				CC9A1B0A1E9FEEEA00654590 /* exhiptorDAO.m in Sources */,
+				CC9A1B0B1E9FEEEA00654590 /* sessionDAO.m in Sources */,
 				CC1948561E9ABAE900039C97 /* main.m in Sources */,
 				CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */,
 			);

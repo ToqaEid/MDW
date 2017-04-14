@@ -16,4 +16,7 @@
 -(RLMResults*)getAllSessions;
 -(BOOL)clearAllDB;
 -(RLMResults*)getMySessions;
+-(RLMResults*)day1Sessions;
+-(RLMResults*)day2Sessions;
+-(RLMResults*)day3Sessions;
 @end

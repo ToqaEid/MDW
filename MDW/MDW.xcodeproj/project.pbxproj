@@ -13,9 +13,7 @@
 		CC19485F1E9ABAEA00039C97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19485D1E9ABAEA00039C97 /* Main.storyboard */; };
 		CC1948611E9ABAEA00039C97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC1948601E9ABAEA00039C97 /* Assets.xcassets */; };
 		CC1948641E9ABAEA00039C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */; };
-		CC4C669D1E9E435E00186523 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669C1E9E435E00186523 /* ViewController.m */; };
 		CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669F1E9E44F100186523 /* JETSSideMenu.m */; };
-		CC4C66A41E9E453200186523 /* QRBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C66A31E9E453200186523 /* QRBarController.m */; };
 		CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C821EA0DE210015BE01 /* AgendaDay.m */; };
 		CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C861EA0DF8B0015BE01 /* AgendaDayController.m */; };
 		CCBF3CF51EA100670015BE01 /* MyAgenda.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3CF41EA100670015BE01 /* MyAgenda.m */; };
@@ -96,6 +94,8 @@
 		CCFD788B1EA296F100B0FF9D /* SpeakerDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD788A1EA296F100B0FF9D /* SpeakerDetailsViewController.m */; };
 		CCFD788F1EA2D52600B0FF9D /* MyTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD788E1EA2D52600B0FF9D /* MyTicketViewController.m */; };
 		CCFD78921EA2D55100B0FF9D /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD78911EA2D55100B0FF9D /* MyInfoViewController.m */; };
+		CCFD78951EA3720F00B0FF9D /* QRBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD78941EA3720F00B0FF9D /* QRBarController.m */; };
+		CCFD78981EA3723100B0FF9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD78971EA3723100B0FF9D /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,12 +109,8 @@
 		CC1948601E9ABAEA00039C97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC1948631E9ABAEA00039C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC1948651E9ABAEA00039C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC4C669B1E9E435E00186523 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ProfileInformation/ViewController.h; sourceTree = "<group>"; };
-		CC4C669C1E9E435E00186523 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ProfileInformation/ViewController.m; sourceTree = "<group>"; };
 		CC4C669E1E9E44F100186523 /* JETSSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JETSSideMenu.h; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.h; sourceTree = "<group>"; };
 		CC4C669F1E9E44F100186523 /* JETSSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JETSSideMenu.m; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.m; sourceTree = "<group>"; };
-		CC4C66A21E9E453200186523 /* QRBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRBarController.h; path = Classes/QRCode/QRBarController.h; sourceTree = "<group>"; };
-		CC4C66A31E9E453200186523 /* QRBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRBarController.m; path = Classes/QRCode/QRBarController.m; sourceTree = "<group>"; };
 		CCBF3C811EA0DE210015BE01 /* AgendaDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDay.h; path = ViewControllers/Agenda/AgendaDay.h; sourceTree = "<group>"; };
 		CCBF3C821EA0DE210015BE01 /* AgendaDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDay.m; path = ViewControllers/Agenda/AgendaDay.m; sourceTree = "<group>"; };
 		CCBF3C851EA0DF8B0015BE01 /* AgendaDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDayController.h; path = ViewControllers/Agenda/AgendaDayController.h; sourceTree = "<group>"; };
@@ -205,6 +201,10 @@
 		CCFD788E1EA2D52600B0FF9D /* MyTicketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyTicketViewController.m; path = ViewControllers/ProfileInformation/View/MyTicketViewController.m; sourceTree = "<group>"; };
 		CCFD78901EA2D55100B0FF9D /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyInfoViewController.h; path = ViewControllers/ProfileInformation/View/MyInfoViewController.h; sourceTree = "<group>"; };
 		CCFD78911EA2D55100B0FF9D /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyInfoViewController.m; path = ViewControllers/ProfileInformation/View/MyInfoViewController.m; sourceTree = "<group>"; };
+		CCFD78931EA3720F00B0FF9D /* QRBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRBarController.h; path = ViewControllers/ProfileInformation/Model/QRCode/QRBarController.h; sourceTree = "<group>"; };
+		CCFD78941EA3720F00B0FF9D /* QRBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRBarController.m; path = ViewControllers/ProfileInformation/Model/QRCode/QRBarController.m; sourceTree = "<group>"; };
+		CCFD78961EA3723100B0FF9D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ViewControllers/ProfileInformation/View/ViewController.h; sourceTree = "<group>"; };
+		CCFD78971EA3723100B0FF9D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ViewControllers/ProfileInformation/View/ViewController.m; sourceTree = "<group>"; };
 		FDF06576071D1EBEB52F8FE0 /* Pods-MDW.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,8 +283,8 @@
 		CC4C668B1E9E269200186523 /* QRBar */ = {
 			isa = PBXGroup;
 			children = (
-				CC4C66A31E9E453200186523 /* QRBarController.m */,
-				CC4C66A21E9E453200186523 /* QRBarController.h */,
+				CCFD78931EA3720F00B0FF9D /* QRBarController.h */,
+				CCFD78941EA3720F00B0FF9D /* QRBarController.m */,
 			);
 			name = QRBar;
 			sourceTree = "<group>";
@@ -327,6 +327,7 @@
 		CC4C66A11E9E450900186523 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CC4C668B1E9E269200186523 /* QRBar */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -334,7 +335,6 @@
 		CC4C66A51E9E453E00186523 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CC4C668B1E9E269200186523 /* QRBar */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -342,8 +342,8 @@
 		CC4C66A61E9E454A00186523 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC4C669B1E9E435E00186523 /* ViewController.h */,
-				CC4C669C1E9E435E00186523 /* ViewController.m */,
+				CCFD78961EA3723100B0FF9D /* ViewController.h */,
+				CCFD78971EA3723100B0FF9D /* ViewController.m */,
 				CCFD788D1EA2D52600B0FF9D /* MyTicketViewController.h */,
 				CCFD788E1EA2D52600B0FF9D /* MyTicketViewController.m */,
 				CCFD78901EA2D55100B0FF9D /* MyInfoViewController.h */,
@@ -749,16 +749,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4C66A41E9E453200186523 /* QRBarController.m in Sources */,
 				CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */,
 				CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */,
-				CC4C669D1E9E435E00186523 /* ViewController.m in Sources */,
 				CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */,
 				CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */,
 				CC1948561E9ABAE900039C97 /* main.m in Sources */,
+				CCFD78951EA3720F00B0FF9D /* QRBarController.m in Sources */,
 				CCFD78921EA2D55100B0FF9D /* MyInfoViewController.m in Sources */,
 				CCFD788B1EA296F100B0FF9D /* SpeakerDetailsViewController.m in Sources */,
 				CCFD788F1EA2D52600B0FF9D /* MyTicketViewController.m in Sources */,
+				CCFD78981EA3723100B0FF9D /* ViewController.m in Sources */,
 				CCBF3D9F1EA13ACB0015BE01 /* ExhibitorsViewController.m in Sources */,
 				CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */,
 				CCC44C751EA239A000676365 /* AgendaDetailsViewController.m in Sources */,

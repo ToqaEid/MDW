@@ -23,15 +23,10 @@
     //testing block
     [dayAgenda addObject:@"hello1"];
     [dayAgenda addObject:@"hello2"];
+    
     //set background image
-    self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"background.png"]];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
-    
-    self.tableView.tableHeaderView = [self.view viewWithTag:6];
-    
-    
-    
-   // self.tableView = [[UITableView alloc]initWithFrame:self.tableView.frame style:UITableViewStylePlain];
     
     
     //refresh table
@@ -122,12 +117,6 @@
     
     
 }
-
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//
-//    UIView * headerView = [self.view viewWithTag:6];
-//    return headerView;
-//}
 
 -(NSAttributedString*) renderHTML:(NSString*) htmlString{
     

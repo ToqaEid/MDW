@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JETSSideMenu : UITableViewController
+@interface JETSSideMenu : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

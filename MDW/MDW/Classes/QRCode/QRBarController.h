@@ -14,6 +14,6 @@
 @interface QRBarController : NSObject
 
 
--(CGImageRef)encodeQRCode;
+-(CGImageRef)encodeQRCode: (NSString*) encodedData;
 
 @end

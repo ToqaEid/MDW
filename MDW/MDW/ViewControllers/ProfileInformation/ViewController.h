@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QRBarController.h"
+#import "SWRevealViewController.h"
 
 @interface ViewController : UIViewController
 

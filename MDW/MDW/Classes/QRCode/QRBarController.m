@@ -10,12 +10,13 @@
 
 @implementation QRBarController
 
--(CGImageRef)encodeQRCode{
+-(CGImageRef)encodeQRCode: (NSString*) encodedData{
+    
     
     NSError *error = nil;
     CGImageRef image = nil;
     ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
-    ZXBitMatrix* result = [writer encode:@"BEGIN:VCARD\nVERSION:3.0\nN:lastname;firstname\nFN:firstname lastname\nORG:organization\nTITLE:jobtitle\nADR:;;street;city;state;zipcode;country\nTEL;WORK;VOICE:0101671542\nTEL;CELL:mobilenum\nTEL;FAX:fax\nEMAIL;WORK;INTERNET:emailaddresss\nURL:website\nEND:VCARD"
+    ZXBitMatrix* result = [writer encode:encodedData
                                   format:kBarcodeFormatQRCode
                                    width:500
                                   height:500

@@ -1,19 +1,14 @@
 //
-//  ViewController.m
+//  MyTicketViewController.m
 //  MDW
 //
-//  Created by JETS on 4/9/17.
+//  Created by JETS on 4/15/17.
 //  Copyright © 2017 JETS. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MyTicketViewController.h"
 
-
-@interface ViewController ()
-
-@end
-
-@implementation ViewController
+@implementation MyTicketViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,15 +27,16 @@
         
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
     QRBarController * qr = [QRBarController new];
     NSString* encodedData = @"BEGIN:VCARD\nVERSION:3.0\nN:lastname;firstname\nFN:firstname lastname\nORG:organization\nTITLE:jobtitle\nADR:;;street;city;state;zipcode;country\nTEL;WORK;VOICE:0101671542\nTEL;CELL:mobilenum\nTEL;FAX:fax\nEMAIL;WORK;INTERNET:emailaddresss\nURL:website\nEND:VCARD";
     CGImageRef cgImage = [qr encodeQRCode : encodedData];
     UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
-    _QRImage.image = qrImage;
+    _ticketImage.image = qrImage;
     
     
-
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -48,5 +44,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

@@ -14,6 +14,14 @@
 		CC1948611E9ABAEA00039C97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC1948601E9ABAEA00039C97 /* Assets.xcassets */; };
 		CC1948641E9ABAEA00039C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */; };
 		CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669F1E9E44F100186523 /* JETSSideMenu.m */; };
+		CC75DCB81EA3F7560016C89C /* AgendaDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */; };
+		CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */; };
+		CC75DCC21EA3FE470016C89C /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCC11EA3FE470016C89C /* LoginModel.m */; };
+		CC75DCC51EA3FE5C0016C89C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCC41EA3FE5C0016C89C /* LoginController.m */; };
+		CC75DCCD1EA408460016C89C /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCCC1EA408460016C89C /* AlertClass.m */; };
+		CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD01EA41A3A0016C89C /* LabelRendering.m */; };
+		CC75DCD61EA41BB30016C89C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD51EA41BB30016C89C /* Connection.m */; };
+		CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD81EA42F0C0016C89C /* DateConverter.m */; };
 		CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C821EA0DE210015BE01 /* AgendaDay.m */; };
 		CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C861EA0DF8B0015BE01 /* AgendaDayController.m */; };
 		CCBF3CF51EA100670015BE01 /* MyAgenda.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3CF41EA100670015BE01 /* MyAgenda.m */; };
@@ -120,6 +128,22 @@
 		CC1948651E9ABAEA00039C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4C669E1E9E44F100186523 /* JETSSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JETSSideMenu.h; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.h; sourceTree = "<group>"; };
 		CC4C669F1E9E44F100186523 /* JETSSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JETSSideMenu.m; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.m; sourceTree = "<group>"; };
+		CC75DCB61EA3F7560016C89C /* AgendaDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDayModel.h; path = ViewControllers/Agenda/AgendaDayModel/AgendaDayModel.h; sourceTree = "<group>"; };
+		CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDayModel.m; path = ViewControllers/Agenda/AgendaDayModel/AgendaDayModel.m; sourceTree = "<group>"; };
+		CC75DCBB1EA3FD5C0016C89C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Login/View/LoginViewController.h; sourceTree = "<group>"; };
+		CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Login/View/LoginViewController.m; sourceTree = "<group>"; };
+		CC75DCC01EA3FE470016C89C /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = ViewControllers/Login/Model/LoginModel.h; sourceTree = "<group>"; };
+		CC75DCC11EA3FE470016C89C /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = ViewControllers/Login/Model/LoginModel.m; sourceTree = "<group>"; };
+		CC75DCC31EA3FE5C0016C89C /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = ViewControllers/Login/Controller/LoginController.h; sourceTree = "<group>"; };
+		CC75DCC41EA3FE5C0016C89C /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = ViewControllers/Login/Controller/LoginController.m; sourceTree = "<group>"; };
+		CC75DCCB1EA408460016C89C /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertClass.h; path = ViewControllers/HelpfulUIClasses/AlertClass.h; sourceTree = "<group>"; };
+		CC75DCCC1EA408460016C89C /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertClass.m; path = ViewControllers/HelpfulUIClasses/AlertClass.m; sourceTree = "<group>"; };
+		CC75DCCF1EA41A3A0016C89C /* LabelRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelRendering.h; path = ViewControllers/HelpfulUIClasses/LabelRendering.h; sourceTree = "<group>"; };
+		CC75DCD01EA41A3A0016C89C /* LabelRendering.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelRendering.m; path = ViewControllers/HelpfulUIClasses/LabelRendering.m; sourceTree = "<group>"; };
+		CC75DCD41EA41BB30016C89C /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connection.h; path = classes/Utilities/Connection.h; sourceTree = "<group>"; };
+		CC75DCD51EA41BB30016C89C /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connection.m; path = classes/Utilities/Connection.m; sourceTree = "<group>"; };
+		CC75DCD71EA42F0C0016C89C /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateConverter.h; path = classes/Utilities/DateConverter.h; sourceTree = "<group>"; };
+		CC75DCD81EA42F0C0016C89C /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateConverter.m; path = classes/Utilities/DateConverter.m; sourceTree = "<group>"; };
 		CCBF3C811EA0DE210015BE01 /* AgendaDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDay.h; path = ViewControllers/Agenda/AgendaDay.h; sourceTree = "<group>"; };
 		CCBF3C821EA0DE210015BE01 /* AgendaDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDay.m; path = ViewControllers/Agenda/AgendaDay.m; sourceTree = "<group>"; };
 		CCBF3C851EA0DF8B0015BE01 /* AgendaDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDayController.h; path = ViewControllers/Agenda/AgendaDayController.h; sourceTree = "<group>"; };
@@ -285,6 +309,7 @@
 		CC1948531E9ABAE900039C97 /* MDW */ = {
 			isa = PBXGroup;
 			children = (
+				CC75DCD21EA41B8B0016C89C /* Utitlity Classes */,
 				CCFF82ED1EA3E8F000918B12 /* DAO */,
 				CCFF82EC1EA3E8E900918B12 /* DTO */,
 				CC4C66991E9E407700186523 /* ViewController */,
@@ -331,6 +356,8 @@
 		CC4C66991E9E407700186523 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				CC75DCCA1EA407570016C89C /* Helpful UI Classes */,
+				CC75DCB91EA3FD1E0016C89C /* Login */,
 				CCFD78861EA296A100B0FF9D /* SpeakersDetails */,
 				CCC44C721EA2391E00676365 /* AgendaDetails */,
 				CCBF3D9B1EA13A950015BE01 /* Exhibitors */,
@@ -381,12 +408,89 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		CC75DCB51EA3F7150016C89C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCB61EA3F7560016C89C /* AgendaDayModel.h */,
+				CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC75DCB91EA3FD1E0016C89C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCBF1EA3FE290016C89C /* Model */,
+				CC75DCBE1EA3FE180016C89C /* Controller */,
+				CC75DCBA1EA3FD300016C89C /* View */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CC75DCBA1EA3FD300016C89C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCBB1EA3FD5C0016C89C /* LoginViewController.h */,
+				CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CC75DCBE1EA3FE180016C89C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCC31EA3FE5C0016C89C /* LoginController.h */,
+				CC75DCC41EA3FE5C0016C89C /* LoginController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		CC75DCBF1EA3FE290016C89C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCC01EA3FE470016C89C /* LoginModel.h */,
+				CC75DCC11EA3FE470016C89C /* LoginModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CC75DCCA1EA407570016C89C /* Helpful UI Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCCB1EA408460016C89C /* AlertClass.h */,
+				CC75DCCC1EA408460016C89C /* AlertClass.m */,
+				CC75DCCF1EA41A3A0016C89C /* LabelRendering.h */,
+				CC75DCD01EA41A3A0016C89C /* LabelRendering.m */,
+			);
+			name = "Helpful UI Classes";
+			sourceTree = "<group>";
+		};
+		CC75DCCE1EA411E30016C89C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCBF3C811EA0DE210015BE01 /* AgendaDay.h */,
+				CCBF3C821EA0DE210015BE01 /* AgendaDay.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CC75DCD21EA41B8B0016C89C /* Utitlity Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC75DCD71EA42F0C0016C89C /* DateConverter.h */,
+				CC75DCD81EA42F0C0016C89C /* DateConverter.m */,
+				CC75DCD41EA41BB30016C89C /* Connection.h */,
+				CC75DCD51EA41BB30016C89C /* Connection.m */,
+			);
+			name = "Utitlity Classes";
+			sourceTree = "<group>";
+		};
 		CCBF3C7C1EA0D9270015BE01 /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
+				CC75DCCE1EA411E30016C89C /* View */,
+				CC75DCB51EA3F7150016C89C /* Model */,
 				CCBF3C841EA0DF600015BE01 /* Controller */,
-				CCBF3C811EA0DE210015BE01 /* AgendaDay.h */,
-				CCBF3C821EA0DE210015BE01 /* AgendaDay.m */,
 			);
 			name = Agenda;
 			sourceTree = "<group>";
@@ -810,8 +914,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */,
 				CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */,
+				CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */,
 				CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */,
+				CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */,
+				CC75DCCD1EA408460016C89C /* AlertClass.m in Sources */,
+				CC75DCB81EA3F7560016C89C /* AgendaDayModel.m in Sources */,
 				CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */,
 				CCFF82FC1EA3E90500918B12 /* Mobile.m in Sources */,
 				CCFF82FB1EA3E90500918B12 /* ExhiptorsDTO.m in Sources */,
@@ -819,6 +928,7 @@
 				CCFF82FE1EA3E90500918B12 /* SessionDTO.m in Sources */,
 				CC1948561E9ABAE900039C97 /* main.m in Sources */,
 				CCFD78951EA3720F00B0FF9D /* QRBarController.m in Sources */,
+				CC75DCC21EA3FE470016C89C /* LoginModel.m in Sources */,
 				CCFD78921EA2D55100B0FF9D /* MyInfoViewController.m in Sources */,
 				CCFD788B1EA296F100B0FF9D /* SpeakerDetailsViewController.m in Sources */,
 				CCFD788F1EA2D52600B0FF9D /* MyTicketViewController.m in Sources */,
@@ -828,6 +938,8 @@
 				CCFF83061EA3E91400918B12 /* exhiptorDAO.m in Sources */,
 				CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */,
 				CCC44C751EA239A000676365 /* AgendaDetailsViewController.m in Sources */,
+				CC75DCD61EA41BB30016C89C /* Connection.m in Sources */,
+				CC75DCC51EA3FE5C0016C89C /* LoginController.m in Sources */,
 				CCFF83071EA3E91400918B12 /* sessionDAO.m in Sources */,
 				CCFF82FD1EA3E90500918B12 /* Phone.m in Sources */,
 				CCBF3D9A1EA13A630015BE01 /* SpeakersViewController.m in Sources */,

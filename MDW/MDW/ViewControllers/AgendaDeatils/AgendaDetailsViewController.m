@@ -10,4 +10,12 @@
 
 @implementation AgendaDetailsViewController
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    _titleField.text = _sessionTitle;
+    _dateField.text = _sessionDate;
+    _timeField.text = _sessionTime;
+    _detailsField.text = _sessionDetails;
+
+}
 @end

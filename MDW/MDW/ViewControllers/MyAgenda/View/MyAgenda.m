@@ -22,15 +22,17 @@
     //testing block
     [dayAgenda addObject:@"hello1"];
     [dayAgenda addObject:@"hello2"];
+    
     //set background image
-    self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"background.png"]];
+    self.tableView.backgroundColor = [UIColor clearColor];    
+    
+    
     
     //refresh table
-    
     refreshControl=[[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
-                       action:@selector(refreshMytableView)
-             forControlEvents:UIControlEventValueChanged];
+                    action:@selector(refreshMytableView)
+                    forControlEvents:UIControlEventValueChanged];
     refreshControl.tintColor = [UIColor whiteColor];
     refreshControl.backgroundColor = [UIColor orangeColor];
     [self.tableView addSubview:refreshControl];
@@ -41,9 +43,9 @@
     if ( revealViewController )
     {
         UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reveal-icon.png"]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:revealViewController
-                                                                            action:@selector(revealToggle:)];
+                                                                     style:UIBarButtonItemStylePlain
+                                                                     target:revealViewController
+                                                                     action:@selector(revealToggle:)];
         
         
         self.navigationItem.leftBarButtonItem = revealButtonItem;
@@ -65,13 +67,14 @@
     dayAgenda = agenda;
 }
 
+
+/*==================================== Table View =============================================*/
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return 3;
     return dayAgenda.count;
 }
 

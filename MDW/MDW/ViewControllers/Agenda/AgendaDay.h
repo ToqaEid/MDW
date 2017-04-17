@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "AgendaDayController.h"
+#import "LabelRendering.h"
+#import "SessionDTO.h"
+#import "AgendaDetailsViewController.h"
+#import "DateConverter.h"
 
 @interface AgendaDay : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
--(void) getDayAgendaArray :(NSMutableArray*) agenda;
 
 @end

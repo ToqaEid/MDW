@@ -14,4 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeField;
 @property (weak, nonatomic) IBOutlet UILabel *detailsField;
 
+@property NSString * sessionTitle;
+@property NSString * sessionDate;
+@property NSString * sessionTime;
+@property NSString * sessionDetails;
+
 @end

@@ -14,4 +14,5 @@
 +(speakerDAO *)sharedInstance;
 -(BOOL)saveSpeakers:(NSMutableArray*) speakers;
 -(RLMResults*)getAllSpeakers;
+-(BOOL)updateImage:(SpeakerDTO*) speaker;
 @end

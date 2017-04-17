@@ -19,6 +19,7 @@
 
 - (IBAction)loginAction:(id)sender {
     
+    if ([controller isEmailValid:_usernameField.text]) {
     if(![controller checkInternetConnection]){
         
         AttendeeDTO * user =[controller checkUserWithUsername:_usernameField.text AndPassword:_passwordFied.text];
@@ -44,6 +45,11 @@
         UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry, unable to login. Please check your internet connection."];
         
         [self presentViewController:alert animated:YES completion:nil];
+    }
+    }
+    else{
+        UIAlertController *notValidEmail=[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Invalid Email"];
+        [self presentViewController:notValidEmail animated:YES completion:nil];
     }
 }
 

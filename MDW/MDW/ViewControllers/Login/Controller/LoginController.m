@@ -31,4 +31,7 @@
 
     [model saveUserLocally:user];
 }
+-(BOOL)isEmailValid:(NSString *)email{
+    return [model isEmailValid:email];
+}
 @end

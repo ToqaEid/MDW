@@ -14,5 +14,5 @@
 +(exhiptorDAO *)sharedInstance;
 -(BOOL)saveExhiptors:(NSMutableArray*) exhiptors;
 -(RLMResults*)getAllExhiptors;
-
+-(BOOL)updateImage:(ExhiptorsDTO*)ex;
 @end

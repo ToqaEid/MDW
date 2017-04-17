@@ -27,4 +27,12 @@ static exhiptorDAO* exhiptor=nil;
     RLMResults<ExhiptorsDTO*> *exhiptors=[ExhiptorsDTO allObjects];
     return exhiptors;
 }
+
+-(BOOL)updateImage:(ExhiptorsDTO *)ex{
+    RLMRealm *realm=[RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:ex];
+    [realm commitWriteTransaction];
+    return YES;
+}
 @end

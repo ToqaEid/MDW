@@ -15,4 +15,5 @@
 -(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password;
 -(BOOL)checkInternetConnection;
 -(void)saveUserInfoLocally: (AttendeeDTO*)user;
+-(BOOL)isEmailValid:(NSString*)email;
 @end

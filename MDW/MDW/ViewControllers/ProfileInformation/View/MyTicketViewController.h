@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "QRBarController.h"
 #import "SWRevealViewController.h"
+#import "AttendeeDTO.h"
+#import "MyContactModel.h"
 
 @interface MyTicketViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *ticketImage;

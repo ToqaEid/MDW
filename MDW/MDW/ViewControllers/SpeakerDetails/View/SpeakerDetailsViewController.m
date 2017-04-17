@@ -10,10 +10,21 @@
 
 @implementation SpeakerDetailsViewController
 
-
--(void)viewDidLoad{
-    //set background image
-//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+-(void)viewWillAppear:(BOOL)animated{
+    _name.text = _speakerName;
+    _jobTitle.text = _speakerJob;
+    //_details.text = _speakerDetails;
+    _company.text = _speakerCompany;
+    //_image.image = _speakerImage;
     
+    printf("SpeakerDetailsViewController view :viewWillAppear\n");
+    
+    
+    
+
 }
+
+
+
+
 @end

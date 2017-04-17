@@ -1,19 +1,19 @@
 //
-//  AgendaDayModel.m
+//  MyAgendaModel.m
 //  MDW
 //
-//  Created by JETS on 4/16/17.
+//  Created by JETS on 4/17/17.
 //  Copyright © 2017 JETS. All rights reserved.
 //
 
-#import "AgendaDayModel.h"
+#import "MyAgendaModel.h"
 
-@implementation AgendaDayModel{
+@implementation MyAgendaModel{
     sessionDAO * sessionDao;
-    AgendaDayController* controller;
+    MyAgenda* controller;
 }
 
--(id)initWithController: (AgendaDayController*) agendacontroller{
+-(id)initWithController: (MyAgenda*) agendacontroller{
     sessionDao = [sessionDAO new];
     controller = agendacontroller;
     return [self init];
@@ -21,7 +21,7 @@
 
 /*=======================Sessions from DB ========================*/
 -(NSMutableArray*) getDay1SessionsFromDB{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessions];
     return sessions;
 }
 -(NSMutableArray*) getDay2SessionsFromDB{
@@ -35,7 +35,7 @@
 -(NSMutableArray*) getAllSessionsFromDB{
     NSMutableArray * sessions = nil;
     return sessions;
-
+    
 }
 -(void) saveAllSessionsInDB:(NSMutableArray *)sessions{
     
@@ -60,6 +60,4 @@
     return sessions;
 }
 
--(BOOL)checkInternetConnection{
-    return YES;
-}@end
+@end

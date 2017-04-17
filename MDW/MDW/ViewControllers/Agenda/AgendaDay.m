@@ -22,10 +22,6 @@
     
     dayAgenda = [NSMutableArray new];
     
-    //testing block
-    [dayAgenda addObject:@"hello1"];
-    [dayAgenda addObject:@"hello2"];
-    
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
     
@@ -52,31 +48,48 @@
     //getData
     controller = [[AgendaDayController alloc]initWithView:self];
     if([controller checkInternetConnection]){
+        
         indicator = [self showProgressDialog];
         [indicator startAnimating];
+        
         [self getSessionsFromNetwork];
+        
         printf("Agenda View : checkInternetConnection\n");
+        
     }else{
+        
         [self getSessionsFromDB];
+        
         printf("Agenda View : !checkInternetConnection\n");
+        
     }
 }
 
 /*====================== DATA =================================*/
 
-
-
 -(NSMutableArray*)getSessionsFromNetwork{
+    
+    //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+        
         dayAgenda = [controller getDay1SessionsFromNetworkFromModel];
+        
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+        
         dayAgenda = [controller getDay2SessionsFromNetworkFromModel];
+        
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+        
         dayAgenda = [controller getDay3SessionsFromNetworkFromModel];
+        
     }else{
+        
         dayAgenda = [controller getAllSessionsFromNetworkFromModel];
+        
     }
+    //hide progress dialog
     [indicator stopAnimating];
+    
     return dayAgenda;
 }
 
@@ -146,6 +159,8 @@
     
     AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
     
+    //AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
+    
     agendaDetails.sessionTitle = session.name;
     agendaDetails.sessionDate = [DateConverter dayStringFromDate: session.startDate];
     agendaDetails.sessionTime = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: session.startDate] , [DateConverter stringFromDate: session.endDate]] ;
@@ -155,6 +170,7 @@
     
 }
 
+/* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
     [dayAgenda addObject:@"hello"];

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Connection.h"
+#import "SpeakersModel.h"
+#import "SpeakerDTO.h"
+#import "SpeakerDetailsViewController.h"
 
 @interface SpeakersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
--(void) getSpeakersArray :(NSMutableArray*) speakersArr;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

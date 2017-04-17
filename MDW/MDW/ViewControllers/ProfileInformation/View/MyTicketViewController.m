@@ -8,7 +8,10 @@
 
 #import "MyTicketViewController.h"
 
-@implementation MyTicketViewController
+@implementation MyTicketViewController{
+
+    MyContactModel * model;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,16 +30,17 @@
         
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    //QR
     QRBarController * qr = [QRBarController new];
-    NSString* encodedData = @"BEGIN:VCARD\nVERSION:3.0\nN:lastname;firstname\nFN:firstname lastname\nORG:organization\nTITLE:jobtitle\nADR:;;street;city;state;zipcode;country\nTEL;WORK;VOICE:0101671542\nTEL;CELL:mobilenum\nTEL;FAX:fax\nEMAIL;WORK;INTERNET:emailaddresss\nURL:website\nEND:VCARD";
-    CGImageRef cgImage = [qr encodeQRCode : encodedData];
+    
+     model= [MyContactModel new];
+    AttendeeDTO * user = [model getUserInfo];
+    CGImageRef cgImage = [qr encodeQRCode : user.code];
     UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
     _ticketImage.image = qrImage;
     
-    
-    
-    
-    
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 

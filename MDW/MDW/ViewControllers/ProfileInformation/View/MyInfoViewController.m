@@ -8,7 +8,10 @@
 
 #import "MyInfoViewController.h"
 
-@implementation MyInfoViewController
+@implementation MyInfoViewController{
+    MyContactModel * model;
+    AttendeeDTO *user;
+}
 
 
 -(void)viewDidLoad{
@@ -26,6 +29,14 @@
         
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-
+    
+    model = [MyContactModel new];
+    
+    user = [model getUserInfo];
+    
+    _myName.text = [NSString stringWithFormat:@"%@ %@ %@", user.firstName, user.middleName, user.lastName];
+    _myTitle.text = user.title;
+    _myCompany.text = user.companyName;
+    
 }
 @end

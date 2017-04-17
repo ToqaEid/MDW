@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "MyContactModel.h"
+#import "AttendeeDTO.h"
 
 @interface MyInfoViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *myImage;

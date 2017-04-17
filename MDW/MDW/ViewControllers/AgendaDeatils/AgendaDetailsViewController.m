@@ -8,7 +8,9 @@
 
 #import "AgendaDetailsViewController.h"
 
-@implementation AgendaDetailsViewController
+@implementation AgendaDetailsViewController{
+    AgendaDetailsModel * model;
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -17,5 +19,13 @@
     _timeField.text = _sessionTime;
     _detailsField.text = _sessionDetails;
 
+}
+
+-(void)viewDidLoad{
+    model = [[AgendaDetailsModel alloc]initWithController:self];
+}
+
+- (IBAction)ratingAction:(id)sender {
+    [model registerSession];
 }
 @end

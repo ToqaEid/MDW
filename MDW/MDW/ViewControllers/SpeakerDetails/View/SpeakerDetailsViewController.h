@@ -15,4 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *company;
 @property (weak, nonatomic) IBOutlet UILabel *details;
 
+@property NSString * speakerName;
+@property NSString * speakerJob;
+@property NSString * speakerCompany;
+@property NSString * speakerDetails;
+@property UIImage * speakerImage;
+
 @end

@@ -20,11 +20,8 @@
     
     speakers = [NSMutableArray new];
     
-    //testing block
-    [speakers addObject:@"Eman"];
-    [speakers addObject:@"Ahmed"];
     //set background image
-    //self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"background.png"]];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
     //refresh table
     

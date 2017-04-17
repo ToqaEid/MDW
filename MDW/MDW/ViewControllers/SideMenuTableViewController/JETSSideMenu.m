@@ -42,6 +42,22 @@
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 63;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == cellsItems.count-1){
+        //logout
+        printf("logout\n");
+        
+        //go to login view
+        [self dismissViewControllerAnimated:YES completion:^{
+            //remove user data from nsuserdefaults
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults removeObjectForKey:@"user"];
+            [defaults synchronize];
+        }];
+
+    }
 }
 @end

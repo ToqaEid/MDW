@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "QRBarController.h"
 #import "SWRevealViewController.h"
+#import "AttendeeDTO.h"
+#import "MyContactModel.h"
 
 @interface ViewController : UIViewController
 
-
+@property (weak, nonatomic) IBOutlet UILabel *mobile;
+@property (weak, nonatomic) IBOutlet UILabel *email;
 @property (weak, nonatomic) IBOutlet UIImageView *QRImage;
 @end
 

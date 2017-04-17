@@ -27,5 +27,12 @@ static speakerDAO* speaker=nil;
     RLMResults<SpeakerDTO*> *speakers=[SpeakerDTO allObjects];
     return speakers;
 }
+-(BOOL)updateImage:(SpeakerDTO *)speaker{
+    RLMRealm *realm=[RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:speaker];
+    [realm commitWriteTransaction];
+    return YES;
+}
 
 @end

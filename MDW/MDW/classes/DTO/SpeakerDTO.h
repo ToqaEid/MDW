@@ -12,7 +12,7 @@
 
 @interface SpeakerDTO : RLMObject
 @property int speakerId;
-@property NSString *firstName,*middleName,*lastName,*imageUrl,*companyName,*title,*biography;
+@property NSString *firstName,*middleName,*lastName,*companyName,*title,*biography;
 @property BOOL gender;
 @property NSData *image;
 @property RLMArray<Mobile*><Mobile> *mobiles;

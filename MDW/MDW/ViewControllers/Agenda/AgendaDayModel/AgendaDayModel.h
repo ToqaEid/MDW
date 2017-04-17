@@ -6,15 +6,15 @@
 //  Copyright © 2017 JETS. All rights reserved.
 //
 
+@class AgendaDay;
+
 #import <Foundation/Foundation.h>
 #import "sessionDAO.h"
-#import "AgendaDayController.h"
-
-@class AgendaDayController;
+#import "AgendaDay.h"
 
 @interface AgendaDayModel : NSObject
 
--(id)initWithController: (AgendaDayController*) agendacontroller;
+-(id)initWithController: (AgendaDay*) agendacontroller;
 //Sessions from DB
 -(NSMutableArray*) getAllSessionsFromDB;
 -(NSMutableArray*) getDay1SessionsFromDB;

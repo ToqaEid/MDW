@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 
 @implementation LoginViewController{
-    LoginController *controller;
+    LoginModel *model;
     
 }
 
@@ -19,32 +19,44 @@
 
 - (IBAction)loginAction:(id)sender {
     
-    if(![controller checkInternetConnection]){
-        
-        AttendeeDTO * user =[controller checkUserWithUsername:_usernameField.text AndPassword:_passwordFied.text];
-        
-        if(user == nil){
+    
+    if([Connection checkInternetConnection]){
+        if ([model isEmailValid:_usernameField.text]) {
             
-            //save user locally
-            //[controller saveUserInfoLocally: user];
+            AttendeeDTO * user =[model checkUserWithUsername:_usernameField.text AndPassword:_passwordFied.text];
+        
+            if(user == nil){
             
-            //Going to the Home
-            SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
-            [self presentViewController:home animated:YES completion:nil];
+                //save user locally
+                //[controller saveUserInfoLocally: user];
+            
+                //Going to the Home
+                SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
+                [self presentViewController:home animated:YES completion:nil];
             
         
-        }else{  //wrong username or password
+            }else{  //wrong username or password
  
-            UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Invalid username or password"];
+                UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Invalid username or password"];
             
-            [self presentViewController:alert animated:YES completion:nil];
+                [self presentViewController:alert animated:YES completion:nil];
+                _usernameField.text = @"";
+                _passwordFied.text = @"";
+            }
+        }else{  //wrong email
+            
+            UIAlertController *notValidEmail=[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Invalid Email"];
+            [self presentViewController:notValidEmail animated:YES completion:nil];
         }
+    
     }else{  //no internet connection
         
         UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry, unable to login. Please check your internet connection."];
         
         [self presentViewController:alert animated:YES completion:nil];
+    
     }
+
 }
 
 - (IBAction)registerAction:(id)sender {

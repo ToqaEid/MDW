@@ -12,7 +12,8 @@
 
 @interface ExhiptorsDTO : RLMObject
 @property int exhiptorId;
-@property NSString *email,*countryName,*cityName,*companyName,*companyAbout,*imageURL,*fax,*contactName,*contactTitle,*companyURL,*companyAddress;
+@property NSString *email,*countryName,*cityName,*companyName,*companyAbout,*fax,*contactName,*contactTitle,*companyURL,*companyAddress;
+@property NSData *image;
 @property RLMArray<Mobile*><Mobile> *mobiles;
 @property RLMArray<Phone*><Phone> *phones;
 @end

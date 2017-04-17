@@ -146,6 +146,11 @@
     name.attributedText = [LabelRendering renderHTML:session.name];
     location.text = session.location;
     
+    //image
+    UIImage * sessionImage = [AgendaImages getSessionImage:session];
+    if( sessionImage != nil){
+        icon.image = sessionImage;
+    }
     
     
     return cell;

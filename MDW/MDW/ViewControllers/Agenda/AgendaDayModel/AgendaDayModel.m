@@ -10,10 +10,10 @@
 
 @implementation AgendaDayModel{
     sessionDAO * sessionDao;
-    AgendaDayController* controller;
+    AgendaDay* controller;
 }
 
--(id)initWithController: (AgendaDayController*) agendacontroller{
+-(id)initWithController: (AgendaDay*) agendacontroller{
     sessionDao = [sessionDAO new];
     controller = agendacontroller;
     return [self init];

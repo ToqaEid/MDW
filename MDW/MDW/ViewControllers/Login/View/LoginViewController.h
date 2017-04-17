@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginController.h"
+#import "LoginModel.h"
 #import "AlertClass.h"
 #import "AttendeeDTO.h"
 #import "SWRevealViewController.h"
+#import "Connection.h"
 
 @interface LoginViewController : UIViewController
 

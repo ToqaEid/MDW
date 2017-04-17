@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
-#import "AgendaDayController.h"
+#import "AgendaDayModel.h"
 #import "LabelRendering.h"
 #import "SessionDTO.h"
 #import "AgendaDetailsViewController.h"
 #import "DateConverter.h"
+#import "Connection.h"
+#import "AgendaImages.h"
 
 @interface AgendaDay : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

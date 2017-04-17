@@ -35,10 +35,10 @@
     QRBarController * qr = [QRBarController new];
     
      model= [MyContactModel new];
-    AttendeeDTO * user = [model getUserInfo];
-    CGImageRef cgImage = [qr encodeQRCode : user.code];
-    UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
-    _ticketImage.image = qrImage;
+//    AttendeeDTO * user = [model getUserInfo];
+//    CGImageRef cgImage = [qr encodeQRCode : user.code];
+//    UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
+//    _ticketImage.image = qrImage;
     
 
     // Do any additional setup after loading the view, typically from a nib.

@@ -16,6 +16,7 @@
 #import "DateConverter.h"
 #import "LabelRendering.h"
 #import "Connection.h"
+#import "AgendaImages.h"
 
 @interface MyAgenda : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

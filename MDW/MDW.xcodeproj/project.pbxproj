@@ -14,6 +14,7 @@
 		CC1035181EA52C9E00235BA5 /* ExhibitorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1035171EA52C9E00235BA5 /* ExhibitorModel.m */; };
 		CC10351B1EA5361D00235BA5 /* MyContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10351A1EA5361D00235BA5 /* MyContactModel.m */; };
 		CC10351E1EA538B800235BA5 /* NSUserDefaultForObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CC10351D1EA538B800235BA5 /* NSUserDefaultForObject.m */; };
+		CC1035211EA558C500235BA5 /* AgendaImages.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1035201EA558C500235BA5 /* AgendaImages.m */; };
 		CC1948561E9ABAE900039C97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1948551E9ABAE900039C97 /* main.m */; };
 		CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1948581E9ABAEA00039C97 /* AppDelegate.m */; };
 		CC19485F1E9ABAEA00039C97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC19485D1E9ABAEA00039C97 /* Main.storyboard */; };
@@ -23,13 +24,11 @@
 		CC75DCB81EA3F7560016C89C /* AgendaDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */; };
 		CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */; };
 		CC75DCC21EA3FE470016C89C /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCC11EA3FE470016C89C /* LoginModel.m */; };
-		CC75DCC51EA3FE5C0016C89C /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCC41EA3FE5C0016C89C /* LoginController.m */; };
 		CC75DCCD1EA408460016C89C /* AlertClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCCC1EA408460016C89C /* AlertClass.m */; };
 		CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD01EA41A3A0016C89C /* LabelRendering.m */; };
 		CC75DCD61EA41BB30016C89C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD51EA41BB30016C89C /* Connection.m */; };
 		CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD81EA42F0C0016C89C /* DateConverter.m */; };
 		CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C821EA0DE210015BE01 /* AgendaDay.m */; };
-		CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C861EA0DF8B0015BE01 /* AgendaDayController.m */; };
 		CCBF3CF51EA100670015BE01 /* MyAgenda.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3CF41EA100670015BE01 /* MyAgenda.m */; };
 		CCBF3D191EA11FC30015BE01 /* Icon-40 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CCBF3D001EA11FC30015BE01 /* Icon-40 2.png */; };
 		CCBF3D1A1EA11FC30015BE01 /* Icon-40 3.png in Resources */ = {isa = PBXBuildFile; fileRef = CCBF3D011EA11FC30015BE01 /* Icon-40 3.png */; };
@@ -136,6 +135,8 @@
 		CC10351A1EA5361D00235BA5 /* MyContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyContactModel.m; path = ViewControllers/ProfileInformation/Model/MyContactModel.m; sourceTree = "<group>"; };
 		CC10351C1EA538B800235BA5 /* NSUserDefaultForObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSUserDefaultForObject.h; path = classes/Utilities/NSUserDefaultForObject.h; sourceTree = "<group>"; };
 		CC10351D1EA538B800235BA5 /* NSUserDefaultForObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSUserDefaultForObject.m; path = classes/Utilities/NSUserDefaultForObject.m; sourceTree = "<group>"; };
+		CC10351F1EA558C500235BA5 /* AgendaImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaImages.h; path = ViewControllers/HelpfulUIClasses/AgendaImages.h; sourceTree = "<group>"; };
+		CC1035201EA558C500235BA5 /* AgendaImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaImages.m; path = ViewControllers/HelpfulUIClasses/AgendaImages.m; sourceTree = "<group>"; };
 		CC1948511E9ABAE900039C97 /* MDW.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MDW.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC1948551E9ABAE900039C97 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CC1948571E9ABAEA00039C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -152,8 +153,6 @@
 		CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Login/View/LoginViewController.m; sourceTree = "<group>"; };
 		CC75DCC01EA3FE470016C89C /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = ViewControllers/Login/Model/LoginModel.h; sourceTree = "<group>"; };
 		CC75DCC11EA3FE470016C89C /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = ViewControllers/Login/Model/LoginModel.m; sourceTree = "<group>"; };
-		CC75DCC31EA3FE5C0016C89C /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginController.h; path = ViewControllers/Login/Controller/LoginController.h; sourceTree = "<group>"; };
-		CC75DCC41EA3FE5C0016C89C /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginController.m; path = ViewControllers/Login/Controller/LoginController.m; sourceTree = "<group>"; };
 		CC75DCCB1EA408460016C89C /* AlertClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertClass.h; path = ViewControllers/HelpfulUIClasses/AlertClass.h; sourceTree = "<group>"; };
 		CC75DCCC1EA408460016C89C /* AlertClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertClass.m; path = ViewControllers/HelpfulUIClasses/AlertClass.m; sourceTree = "<group>"; };
 		CC75DCCF1EA41A3A0016C89C /* LabelRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelRendering.h; path = ViewControllers/HelpfulUIClasses/LabelRendering.h; sourceTree = "<group>"; };
@@ -164,8 +163,6 @@
 		CC75DCD81EA42F0C0016C89C /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateConverter.m; path = classes/Utilities/DateConverter.m; sourceTree = "<group>"; };
 		CCBF3C811EA0DE210015BE01 /* AgendaDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDay.h; path = ViewControllers/Agenda/AgendaDay.h; sourceTree = "<group>"; };
 		CCBF3C821EA0DE210015BE01 /* AgendaDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDay.m; path = ViewControllers/Agenda/AgendaDay.m; sourceTree = "<group>"; };
-		CCBF3C851EA0DF8B0015BE01 /* AgendaDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDayController.h; path = ViewControllers/Agenda/AgendaDayController.h; sourceTree = "<group>"; };
-		CCBF3C861EA0DF8B0015BE01 /* AgendaDayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDayController.m; path = ViewControllers/Agenda/AgendaDayController.m; sourceTree = "<group>"; };
 		CCBF3CF31EA100670015BE01 /* MyAgenda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAgenda.h; path = ViewControllers/MyAgenda/View/MyAgenda.h; sourceTree = "<group>"; };
 		CCBF3CF41EA100670015BE01 /* MyAgenda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAgenda.m; path = ViewControllers/MyAgenda/View/MyAgenda.m; sourceTree = "<group>"; };
 		CCBF3D001EA11FC30015BE01 /* Icon-40 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40 2.png"; path = "Resources/MDW_Icons/Icon-40 2.png"; sourceTree = "<group>"; };
@@ -496,7 +493,6 @@
 			isa = PBXGroup;
 			children = (
 				CC75DCBF1EA3FE290016C89C /* Model */,
-				CC75DCBE1EA3FE180016C89C /* Controller */,
 				CC75DCBA1EA3FD300016C89C /* View */,
 			);
 			name = Login;
@@ -509,15 +505,6 @@
 				CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		CC75DCBE1EA3FE180016C89C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CC75DCC31EA3FE5C0016C89C /* LoginController.h */,
-				CC75DCC41EA3FE5C0016C89C /* LoginController.m */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		CC75DCBF1EA3FE290016C89C /* Model */ = {
@@ -536,6 +523,8 @@
 				CC75DCCC1EA408460016C89C /* AlertClass.m */,
 				CC75DCCF1EA41A3A0016C89C /* LabelRendering.h */,
 				CC75DCD01EA41A3A0016C89C /* LabelRendering.m */,
+				CC10351F1EA558C500235BA5 /* AgendaImages.h */,
+				CC1035201EA558C500235BA5 /* AgendaImages.m */,
 			);
 			name = "Helpful UI Classes";
 			sourceTree = "<group>";
@@ -567,18 +556,8 @@
 			children = (
 				CC75DCCE1EA411E30016C89C /* View */,
 				CC75DCB51EA3F7150016C89C /* Model */,
-				CCBF3C841EA0DF600015BE01 /* Controller */,
 			);
 			name = Agenda;
-			sourceTree = "<group>";
-		};
-		CCBF3C841EA0DF600015BE01 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CCBF3C851EA0DF8B0015BE01 /* AgendaDayController.h */,
-				CCBF3C861EA0DF8B0015BE01 /* AgendaDayController.m */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		CCBF3CF11EA100110015BE01 /* MyAgenda */ = {
@@ -980,7 +959,6 @@
 				CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */,
 				CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */,
 				CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */,
-				CCBF3C871EA0DF8B0015BE01 /* AgendaDayController.m in Sources */,
 				CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */,
 				CC10350F1EA4EE1100235BA5 /* MyAgendaModel.m in Sources */,
 				CC75DCCD1EA408460016C89C /* AlertClass.m in Sources */,
@@ -999,13 +977,13 @@
 				CCFD788F1EA2D52600B0FF9D /* MyTicketViewController.m in Sources */,
 				CCFF82FA1EA3E90500918B12 /* AttendeeDTO.m in Sources */,
 				CCFD78981EA3723100B0FF9D /* ViewController.m in Sources */,
+				CC1035211EA558C500235BA5 /* AgendaImages.m in Sources */,
 				CCBF3D9F1EA13ACB0015BE01 /* ExhibitorsViewController.m in Sources */,
 				CCFF83061EA3E91400918B12 /* exhiptorDAO.m in Sources */,
 				CCF7686B1E9B20CD00134359 /* SWRevealViewController.m in Sources */,
 				CCC44C751EA239A000676365 /* AgendaDetailsViewController.m in Sources */,
 				CC10350B1EA4CB4700235BA5 /* SpeakersModel.m in Sources */,
 				CC75DCD61EA41BB30016C89C /* Connection.m in Sources */,
-				CC75DCC51EA3FE5C0016C89C /* LoginController.m in Sources */,
 				CCFF83071EA3E91400918B12 /* sessionDAO.m in Sources */,
 				CC1035181EA52C9E00235BA5 /* ExhibitorModel.m in Sources */,
 				CC10351B1EA5361D00235BA5 /* MyContactModel.m in Sources */,

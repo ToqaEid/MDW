@@ -166,11 +166,22 @@
     
     //AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
     
+    
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
     agendaDetails.session = session;
     
+    agendaDetails.hidesBottomBarWhenPushed = YES;
     
-    [self presentViewController:agendaDetails animated:YES completion:nil];
+    
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"MDW"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    
+    [self.navigationController pushViewController:agendaDetails animated:YES ];
     
 }
 

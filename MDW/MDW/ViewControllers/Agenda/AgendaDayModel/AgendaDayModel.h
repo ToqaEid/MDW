@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "sessionDAO.h"
+#import "SessionDTO.h"
 #import "AgendaDay.h"
 
 @interface AgendaDayModel : NSObject
@@ -26,6 +27,5 @@
 -(NSMutableArray*) getDay1SessionsFromNetwork;
 -(NSMutableArray*) getDay2SessionsFromNetwork;
 -(NSMutableArray*) getDay3SessionsFromNetwork;
--(BOOL)checkInternetConnection;
 
 @end

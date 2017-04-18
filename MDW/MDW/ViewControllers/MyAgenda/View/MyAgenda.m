@@ -162,13 +162,22 @@
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
         
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
+    agendaDetails.session = session;
+   
+    agendaDetails.hidesBottomBarWhenPushed = YES;
     
-    agendaDetails.sessionTitle = session.name;
-    agendaDetails.sessionDate = [DateConverter dayStringFromDate: session.startDate];
-    agendaDetails.sessionTime = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: session.startDate] , [DateConverter stringFromDate: session.endDate]] ;
-    agendaDetails.sessionDetails = session.SessionDescription;
     
-    [self.navigationController presentViewController:agendaDetails animated:YES completion:nil];
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"MDW"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    
+    [self.navigationController pushViewController:agendaDetails animated:YES ];
+
+    
     
 }
 

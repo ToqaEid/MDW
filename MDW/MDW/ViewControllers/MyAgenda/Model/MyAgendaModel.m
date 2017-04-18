@@ -14,7 +14,7 @@
 }
 
 -(id)initWithController: (MyAgenda*) agendacontroller{
-    sessionDao = [sessionDAO new];
+    sessionDao = [sessionDAO sharedInstance];
     controller = agendacontroller;
     return [self init];
 }

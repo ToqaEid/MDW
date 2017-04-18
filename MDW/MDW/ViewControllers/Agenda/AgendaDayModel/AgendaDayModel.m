@@ -14,7 +14,7 @@
 }
 
 -(id)initWithController: (AgendaDay*) agendacontroller{
-    sessionDao = [sessionDAO new];
+    sessionDao = [sessionDAO sharedInstance];
     controller = agendacontroller;
     return [self init];
 }
@@ -41,12 +41,22 @@
     
 }
 -(NSMutableArray*) getAllSessionsFromNetwork{
-    NSMutableArray * sessions = nil;
+//    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+//    return sessions;
+    [sessionDao clearAllDB];
+    NSMutableArray * sessions = [NSMutableArray new];
+    SessionDTO * session = [SessionDTO new];
+    session.sessionId = 2;
+    session.name = @"session1";
+    session.sessionType = @"Break";
+    session.SessionDescription = @"sdfg";
+    [sessions addObject:session];
+    [sessionDao saveSessions:sessions];
     return sessions;
 }
 
 -(NSMutableArray*) getDay1SessionsFromNetwork{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
     return sessions;
 }
 
@@ -60,6 +70,4 @@
     return sessions;
 }
 
--(BOOL)checkInternetConnection{
-    return YES;
-}@end
+@end

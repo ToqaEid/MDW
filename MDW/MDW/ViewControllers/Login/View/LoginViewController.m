@@ -21,7 +21,7 @@
     
     
     if([Connection checkInternetConnection]){
-        if ([model isEmailValid:_usernameField.text]) {
+      //  if ([model isEmailValid:_usernameField.text]) {
             
             AttendeeDTO * user =[model checkUserWithUsername:_usernameField.text AndPassword:_passwordFied.text];
         
@@ -49,13 +49,13 @@
             [self presentViewController:notValidEmail animated:YES completion:nil];
         }
     
-    }else{  //no internet connection
-        
-        UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry, unable to login. Please check your internet connection."];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    
-    }
+//    }else{  //no internet connection
+//        
+//        UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry, unable to login. Please check your internet connection."];
+//        
+//        [self presentViewController:alert animated:YES completion:nil];
+//    
+//    }
 
 }
 

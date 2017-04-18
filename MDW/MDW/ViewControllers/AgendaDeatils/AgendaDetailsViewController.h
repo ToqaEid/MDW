@@ -11,6 +11,7 @@
 #import "AgendaDetailsModel.h"
 #import "SessionDTO.h"
 #import "DateConverter.h"
+#import "UIView+Toast.h"
 
 @interface AgendaDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *titleField;

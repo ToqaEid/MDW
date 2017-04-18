@@ -17,6 +17,7 @@
 
 -(id)initWithController: (SpeakersViewController*) speakersController{
     controller = speakersController ;
+    speaker = [speakerDAO sharedInstance];
     return [self init];
 }
 
@@ -31,19 +32,10 @@
 
 
 -(NSMutableArray*) getSpeakersFromNetwork{
-    NSMutableArray * speakers = [NSMutableArray new];
-    SpeakerDTO * speakerdto = [SpeakerDTO new];
-    speakerdto.firstName = @"t";
-    speakerdto.middleName = @"e";
-    speakerdto.lastName = @"s";
-    speakerdto.companyName = @"jets";
-    speakerdto.title = @"student";
-    [speakers addObject:speakerdto];
-    
-    [self saveSpeakersInDB:speakers];
     
     
-    return speakers;
+    
+    return [self getSpeakersFromDB];
 }
 
 

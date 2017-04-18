@@ -38,6 +38,7 @@
     }else{
         //unregister session
         [model unregisterSession:_session];
+        _session.status = 0;
         //change star image
         UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
         [sender setBackgroundImage:registerStar forState:UIControlStateNormal];
@@ -59,7 +60,7 @@
 }
 
 -(void) showToast : (NSString *) msg{
-
+    [self.view makeToast:msg];
 }
 
 @end

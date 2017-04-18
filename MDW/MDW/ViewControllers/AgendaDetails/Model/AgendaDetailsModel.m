@@ -18,9 +18,24 @@
     return [self init];
 }
 
--(SessionStatus)registerSession{
-    return ACCEPTED;
+-(int)registerSession : (SessionDTO*) session{
+    
+    ///register using network
+        //if network returned error show error toast
+    NSString * error;
+    [controller showToast : error];
+        //if no error save in db
+    
+    return 1;
 }
 
+
+-(void)unregisterSession : (SessionDTO*) session{
+    ///register using network
+    //if network returned error show error toast
+    NSString * error;
+    [controller showToast : error];
+    //if no error save in db
+}
 
 @end

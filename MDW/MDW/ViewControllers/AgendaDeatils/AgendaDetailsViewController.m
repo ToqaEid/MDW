@@ -8,16 +8,18 @@
 
 #import "AgendaDetailsViewController.h"
 
+
 @implementation AgendaDetailsViewController{
     AgendaDetailsModel * model;
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    _titleField.text = _sessionTitle;
-    _dateField.text = _sessionDate;
-    _timeField.text = _sessionTime;
-    _detailsField.text = _sessionDetails;
+    _titleField.text = _session.name;
+    _dateField.text = [DateConverter dayStringFromDate: _session.startDate];
+    _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
+    _detailsField.text = _session.SessionDescription;
+    
 
 }
 
@@ -26,6 +28,38 @@
 }
 
 - (IBAction)ratingAction:(id)sender {
-    [model registerSession];
+    
+    if(_session.status == 0){
+        //register session
+        _session.status = [model registerSession:_session];
+        //change star image
+        [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+        
+    }else{
+        //unregister session
+        [model unregisterSession:_session];
+        //change star image
+        UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
+        [sender setBackgroundImage:registerStar forState:UIControlStateNormal];
+    }
+    
 }
+
+-(UIImage*)getSessionStatusImage{
+    UIImage *registerStar;
+    if(_session.status == 1){
+        registerStar = [UIImage imageNamed:@"sessionpending.png"];
+    }else if(_session.status == 2){
+        registerStar = [UIImage imageNamed:@"sessionapproved.png"];
+    }else {
+        registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
+    }
+    return registerStar;
+
+}
+
+-(void) showToast : (NSString *) msg{
+
+}
+
 @end

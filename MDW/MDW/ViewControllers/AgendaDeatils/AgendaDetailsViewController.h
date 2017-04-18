@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AgendaDetailsModel.h"
+#import "SessionDTO.h"
+#import "DateConverter.h"
 
 @interface AgendaDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *titleField;
@@ -19,9 +21,7 @@
 - (IBAction)ratingAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *speakersView;
 
-@property NSString * sessionTitle;
-@property NSString * sessionDate;
-@property NSString * sessionTime;
-@property NSString * sessionDetails;
+@property SessionDTO * session;
 
+-(void) showToast : (NSString *) msg;
 @end

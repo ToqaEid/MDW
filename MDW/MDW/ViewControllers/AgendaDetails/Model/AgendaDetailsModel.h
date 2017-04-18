@@ -9,13 +9,15 @@
 
 #import <Foundation/Foundation.h>
 #import "AgendaDetailsViewController.h"
+#import "SessionDTO.h"
 
-typedef enum {ACCEPTED, WAITING} SessionStatus;
+//typedef enum {ACCEPTED, WAITING} SessionStatus;
 
 @interface AgendaDetailsModel : NSObject
 
 -(id)initWithController: (AgendaDetailsViewController*) agendaCont;
 
--(SessionStatus)registerSession;
+-(int)registerSession : (SessionDTO*) session;
 
+-(void)unregisterSession : (SessionDTO*) session;
 @end

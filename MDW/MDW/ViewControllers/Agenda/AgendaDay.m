@@ -164,14 +164,11 @@
     
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     
-    AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
+    //AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
     
-    //AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
+    AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
+    agendaDetails.session = session;
     
-    agendaDetails.sessionTitle = session.name;
-    agendaDetails.sessionDate = [DateConverter dayStringFromDate: session.startDate];
-    agendaDetails.sessionTime = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: session.startDate] , [DateConverter stringFromDate: session.endDate]] ;
-    agendaDetails.sessionDetails = session.SessionDescription;
     
     [self presentViewController:agendaDetails animated:YES completion:nil];
     

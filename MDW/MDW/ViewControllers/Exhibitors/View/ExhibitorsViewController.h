@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExhiptorsDTO.h"
 
 @interface ExhibitorsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
--(void) getExhibitorssArray :(NSMutableArray*) speakersArr;
 
 @end

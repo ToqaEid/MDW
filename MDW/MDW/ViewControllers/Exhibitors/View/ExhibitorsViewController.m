@@ -11,14 +11,14 @@
 
 @implementation ExhibitorsViewController{
     
-    NSMutableArray * speakers;
+    NSMutableArray * exibitors;
     UIRefreshControl *refreshControl;
     
 }
 
 -(void)viewDidLoad{
     
-    speakers = [NSMutableArray new];
+    exibitors = [NSMutableArray new];
     
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -53,15 +53,12 @@
 -(void) refreshMytableView
 {
     
-    [speakers addObject:@"hello"];
     [self.tableView  reloadData];
     [refreshControl endRefreshing];
     
 }
 
--(void) getExhibitorssArray :(NSMutableArray*) speakersArr{
-    speakers = speakersArr;
-}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -69,8 +66,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return 3;
-    return speakers.count;
+
+    return exibitors.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -87,11 +84,10 @@
     UILabel * name = [cell viewWithTag:2];
     
     //fill fields in the cell with data
-    
-    NSString * htmlString = @"<Font name=\"verdana\" size=\"4\" color=\"Blue\">Registration</Font>";
-    
-    name.attributedText = [self renderHTML:htmlString];
-    
+    ExhiptorsDTO * exhibitor = [exibitors objectAtIndex:indexPath.row];
+
+    icon.image = [[UIImage alloc]initWithData:exhibitor.image];
+    name.text = exhibitor.companyName;
     
     return cell;
     
@@ -99,8 +95,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    ExhiptorsDTO * exhibitor = [exibitors objectAtIndex:indexPath.row];
     
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: exhibitor.companyURL]];
 }
 
 -(NSAttributedString*) renderHTML:(NSString*) htmlString{

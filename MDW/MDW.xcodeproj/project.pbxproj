@@ -451,7 +451,7 @@
 		CC4C669A1E9E429A00186523 /* ProfileInformation */ = {
 			isa = PBXGroup;
 			children = (
-				CC4C66A61E9E454A00186523 /* View */,
+				CC4C66A61E9E454A00186523 /* Controller */,
 				CC4C66A11E9E450900186523 /* Model */,
 			);
 			name = ProfileInformation;
@@ -467,7 +467,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		CC4C66A61E9E454A00186523 /* View */ = {
+		CC4C66A61E9E454A00186523 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CCFD78961EA3723100B0FF9D /* ViewController.h */,
@@ -477,7 +477,7 @@
 				CCFD78901EA2D55100B0FF9D /* MyInfoViewController.h */,
 				CCFD78911EA2D55100B0FF9D /* MyInfoViewController.m */,
 			);
-			name = View;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		CC75DCB51EA3F7150016C89C /* Model */ = {
@@ -529,13 +529,13 @@
 			name = "Helpful UI Classes";
 			sourceTree = "<group>";
 		};
-		CC75DCCE1EA411E30016C89C /* View */ = {
+		CC75DCCE1EA411E30016C89C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CCBF3C811EA0DE210015BE01 /* AgendaDay.h */,
 				CCBF3C821EA0DE210015BE01 /* AgendaDay.m */,
 			);
-			name = View;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		CC75DCD21EA41B8B0016C89C /* Utitlity Classes */ = {
@@ -554,7 +554,7 @@
 		CCBF3C7C1EA0D9270015BE01 /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
-				CC75DCCE1EA411E30016C89C /* View */,
+				CC75DCCE1EA411E30016C89C /* Controller */,
 				CC75DCB51EA3F7150016C89C /* Model */,
 			);
 			name = Agenda;
@@ -564,18 +564,18 @@
 			isa = PBXGroup;
 			children = (
 				CC10350C1EA4EDDD00235BA5 /* Model */,
-				CCBF3CF21EA100240015BE01 /* View */,
+				CCBF3CF21EA100240015BE01 /* Controller */,
 			);
 			name = MyAgenda;
 			sourceTree = "<group>";
 		};
-		CCBF3CF21EA100240015BE01 /* View */ = {
+		CCBF3CF21EA100240015BE01 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CCBF3CF31EA100670015BE01 /* MyAgenda.h */,
 				CCBF3CF41EA100670015BE01 /* MyAgenda.m */,
 			);
-			name = View;
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		CCBF3CFD1EA11F8E0015BE01 /* UIViewImages */ = {

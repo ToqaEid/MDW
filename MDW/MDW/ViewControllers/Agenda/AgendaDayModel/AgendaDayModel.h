@@ -28,4 +28,8 @@
 -(NSMutableArray*) getDay2SessionsFromNetwork;
 -(NSMutableArray*) getDay3SessionsFromNetwork;
 
+
+-(void) getAllSessions : (NSString *) username;
+
+
 @end

@@ -9,6 +9,13 @@
 #import "SpeakersModel.h"
 #import "SpeakerDTO.h"
 
+
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+#import "MDWServerURLs.h"
+#import "MDW_JsonParser.h"
+
 @implementation SpeakersModel{
 
     SpeakersViewController *controller;
@@ -31,11 +38,44 @@
 }
 
 
--(NSMutableArray*) getSpeakersFromNetwork{
+-(void) getSpeakersFromNetwork : (NSString *) username{
     
     
     
-    return [self getSpeakersFromDB];
+   // NSString * username = @"eng.medhat.cs.h@gmail.com";
+    
+    NSString * speakersURL =  [[MDWServerURLs getGetSpeakersURL]  stringByAppendingString: username  ];
+    
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager GET: speakersURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    
+    
+            NSLog(@"JSON: %@", responseObject);
+            printf("Speakers Response recieved ... \n");
+    
+    
+            NSMutableArray * allSpeakers  =  [MDW_JsonParser getSpeakers:responseObject];
+    
+            
+            [controller setAllSpeakers:allSpeakers];
+            
+            
+            //printf("ALL_SPEAKERS = %ld\n ", [allSpeakers count]);
+            //printf("================== \n");
+    
+            //for (int i=0; i<[allSpeakers count]; i++)
+              //  printf("#%d , %s\n", i, [[[allSpeakers objectAtIndex:i] firstName] UTF8String]);
+    
+    
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        }];
+    
+
+    
+    
 }
 
 

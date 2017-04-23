@@ -21,7 +21,7 @@
     [aCoder encodeObject:_imageURL forKey:@"imageURL"];
     [aCoder encodeObject:_companyName forKey:@"companyName"];
     [aCoder encodeObject:_countryName forKey:@"countryName"];
-    [aCoder encodeObject:_birthDate forKey:@"birthDate"];
+    [aCoder encodeInt: _birthDate  forKey:@"birthDate"];     //////// ramadan
     [aCoder encodeObject:_phones forKey:@"phones"];
     [aCoder encodeObject:_mobiles forKey:@"mobiles"];
     [aCoder encodeInt:_attendeeId forKey:@"attendeeId"];
@@ -37,7 +37,7 @@
     _imageURL=[aDecoder decodeObjectForKey:@"imageURL"];
     _companyName=[aDecoder decodeObjectForKey:@"companyName"];
     _countryName=[aDecoder decodeObjectForKey:@"countryName"];
-    _birthDate=[aDecoder decodeObjectForKey:@"birthDate"];
+    _birthDate=[aDecoder decodeIntForKey:@"birthDate"];
     _phones=[aDecoder decodeObjectForKey:@"phones"];
     _mobiles=[aDecoder decodeObjectForKey:@"mobiles"];
     _attendeeId=[aDecoder decodeIntForKey:@"attendeeId"];

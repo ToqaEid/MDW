@@ -14,6 +14,6 @@
 @property int attendeeId;
 @property NSString *firstName,*middleName,*lastName,*email,*countryName,*cityName,*code,*companyName,*title,*imageURL;
 @property BOOL gender;
-@property NSDate *birthDate;
+@property long birthDate;
 @property NSMutableArray *mobiles,*phones;
 @end

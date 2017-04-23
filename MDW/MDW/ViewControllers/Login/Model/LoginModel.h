@@ -11,7 +11,7 @@
 
 @interface LoginModel : NSObject
 
--(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password;
++(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password;
 -(BOOL)checkInternetConnection;
 -(void)saveUserLocally: (AttendeeDTO*)user;
 -(BOOL)isEmailValid:(NSString*)email;

@@ -8,6 +8,13 @@
 
 #import "AgendaDayModel.h"
 
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+#import "MDWServerURLs.h"
+#import "MDW_JsonParser.h"
+#import "SessionDTO.h"
+
 @implementation AgendaDayModel{
     sessionDAO * sessionDao;
     AgendaDay* controller;
@@ -40,18 +47,66 @@
 -(void) saveAllSessionsInDB:(NSMutableArray *)sessions{
     
 }
+
+
+
+
+
+
+-(void) getAllSessions : (NSString *) username{
+
+    //////// GET ALL SESSTION FROM BACKEND
+
+    NSString * sessionsURL =  [[MDWServerURLs getGetSessionsURL]  stringByAppendingString: username  ];
+    
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET: sessionsURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    
+        
+        //NSLog(@"JSON: %@", responseObject);
+        printf("Response recieved ... \n");
+        
+        NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
+        
+        [controller setAllSessionsArray:allSessions];
+//        
+//        printf(">>>---- AllSessions are ====== %lu",  (unsigned long)[allSessions count] );
+//        for (int i=0; i<[allSessions count]; i++){
+//            
+//                SessionDTO * sessionObj = [allSessions objectAtIndex:i];
+//               printf("***  %s\n", [sessionObj.name UTF8String]);
+//            
+//            }
+    
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            
+            NSLog(@"Error: %@", error);
+            
+        }];
+    
+    
+
+}
+
+
+
+
+
+
+
 -(NSMutableArray*) getAllSessionsFromNetwork{
-//    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSMutableArray * sessions = nil; //(NSMutableArray *)[sessionDao getAllSessions];
 //    return sessions;
-    [sessionDao clearAllDB];
-    NSMutableArray * sessions = [NSMutableArray new];
-    SessionDTO * session = [SessionDTO new];
-    session.sessionId = 2;
-    session.name = @"session1";
-    session.sessionType = @"Break";
-    session.SessionDescription = @"sdfg";
-    [sessions addObject:session];
-    [sessionDao saveSessions:sessions];
+//    [sessionDao clearAllDB];
+//    NSMutableArray * sessions = [NSMutableArray new];
+//    SessionDTO * session = [SessionDTO new];
+//    session.sessionId = 2;
+//    session.name = @"session1";
+//    session.sessionType = @"Break";
+//    session.SessionDescription = @"sdfg";
+//    [sessions addObject:session];
+//    [sessionDao saveSessions:sessions];
     return sessions;
 }
 

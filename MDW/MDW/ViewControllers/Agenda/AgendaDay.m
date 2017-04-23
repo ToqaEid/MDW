@@ -18,6 +18,23 @@
 
 }
 
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+
+
+    printf("Testing Network .. \n");
+    
+    [model getAllSessions:@"eng.medhat.cs.h@gmail.com"];
+    
+
+
+}
+
+
+
 -(void)viewDidLoad{
     
     dayAgenda = [NSMutableArray new];
@@ -211,5 +228,26 @@
     refreshControl.backgroundColor = [UIColor orangeColor];
     [self.tableView addSubview:refreshControl];
 }
+
+
+
+
+
+-(void) setAllSessionsArray : (NSMutableArray* ) sessions{
+
+    
+    printf("Setting SessionNSMutableArray .. \n");
+    
+    dayAgenda = sessions;
+    [self.tableView  reloadData];
+    
+    printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
+    
+    
+//    [self refreshMytableView];
+
+}
+
+
 
 @end

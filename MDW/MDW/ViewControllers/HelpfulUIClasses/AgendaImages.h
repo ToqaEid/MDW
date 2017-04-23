@@ -9,7 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "SessionDTO.h"
 
+
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+
+
 @interface AgendaImages : UIView
 
 +(UIImage*)getSessionImage :(SessionDTO *)session;
+
+
+
++(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject: (id)object;
+
+
 @end

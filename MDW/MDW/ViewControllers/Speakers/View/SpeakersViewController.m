@@ -9,6 +9,11 @@
 #import "SpeakersViewController.h"
 #import "SWRevealViewController.h"
 
+
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+
 @implementation SpeakersViewController{
     
     NSMutableArray * speakers;
@@ -61,7 +66,7 @@
         indicator = [self showProgressDialog];
         [indicator startAnimating];
         
-        speakers = [model getSpeakersFromNetwork];
+        //speakers = [model getSpeakersFromNetwork];
         printf("%lu\n", (unsigned long)speakers.count);
         [self.tableView  reloadData];
         
@@ -116,9 +121,55 @@
     //fill fields in the cell with data
     SpeakerDTO * speakerDTO = [speakers objectAtIndex:indexPath.row];
     
-    //icon.image = speakerDTO.imageUrl;
     description.text = speakerDTO.companyName;
     name.text = [NSString stringWithFormat:@"%@ %@ %@", speakerDTO.firstName, speakerDTO.middleName, speakerDTO.lastName];
+
+    //icon.image = speakerDTO.imageUrl;
+    
+    
+    NSString * imageUrl = [[speakers objectAtIndex:[indexPath row]] imageURL] ;
+    imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"www."    withString:@""];
+    //printf(">>>>>>>>>>>>>>>>>>>>>> %s\n", [imageUrl UTF8String]);
+    
+    
+//    [icon setImageWithURL:[NSURL URLWithString: imageUrl  ]
+//              placeholderImage:[UIImage imageNamed:@"mario.jpg"] ];
+//    
+   
+    if (speakerDTO.imageURL)
+    {
+        [self setImageFromURLString:imageUrl intoImageView:icon andSaveObject:speakerDTO];
+    }
+    
+    
+    
+    
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Add code here to do background processing
+        //
+        //
+        
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: imageUrl  ]];
+        
+        dispatch_async( dispatch_get_main_queue(), ^{
+            // Add code here to update the UI/send notifications based on the
+            // results of the background processing
+            UIImage *userImage =[UIImage imageWithData:imageData];
+            
+            if (userImage != nil) {
+                
+                icon.image =userImage;
+            }else{
+                
+                
+                 icon.image = [UIImage imageNamed:@"mario.jpg"];
+            }
+            
+        });
+    });
+    
+    
+    
     
     
     return cell;
@@ -166,8 +217,10 @@
     
     //get Data
     if([Connection checkInternetConnection]){
-        speakers = [model getSpeakersFromNetwork];
+        
+        //speakers = [model getSpeakersFromNetwork];
         printf("Speakers View : checkInternetConnection\n");
+    
     }else{
         //TODO: add toast with check internet connection
     }
@@ -187,4 +240,96 @@
     refreshControl.backgroundColor = [UIColor orangeColor];
     [self.tableView addSubview:refreshControl];
 }
+
+
+
+
+
+
+
+
+
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    
+    printf("Testing Network .. \n");
+    
+    [model getSpeakersFromNetwork:@"eng.medhat.cs.h@gmail.com"];
+    
+    
+    
+}
+
+
+-(void) setAllSpeakers : (NSMutableArray *) sp{
+
+    
+    printf("Setting SpeakersNSMutableArray .. \n");
+    
+    speakers = sp;
+    [self.tableView  reloadData];
+    
+    printf("Array Size is >> %lu\n", (unsigned long)[speakers count]);
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+-(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject:(id)object{
+
+
+    printf("___________ setting image:: %s\n", [url UTF8String]);
+
+
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        
+        //Setting ImageView
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
+        UIImage *image = [UIImage imageWithData: imageData];
+        imageView.image = image;
+        
+        
+//        //Adding In DB
+//        if([object isKindOfClass:[ExhibitorDTO class]]){
+//            ((ExhibitorDTO *) object).image = imageData;
+//            [[DBHandler getDB] addOrUpdateExhibitor:object];
+//        }else if ([object isKindOfClass:[SpeakerDTO class]]){
+//            ((SpeakerDTO *) object).image = imageData;
+//            [[DBHandler getDB] addOrUpdateSpeaker:object];
+//        }
+//        
+
+    
+    }];
+    [downloadTask resume];
+    
+
+}
+
+
+
+
 @end

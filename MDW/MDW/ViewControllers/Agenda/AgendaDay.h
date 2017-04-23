@@ -19,4 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
+
+-(void) setAllSessionsArray : (NSMutableArray* ) sessions;
+
+
 @end

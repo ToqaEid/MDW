@@ -21,6 +21,10 @@
 		CC1948611E9ABAEA00039C97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC1948601E9ABAEA00039C97 /* Assets.xcassets */; };
 		CC1948641E9ABAEA00039C97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */; };
 		CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4C669F1E9E44F100186523 /* JETSSideMenu.m */; };
+		CC6AFBE41EA7A6D80024625B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6AFBE31EA7A6D80024625B /* libAFNetworking.a */; };
+		CC6AFBEA1EA7A77C0024625B /* MDW_JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6AFBE71EA7A77C0024625B /* MDW_JsonParser.m */; };
+		CC6AFBEB1EA7A77C0024625B /* MDWServerURLs.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6AFBE91EA7A77C0024625B /* MDWServerURLs.m */; };
+		CC6AFBED1EA7BBE20024625B /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CC6AFBEC1EA7BBE20024625B /* mario.jpg */; };
 		CC75DCB81EA3F7560016C89C /* AgendaDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */; };
 		CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCBC1EA3FD5C0016C89C /* LoginViewController.m */; };
 		CC75DCC21EA3FE470016C89C /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCC11EA3FE470016C89C /* LoginModel.m */; };
@@ -147,6 +151,12 @@
 		CC1948651E9ABAEA00039C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4C669E1E9E44F100186523 /* JETSSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JETSSideMenu.h; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.h; sourceTree = "<group>"; };
 		CC4C669F1E9E44F100186523 /* JETSSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JETSSideMenu.m; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.m; sourceTree = "<group>"; };
+		CC6AFBE31EA7A6D80024625B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
+		CC6AFBE61EA7A77C0024625B /* MDW_JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDW_JsonParser.h; path = classes/Networks/MDW_JsonParser.h; sourceTree = "<group>"; };
+		CC6AFBE71EA7A77C0024625B /* MDW_JsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDW_JsonParser.m; path = classes/Networks/MDW_JsonParser.m; sourceTree = "<group>"; };
+		CC6AFBE81EA7A77C0024625B /* MDWServerURLs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDWServerURLs.h; path = classes/Networks/MDWServerURLs.h; sourceTree = "<group>"; };
+		CC6AFBE91EA7A77C0024625B /* MDWServerURLs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDWServerURLs.m; path = classes/Networks/MDWServerURLs.m; sourceTree = "<group>"; };
+		CC6AFBEC1EA7BBE20024625B /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
 		CC75DCB61EA3F7560016C89C /* AgendaDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDayModel.h; path = ViewControllers/Agenda/AgendaDayModel/AgendaDayModel.h; sourceTree = "<group>"; };
 		CC75DCB71EA3F7560016C89C /* AgendaDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDayModel.m; path = ViewControllers/Agenda/AgendaDayModel/AgendaDayModel.m; sourceTree = "<group>"; };
 		CC75DCBB1EA3FD5C0016C89C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Login/View/LoginViewController.h; sourceTree = "<group>"; };
@@ -279,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC6AFBE41EA7A6D80024625B /* libAFNetworking.a in Frameworks */,
 				6E549F6E3FBB9E67365E43B5 /* libPods-MDW.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +300,7 @@
 		1A5688AE558A1B8FF5453EEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC6AFBE31EA7A6D80024625B /* libAFNetworking.a */,
 				3A713882B04D1CD33F898899 /* libPods-MDW.a */,
 			);
 			name = Frameworks;
@@ -369,6 +381,7 @@
 		CC1948481E9ABAE900039C97 = {
 			isa = PBXGroup;
 			children = (
+				CC6AFBEC1EA7BBE20024625B /* mario.jpg */,
 				CC1948531E9ABAE900039C97 /* MDW */,
 				CC1948521E9ABAE900039C97 /* Products */,
 				259C0A4A540CBBE78370DC5D /* Pods */,
@@ -387,6 +400,7 @@
 		CC1948531E9ABAE900039C97 /* MDW */ = {
 			isa = PBXGroup;
 			children = (
+				CC6AFBE51EA7A7050024625B /* Networks */,
 				CC75DCD21EA41B8B0016C89C /* Utitlity Classes */,
 				CCFF82ED1EA3E8F000918B12 /* DAO */,
 				CCFF82EC1EA3E8E900918B12 /* DTO */,
@@ -478,6 +492,17 @@
 				CCFD78911EA2D55100B0FF9D /* MyInfoViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		CC6AFBE51EA7A7050024625B /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				CC6AFBE61EA7A77C0024625B /* MDW_JsonParser.h */,
+				CC6AFBE71EA7A77C0024625B /* MDW_JsonParser.m */,
+				CC6AFBE81EA7A77C0024625B /* MDWServerURLs.h */,
+				CC6AFBE91EA7A77C0024625B /* MDWServerURLs.m */,
+			);
+			name = Networks;
 			sourceTree = "<group>";
 		};
 		CC75DCB51EA3F7150016C89C /* Model */ = {
@@ -862,6 +887,7 @@
 				CCBF3D281EA11FC30015BE01 /* Icon-76@2x 2.png in Resources */,
 				CCBF3D291EA11FC30015BE01 /* Icon-76@2x.png in Resources */,
 				CC19485F1E9ABAEA00039C97 /* Main.storyboard in Resources */,
+				CC6AFBED1EA7BBE20024625B /* mario.jpg in Resources */,
 				CCBF3D6A1EA1210F0015BE01 /* info.png in Resources */,
 				CCBF3D771EA1210F0015BE01 /* sessionpending.png in Resources */,
 				CCBF3D2C1EA11FC30015BE01 /* Icon-Small 2.png in Resources */,
@@ -957,6 +983,7 @@
 			files = (
 				CC10351E1EA538B800235BA5 /* NSUserDefaultForObject.m in Sources */,
 				CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */,
+				CC6AFBEB1EA7A77C0024625B /* MDWServerURLs.m in Sources */,
 				CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */,
 				CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */,
 				CC75DCBD1EA3FD5C0016C89C /* LoginViewController.m in Sources */,
@@ -966,6 +993,7 @@
 				CC4C66A01E9E44F100186523 /* JETSSideMenu.m in Sources */,
 				CCFF82FC1EA3E90500918B12 /* Mobile.m in Sources */,
 				CCFF82FB1EA3E90500918B12 /* ExhiptorsDTO.m in Sources */,
+				CC6AFBEA1EA7A77C0024625B /* MDW_JsonParser.m in Sources */,
 				CC1035141EA51E1200235BA5 /* AgendaDetailsModel.m in Sources */,
 				CC1948591E9ABAEA00039C97 /* AppDelegate.m in Sources */,
 				CCFF82FE1EA3E90500918B12 /* SessionDTO.m in Sources */,
@@ -1108,6 +1136,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MDW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jets.MDW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1120,6 +1152,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MDW/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/AFNetworking",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jets.MDW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

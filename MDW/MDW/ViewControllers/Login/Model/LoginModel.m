@@ -7,13 +7,28 @@
 //
 
 #import "LoginModel.h"
-
+#import "MDWServerURLs.h"
 
 @implementation LoginModel
 
 
--(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password{
++(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password{
     AttendeeDTO * user = nil;
+    
+    
+    NSMutableString * loginUrl = [[NSMutableString alloc] initWithString:[MDWServerURLs getLoginURL]];
+    [loginUrl appendString:username];
+    [loginUrl appendString:@"&password="];
+    [loginUrl appendString:password];
+    
+    printf("\n>> LoginURL is %s\n", [loginUrl UTF8String]);
+    
+    
+    
+    
+    
+    
+    
     return user;
 }
 

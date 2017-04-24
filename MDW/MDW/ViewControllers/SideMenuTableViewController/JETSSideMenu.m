@@ -52,10 +52,16 @@
         
         //go to login view
         
-        [self dismissViewControllerAnimated:YES completion:^{
+        
+        [self.presentingViewController dismissViewControllerAnimated:NO completion:^{
+        
+        }];
+    
+        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"login"] animated:YES completion:^{
             //remove user data from nsuserdefaults
             [NSUserDefaultForObject removeObjectWithKey:@"user"];
-
+            
+            
         }];
     }
 }

@@ -22,7 +22,7 @@
     printf("***************************\nLogin: login success\n***************************\n");
     
     SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
-    
+    [self dismissViewControllerAnimated:NO completion:nil];
     [self presentViewController:home animated:YES completion:nil];
 }
 

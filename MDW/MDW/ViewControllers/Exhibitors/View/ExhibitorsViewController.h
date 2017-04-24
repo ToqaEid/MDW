@@ -15,4 +15,10 @@
 @interface ExhibitorsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
+
+
+-(void) setAllExhibitors : (NSMutableArray *)exhibitors;
+
+
 @end

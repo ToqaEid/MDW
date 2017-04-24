@@ -19,6 +19,7 @@
 }
 
 
+
 -(void)dealloc{
     printf("********agenda dealloc*********\n");
     
@@ -54,27 +55,15 @@
     
     //getData
     model = [[AgendaDayModel alloc]initWithController:self];
-    if([Connection checkInternetConnection]){
+    [self.view makeToastActivity:CSToastPositionCenter];
         
-        [self.view makeToastActivity:CSToastPositionCenter];
-        
-        [self getSessionsFromNetwork];
-        
-        
-        printf("Agenda View : checkInternetConnection\n");
-        
-    }else{
-        
-        [self getSessionsFromDB];
-        
-        printf("Agenda View : !checkInternetConnection\n");
-        
-    }
+    [self getSessions];
+    
 }
 
 /*====================== DATA =================================*/
 
--(NSMutableArray*)getSessionsFromNetwork{
+-(void)getSessions{
     
     //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
@@ -95,23 +84,7 @@
         [model getAllSessions];
         
     }
-    //hide progress dialog
-    [self.view hideToastActivity];
     
-    return dayAgenda;
-}
-
--(NSMutableArray*)getSessionsFromDB{
-    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
-        dayAgenda = [model getDay1SessionsFromDB];
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
-        dayAgenda = [model getDay2SessionsFromDB];
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
-        dayAgenda = [model getDay3SessionsFromDB];
-    }else{
-        dayAgenda = [model getAllSessionsFromDB];
-    }
-    return dayAgenda;
 }
 
 /*============================= Table View ==============================*/
@@ -184,16 +157,14 @@
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
-    [dayAgenda addObject:@"hello"];
     
     //get Data
-    if([Connection checkInternetConnection]){
-        [self getSessionsFromNetwork];
-        //printf("Agenda View : checkInternetConnection\n");
-    }
+    [self getSessions];
+    
     
     [self.tableView  reloadData];
     [refreshControl endRefreshing];
+    
     
 }
 
@@ -219,6 +190,9 @@
     
     dayAgenda = sessions;
     [self.tableView  reloadData];
+    
+    //hide progress dialog
+    [self.view hideToastActivity];
     
     //printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
     

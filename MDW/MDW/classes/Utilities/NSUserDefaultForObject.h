@@ -10,4 +10,5 @@
 
 @interface NSUserDefaultForObject : NSObject
 
++(void)saveObjectWithObject: (NSObject *)object key:(NSString *)key;
 @end

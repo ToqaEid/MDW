@@ -9,10 +9,18 @@
 #import "LoginModel.h"
 #import "MDWServerURLs.h"
 
-@implementation LoginModel
+@implementation LoginModel{
+    LoginViewController * controller;
+}
 
 
-+(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password{
+-(id)initWithController: (LoginViewController*) loginController{
+    
+    controller = loginController;
+    return [self init];
+}
+
+-(AttendeeDTO*)checkUserWithUsername:(NSString*)username AndPassword:(NSString*)password{
     AttendeeDTO * user = nil;
     
     
@@ -24,13 +32,65 @@
     printf("\n>> LoginURL is %s\n", [loginUrl UTF8String]);
     
     
-    
-    
-    
-    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET: [NSString stringWithString:loginUrl]  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        printf("Login Response recieved ... \n");
+        
+        NSDictionary * rootJson = responseObject;
+        NSString  * responseStatus = [rootJson objectForKey:@"status"];
+        
+        if (  [responseStatus isEqualToString:@"view.success"]  )
+        {
+            ///////// login Success
+            
+            /////////save in user default
+            
+            //[NSUserDefaultForObject saveObjectWithObject:<#(NSObject *)#> key:@"user"];
+            
+            ///////// Going to the Home
+            
+            [controller goToNextView];
+            
+            
+        }else{
+            //////// login Failed
+            //////// check failure reason
+            
+            printf("***********************\nLogin: login failed\n***************************\n");
+            
+            NSString * failureStr = [rootJson objectForKey:@"result"];
+            
+            if ([failureStr isEqualToString:@"Invalid User Name"]){   ///// Email does not exists
+                
+                [controller showErrorMsgWithMsg:failureStr usernameError: YES];
+                
+                
+            }else{  /////// password is not correct "Invalid authentication"
+                
+                [controller showErrorMsgWithMsg:failureStr usernameError: NO];
+            }
+            
+            
+        }
+        
+        
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        
+        [controller showErrorMsgWithMsg:@"Sorry, unable to login. Please check your internet connection." usernameError: YES];
+        
+        
+    }];
+ 
     
     return user;
 }
+
 
 -(BOOL)checkInternetConnection{
     return YES;

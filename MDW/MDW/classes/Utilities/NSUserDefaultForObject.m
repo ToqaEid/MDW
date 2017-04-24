@@ -10,6 +10,11 @@
 
 @implementation NSUserDefaultForObject
 
-
++(void)saveObjectWithObject: (NSObject *)object key:(NSString *)key {
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key];
+    [defaults synchronize];
+}
 
 @end

@@ -54,7 +54,7 @@
             printf("Speakers Response recieved ... \n");
     
     
-            NSMutableArray * allSpeakers  =  [MDW_JsonParser getSpeakers:responseObject];
+            NSMutableArray * allSpeakers  =  [MDW_JsonParser getSpeakers_v2:responseObject];
     
             
             [controller setAllSpeakers:allSpeakers];

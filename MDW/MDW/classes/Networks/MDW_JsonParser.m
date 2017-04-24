@@ -11,6 +11,9 @@
 #import "SpeakerDTO.h"
 #import "SessionDTO.h"
 #import "ExhiptorsDTO.h"
+#import "Mobile.h"
+#import "Phone.h"
+
 
 @implementation MDW_JsonParser
 
@@ -427,7 +430,7 @@
 
 
 
-///////// --------------- Optimized Methods ---------------------
+///////////// -- ---- ------ --- Optimized Methods ----- ------ ----- -----
 
 
 ///////////// --1-- Parsing SessionJson ---------------------
@@ -513,11 +516,35 @@
     sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
-    
-    
     ///////// speakers not parsed yet
 
-
+    //NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
+    
+   // printf("#of Speakers = %lu for Session %s\n",  (unsigned long)[speakersJson count], [sessionObj.name UTF8String] );
+    
+    if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
+    
+        printf("Speakers = NIL \n");
+        
+    }else{
+        
+        NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
+        
+        for (int i=0; i < [speakersJson count]; i++){
+            
+            NSDictionary * currObjJson = [speakersJson objectAtIndex:i];
+            
+            SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
+            
+            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
+            
+            [sessionObj.speakers addObject:speakerObj];
+            
+        }
+        
+    }
+    
+    
     
     return sessionObj;
 }
@@ -597,14 +624,133 @@
     exhibitorObj.cityName = [exhibitorJson objectForKey:@"cityName"];
     exhibitorObj.email = [exhibitorJson objectForKey:@"email"];
     
-    //exhibitorObj.phones = [exhibitorJson objectForKey:@"phones"];
-    //exhibitorObj.mobiles = [exhibitorJson objectForKey:@"mobiles"];
+   
+    
+    NSArray * mobiles = [exhibitorJson objectForKey:@"mobiles"];
+    NSArray * phones= [exhibitorJson objectForKey:@"phones"];
+    
+    printf("^^^ Mobiles = %lu & Phones = %lu \n",  (unsigned long)[mobiles count], (unsigned long)[phones count] );
+    
+    
+    for(int m = 0; m< [mobiles count]; m++){
+        
+        Mobile * mobileObj = [Mobile new];
+        mobileObj.mobile = [mobiles objectAtIndex:m];
+        [exhibitorObj.mobiles addObject:mobileObj];
+    }
+    
+    for(int p = 0; p< [phones count]; p++){
+        
+        Phone * phoneObj = [Phone new];
+        phoneObj.phone = [phones objectAtIndex:p];
+        [exhibitorObj.phones addObject:phoneObj];
+    }
+    
+
+    
+    
     
     return exhibitorObj;
 }
 
 
-///////////// --3-- Parsing Attendee "AppUser" ---------------------
+
+///////////// --3-- Parsing Speaker ---------------------
+
+
++ (NSMutableArray *) getSpeakers_v2 : (id) JsonObj{
+
+    NSMutableArray * allSpeakers = [NSMutableArray new];
+
+
+    /////// 1. get json object from server
+    
+    if ([JsonObj isKindOfClass:[NSArray class]])
+    {
+        printf("Response is NSArray ... \n");
+        
+    } else  if ([JsonObj isKindOfClass:[NSDictionary class]])
+    {
+        /////// 2. convert to NSDictionary & check Status
+        
+        NSDictionary * rootJson = JsonObj;
+        NSString  * responseStatus = [rootJson objectForKey:@"status"];
+        
+        if (  [responseStatus isEqualToString:@"view.success"]  )
+        {
+            /////3.  extract speakers jsonObj
+            
+            NSArray * speakersJson = [rootJson objectForKey:@"result"];
+            
+            
+            for(int i=0; i< [speakersJson count]; i++){
+                
+                NSDictionary * currentObj = [speakersJson objectAtIndex:i];
+                
+                SpeakerDTO * speakerObj = [self parseToSpeakerObj:currentObj];
+                
+                [allSpeakers addObject:speakerObj];
+                
+            }
+            
+            
+        }else{
+            printf(">>>> ERROR\n ");
+            
+        }
+        
+    }
+    
+    return allSpeakers;
+}
+
+
+
++ (SpeakerDTO *) parseToSpeakerObj : (NSDictionary *) speakerJson{
+
+    SpeakerDTO * speakerObj = [SpeakerDTO new];
+
+    
+    speakerObj.speakerId = [[speakerJson objectForKey:@"id"] intValue];
+
+    speakerObj.firstName = [speakerJson objectForKey:@"firstName"];
+    speakerObj.middleName = [speakerJson objectForKey:@"middleName"];
+    speakerObj.lastName = [speakerJson objectForKey:@"lastName"];
+    speakerObj.gender = [speakerJson objectForKey:@"gender"];
+    
+    speakerObj.biography = [speakerJson objectForKey:@"biography"];
+    speakerObj.imageURL = [speakerJson objectForKey:@"imageURL"];
+    speakerObj.title = [speakerJson objectForKey:@"title"];
+    speakerObj.companyName = [speakerJson objectForKey:@"companyName"];
+    
+    NSArray * mobiles = [speakerJson objectForKey:@"mobiles"];
+    NSArray * phones= [speakerJson objectForKey:@"phones"];
+    
+    printf("^^^ Mobiles = %lu & Phones = %lu \n",  (unsigned long)[mobiles count], (unsigned long)[phones count] );
+    
+    
+    for(int m = 0; m< [mobiles count]; m++){
+        
+        Mobile * mobileObj = [Mobile new];
+        mobileObj.mobile = [mobiles objectAtIndex:m];
+        [speakerObj.mobiles addObject:mobileObj];
+    }
+    
+    for(int p = 0; p< [phones count]; p++){
+        
+        Phone * phoneObj = [Phone new];
+        phoneObj.phone = [phones objectAtIndex:p];
+        [speakerObj.phones addObject:phoneObj];
+    }
+
+
+    return speakerObj;
+}
+
+
+
+
+///////////// --4-- Parsing Attendee "AppUser" ---------------------
 
 + (AttendeeDTO *) parseToAttendeeObj : (NSDictionary *) attendeeJson{
 
@@ -641,7 +787,7 @@
 
 
 
-///////////// --3-- Parsing Session_Registeration_Status ---------------------
+///////////// --4-- Parsing Session_Registeration_Status ---------------------
 
 
 

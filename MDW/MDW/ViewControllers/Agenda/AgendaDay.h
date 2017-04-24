@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "AgendaDayModel.h"
 #import "LabelRendering.h"
+#import "DateConverter.h"
 #import "SessionDTO.h"
 #import "AgendaDetailsViewController.h"
 #import "Connection.h"

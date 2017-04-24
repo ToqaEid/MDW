@@ -64,7 +64,7 @@
         //NSLog(@"JSON: %@", responseObject);
         //printf("Response recieved ... \n");
         
-        NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
+        NSMutableArray * allSessions  =  [MDW_JsonParser getSessions : responseObject];
         
         [controller setAllSessionsArray:allSessions];
 //        
@@ -77,8 +77,8 @@
 //            }
     
         ///save into db
-    //    [sessionDao clearAllDB];
-      //  [self saveAllSessionsInDB:allSessions];
+        [sessionDao clearAllDB];
+        [self saveAllSessionsInDB:allSessions];
     
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             

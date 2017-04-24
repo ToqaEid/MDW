@@ -77,8 +77,8 @@
 //            }
     
         ///save into db
-        [sessionDao clearAllDB];
-        [self saveAllSessionsInDB:allSessions];
+    //    [sessionDao clearAllDB];
+      //  [self saveAllSessionsInDB:allSessions];
     
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             

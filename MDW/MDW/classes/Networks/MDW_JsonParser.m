@@ -507,6 +507,10 @@
     sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
+    
+    printf("___SessionId  =  %d\n", sessionObj.sessionId);
+    
+    
     ///////// speakers not parsed yet
 
     //NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];

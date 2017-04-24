@@ -8,6 +8,17 @@
 
 #import "ExhibitorModel.h"
 
-@implementation ExhibitorModel
+@implementation ExhibitorModel{
+    
+    ExhibitorsViewController * controller;
+    
+}
+
+-(id)initWithController: (ExhibitorsViewController*) exhibitorController{
+    
+    controller = exhibitorController;
+    return [self init];
+}
+
 
 @end

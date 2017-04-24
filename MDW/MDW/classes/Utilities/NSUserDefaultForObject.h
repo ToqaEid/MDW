@@ -11,4 +11,6 @@
 @interface NSUserDefaultForObject : NSObject
 
 +(void)saveObjectWithObject: (NSObject *)object key:(NSString *)key;
++(void) removeObjectWithKey :(NSString *) key;
++(BOOL)checkObjectExistanceWithKey: (NSString*)key;
 @end

@@ -13,10 +13,14 @@
     
     NSMutableArray * exibitors;
     UIRefreshControl *refreshControl;
+    ExhibitorModel * model;
     
 }
 
 -(void)viewDidLoad{
+    
+    //intialize model
+    model = 
     
     exibitors = [NSMutableArray new];
     

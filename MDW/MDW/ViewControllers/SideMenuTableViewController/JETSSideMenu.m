@@ -54,9 +54,8 @@
         
         [self dismissViewControllerAnimated:YES completion:^{
             //remove user data from nsuserdefaults
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults removeObjectForKey:@"user"];
-            [defaults synchronize];
+            [NSUserDefaultForObject removeObjectWithKey:@"user"];
+
         }];
     }
 }

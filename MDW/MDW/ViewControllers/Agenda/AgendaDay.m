@@ -19,13 +19,16 @@
 }
 
 
-
+-(void)dealloc{
+    printf("********agenda dealloc*********\n");
+    
+}
 
 
 -(void)viewWillAppear:(BOOL)animated{
 
 
-    printf("Testing Network .. \n");
+    //printf("Testing Network .. \n");
     
     [model getAllSessions:@"eng.medhat.cs.h@gmail.com"];
     
@@ -71,13 +74,13 @@
         
         [self getSessionsFromNetwork];
         
-        printf("Agenda View : checkInternetConnection\n");
+        //printf("Agenda View : checkInternetConnection\n");
         
     }else{
         
         [self getSessionsFromDB];
         
-        printf("Agenda View : !checkInternetConnection\n");
+        //printf("Agenda View : !checkInternetConnection\n");
         
     }
 }
@@ -210,7 +213,7 @@
     //get Data
     if([Connection checkInternetConnection]){
         [self getSessionsFromNetwork];
-        printf("Agenda View : checkInternetConnection\n");
+        //printf("Agenda View : checkInternetConnection\n");
     }
     
     [self.tableView  reloadData];
@@ -236,12 +239,12 @@
 -(void) setAllSessionsArray : (NSMutableArray* ) sessions{
 
     
-    printf("Setting SessionNSMutableArray .. \n");
+    //printf("Setting SessionNSMutableArray .. \n");
     
     dayAgenda = sessions;
     [self.tableView  reloadData];
     
-    printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
+    //printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
     
     
 //    [self refreshMytableView];

@@ -65,7 +65,7 @@
     
         
         //NSLog(@"JSON: %@", responseObject);
-        printf("Response recieved ... \n");
+        //printf("Response recieved ... \n");
         
         NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
         

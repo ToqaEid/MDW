@@ -30,15 +30,15 @@
     [loginUrl appendString:@"&password="];
     [loginUrl appendString:password];
     
-    printf("\n>> LoginURL is %s\n", [loginUrl UTF8String]);
+    //printf("\n>> LoginURL is %s\n", [loginUrl UTF8String]);
     
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET: [NSString stringWithString:loginUrl]  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         
         
-        NSLog(@"JSON: %@", responseObject);
-        printf("Login Response recieved ... \n");
+        //NSLog(@"JSON: %@", responseObject);
+       // printf("Login Response recieved ... \n");
         
         NSDictionary * rootJson = responseObject;
         NSString  * responseStatus = [rootJson objectForKey:@"status"];
@@ -65,7 +65,7 @@
             //////// login Failed
             //////// check failure reason
             
-            printf("***********************\nLogin: login failed\n***************************\n");
+            printf("***************Login: login failed********************\n");
             
             NSString * failureStr = [rootJson objectForKey:@"result"];
             

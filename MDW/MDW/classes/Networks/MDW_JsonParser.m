@@ -304,7 +304,7 @@
                     } //// end of session have speakers if condition
                     printf(" - - - \n");
                     [allSessions addObject:sessionObj];
-                    printf(" - - - Session %s is Added Successfully\n", [sessionObj.name UTF8String]);
+                    //printf(" - - - Session %s is Added Successfully\n", [sessionObj.name UTF8String]);
                     
                 }//////// end of specifc day sessions
                 
@@ -324,11 +324,11 @@
     }/// end of isKindOf NSDict
     
     
-    printf("\n\n ????? ARRAY SIZE IS %lu\n\n", (unsigned long)[allSessions count]);
+    //printf("\n\n ????? ARRAY SIZE IS %lu\n\n", (unsigned long)[allSessions count]);
     
     for (int i=0; i< [allSessions count]; i++){
         
-        printf("%s\n",  [[[allSessions objectAtIndex:i] name] UTF8String] );
+        //printf("%s\n",  [[[allSessions objectAtIndex:i] name] UTF8String] );
     
     }
     
@@ -405,7 +405,7 @@
                 attendeeObj.birthDate = [[attendeeJson objectForKey:@"birthDate"] longValue];
             }
             
-            printf(">>>> attendee >>> %s\n",    [attendeeObj.firstName UTF8String]  );
+            //printf(">>>> attendee >>> %s\n",    [attendeeObj.firstName UTF8String]  );
             
             
         }else{
@@ -469,7 +469,7 @@
                 NSDictionary * oneAgenda = [agendasJson objectAtIndex:day];
                 NSArray * sessionsForOneAgenda = [oneAgenda objectForKey:@"sessions"];
                 
-                printf("#### Total Sessions at Day # %d   are  %lu\n", day+1, (unsigned long)[sessionsForOneAgenda count]);
+                //printf("#### Total Sessions at Day # %d   are  %lu\n", day+1, (unsigned long)[sessionsForOneAgenda count]);
                 
                 
                 for (int s=0; s<[sessionsForOneAgenda count]; s++ )
@@ -478,7 +478,7 @@
                     
                     SessionDTO * sessionObj = [self parseToSessionObj:oneSession];
                     
-                    printf("-- %s\n", [sessionObj.name UTF8String]);
+                    //printf("-- %s\n", [sessionObj.name UTF8String]);
                     
                     [allSessions addObject:sessionObj];
                     

@@ -7,6 +7,7 @@
 //
 
 #import "JETSSideMenu.h"
+#import "AppDelegate.h"
 
 @implementation JETSSideMenu{
     NSArray * cellsItems;
@@ -22,6 +23,10 @@
     
 }
 
+-(void)dealloc{
+    printf("**********side dismissed dealloc***********\n");
+
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
 
     return 1;
@@ -52,17 +57,19 @@
         
         //go to login view
         
-        
-        [self.presentingViewController dismissViewControllerAnimated:NO completion:^{
-        
-        }];
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
-        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"login"] animated:YES completion:^{
-            //remove user data from nsuserdefaults
-            [NSUserDefaultForObject removeObjectWithKey:@"user"];
-            
-            
-        }];
+        [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+        
+        app.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
+        
+        [self.view.window makeKeyAndVisible];
+        
+        
+        //remove user data from nsuserdefaults
+        [NSUserDefaultForObject removeObjectWithKey:@"user"];
+        
+        
     }
 }
 @end

@@ -8,6 +8,7 @@
 
 #import "LoginModel.h"
 #import "MDWServerURLs.h"
+#import "MDW_JsonParser.h"
 
 @implementation LoginModel{
     LoginViewController * controller;
@@ -48,8 +49,13 @@
             
             /////////save in user default
             
-            //[NSUserDefaultForObject saveObjectWithObject:<#(NSObject *)#> key:@"user"];
+            NSDictionary * attendeeJson = [rootJson objectForKey:@"result"];
+            AttendeeDTO * attendeeObj = [MDW_JsonParser parseToAttendeeObj:attendeeJson];
+        
             
+            //// set attendee to NSUserDefaults
+            [NSUserDefaultForObject saveObjectWithObject:attendeeObj key:@"user"];
+
             ///////// Going to the Home
             
             [controller goToNextView];

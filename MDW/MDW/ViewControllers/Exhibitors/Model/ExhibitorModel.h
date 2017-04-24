@@ -16,4 +16,7 @@
 
 -(id)initWithController: (ExhibitorsViewController*) exhibitorController;
 
+-(void) getExhibitorsFromNetwork : (NSString *) username;
+
+
 @end

@@ -20,7 +20,7 @@
 -(void)viewDidLoad{
     
     //intialize model
-    model = 
+    model =[[ExhibitorModel alloc]initWithController:self];
     
     exibitors = [NSMutableArray new];
     
@@ -52,7 +52,16 @@
         
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+    
+    
+    
+    ///////////////// get data to populate tableView
+    
+    [model getExhibitorsFromNetwork:@"eng.medhat.cs.h@gmail.com"];
+    
 }
+
+
 
 -(void) refreshMytableView
 {
@@ -111,4 +120,13 @@
     
     return attrStr;
 }
+
+
+-(void)setAllExhibitors:(NSMutableArray *)exhibitors{
+
+    exibitors = exhibitors;
+    [self.tableView reloadData];
+
+}
+
 @end

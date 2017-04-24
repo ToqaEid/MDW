@@ -39,7 +39,7 @@
         
         NSMutableArray * allExhibitors  =  [MDW_JsonParser getExhibitors_v2:responseObject];
         
-       // [controller setAllSpeakers:allSpeakers];
+        [controller setAllExhibitors: allExhibitors];
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         

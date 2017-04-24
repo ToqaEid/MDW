@@ -640,4 +640,59 @@
 }
 
 
+
+///////////// --3-- Parsing Session_Registeration_Status ---------------------
+
+
+
++ (int) getSesstionRegisterationStatus : (id) JsonObj{
+
+    int status = 0;
+
+    
+    printf(">>>>> Inside sessionRegisteration PARSER >> \n");
+    
+    if ([JsonObj isKindOfClass:[NSArray class]])
+    {
+        printf("Response is NSArray ... \n");
+        
+    }///end of isKindOf NSArray
+    else  if ([JsonObj isKindOfClass:[NSDictionary class]])
+    {
+        /////// 2. convert to NSDictionary & check Status
+        
+        NSDictionary * rootJson = JsonObj;
+        NSString  * responseStatus = [rootJson objectForKey:@"status"];
+        
+        if (  [responseStatus isEqualToString:@"view.success"]  )
+        {
+            /////3.  extract result jsonObj
+            
+            NSDictionary * resultJson = [rootJson objectForKey:@"result"];
+            
+            int oldsession = [[resultJson objectForKey:@"oldSessionId"] intValue];
+            if(oldsession != 0)
+            {
+                ////// Already registered in another session at the same time
+            
+                
+                status = -1;
+                
+                
+            }else{
+                /////// Registration Status is
+                
+                  status = [[resultJson objectForKey:@"status"] intValue];
+            
+            }
+            
+        }
+    }
+
+    
+    
+    
+    return status;
+}
+
 @end

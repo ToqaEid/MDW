@@ -42,7 +42,7 @@
 
 + (AttendeeDTO *) parseToAttendeeObj : (NSDictionary *) attendeeJson;
 
-
++ (int) getSesstionRegisterationStatus : (id) JsonObj;
 
 
 @end

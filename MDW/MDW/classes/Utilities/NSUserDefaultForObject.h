@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AttendeeDTO.h"
 
 @interface NSUserDefaultForObject : NSObject
 
-+(void)saveObjectWithObject: (NSObject *)object key:(NSString *)key;
++(void)saveObjectWithObject: (AttendeeDTO *)object key:(NSString *)key;
 +(void) removeObjectWithKey :(NSString *) key;
 +(BOOL)checkObjectExistanceWithKey: (NSString*)key;
++(AttendeeDTO*) getObjectForKey : (NSString *) key;
 @end

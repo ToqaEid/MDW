@@ -28,37 +28,34 @@
 
 /*=======================Sessions from DB ========================*/
 -(NSMutableArray*) getDay1SessionsFromDB{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day1Sessions];
     return sessions;
 }
 -(NSMutableArray*) getDay2SessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day2Sessions];
     return sessions;
 }
 -(NSMutableArray*) getDay3SessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day3Sessions];
     return sessions;
 }
 -(NSMutableArray*) getAllSessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
     return sessions;
 
 }
 -(void) saveAllSessionsInDB:(NSMutableArray *)sessions{
-    
+    [sessionDao saveSessions:sessions];
 }
 
 
-
-
-
-
--(void) getAllSessions : (NSString *) username{
+-(void) getAllSessions{
 
     //////// GET ALL SESSTION FROM BACKEND
 
-    NSString * sessionsURL =  [[MDWServerURLs getGetSessionsURL]  stringByAppendingString: username  ];
+    AttendeeDTO * user = [NSUserDefaultForObject getObjectForKey:@"user"];
     
+    NSString * sessionsURL =  [[MDWServerURLs getGetSessionsURL]  stringByAppendingString: user.email  ];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET: sessionsURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -79,6 +76,9 @@
 //            
 //            }
     
+        ///save into db
+        [self saveAllSessionsInDB:allSessions];
+    
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
@@ -96,32 +96,23 @@
 
 
 -(NSMutableArray*) getAllSessionsFromNetwork{
-    NSMutableArray * sessions = nil; //(NSMutableArray *)[sessionDao getAllSessions];
-//    return sessions;
-//    [sessionDao clearAllDB];
-//    NSMutableArray * sessions = [NSMutableArray new];
-//    SessionDTO * session = [SessionDTO new];
-//    session.sessionId = 2;
-//    session.name = @"session1";
-//    session.sessionType = @"Break";
-//    session.SessionDescription = @"sdfg";
-//    [sessions addObject:session];
-//    [sessionDao saveSessions:sessions];
+    NSMutableArray * sessions = nil;
+
     return sessions;
 }
 
 -(NSMutableArray*) getDay1SessionsFromNetwork{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day1Sessions];
     return sessions;
 }
 
 -(NSMutableArray*) getDay2SessionsFromNetwork{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day2Sessions];
     return sessions;
 }
 
 -(NSMutableArray*) getDay3SessionsFromNetwork{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day3Sessions];
     return sessions;
 }
 

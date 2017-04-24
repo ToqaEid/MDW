@@ -281,7 +281,7 @@
                                 speakerObj.gender = [currentObj objectForKey:@"gender"];
                             
                                 speakerObj.biography = [currentObj objectForKey:@"biography"];
-                                //speakerObj.imageUrl = [currentObj objectForKey:@"imageURL"];
+                                speakerObj.imageURL = [currentObj objectForKey:@"imageURL"];
                                 speakerObj.title = [currentObj objectForKey:@"title"];
                                 speakerObj.companyName = [currentObj objectForKey:@"companyName"];
                             
@@ -338,15 +338,6 @@
     
     return allSessions;
 }
-
-
-
-
-
-
-
-
-
 
 
 + (AttendeeDTO *) getAttendee : (id) responseObject{

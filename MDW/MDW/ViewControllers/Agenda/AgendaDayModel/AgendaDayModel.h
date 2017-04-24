@@ -12,6 +12,8 @@
 #import "sessionDAO.h"
 #import "SessionDTO.h"
 #import "AgendaDay.h"
+#import "AttendeeDTO.h"
+#import "NSUserDefaultForObject.h"
 
 @interface AgendaDayModel : NSObject
 
@@ -29,7 +31,7 @@
 -(NSMutableArray*) getDay3SessionsFromNetwork;
 
 
--(void) getAllSessions : (NSString *) username;
+-(void) getAllSessions;
 
 
 @end

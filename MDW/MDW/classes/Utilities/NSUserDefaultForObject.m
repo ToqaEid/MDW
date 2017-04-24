@@ -17,4 +17,18 @@
     [defaults synchronize];
 }
 
++(BOOL)checkObjectExistanceWithKey: (NSString*)key{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSObject * object = [defaults objectForKey:key];
+    if(object != nil){
+        return YES;
+    }
+    return NO;
+}
+
++(void) removeObjectWithKey :(NSString *) key{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:key];
+    [defaults synchronize];
+}
 @end

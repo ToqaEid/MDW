@@ -7,16 +7,23 @@
 //
 
 #import "ExhibitorModel.h"
-
 #import <AFNetworking.h>
 #import <AFImageDownloader.h>
 #import <UIImageView+AFNetworking.h>
 #import "MDWServerURLs.h"
 #import "MDW_JsonParser.h"
 
-@implementation ExhibitorModel
+@implementation ExhibitorModel{
 
+     ExhibitorsViewController * controller;
+    
+}
 
+-(id)initWithController: (ExhibitorsViewController*) exhibitorController{
+    
+    controller = exhibitorController;
+    return [self init];
+}
 
 -(void) getExhibitorsFromNetwork : (NSString *) username{
 

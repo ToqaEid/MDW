@@ -54,19 +54,8 @@
         
             
             //// set attendee to NSUserDefaults
-            NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:attendeeObj];
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:encodedObject forKey:@"user"];
-            
-            
-            //[NSUserDefaultForObject saveObjectWithObject:attendeeObj key:@"user"];
-            
-            
-            ///// get attendee
-            
-            NSData * decodedObject = [defaults objectForKey:@"user"];
-            AttendeeDTO * object = [NSKeyedUnarchiver unarchiveObjectWithData:decodedObject];
-            printf(">>|||>>> User saved to NSUserDefaults %s\n", [object.firstName UTF8String]);
+            [NSUserDefaultForObject saveObjectWithObject:attendeeObj key:@"user"];
+
             ///////// Going to the Home
             
             [controller goToNextView];

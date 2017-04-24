@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSUserDefaultForObject.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

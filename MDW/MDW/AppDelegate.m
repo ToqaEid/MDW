@@ -17,6 +17,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController;
+    
+    if([NSUserDefaultForObject checkObjectExistanceWithKey:@"user"]){
+        
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"home"];
+    
+    }else{
+    
+        viewController = [storyboard instantiateViewControllerWithIdentifier:@"login"];
+
+    }
+    
+    
+    
+    self.window.rootViewController = viewController;
+    
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+    
     return YES;
 }
 

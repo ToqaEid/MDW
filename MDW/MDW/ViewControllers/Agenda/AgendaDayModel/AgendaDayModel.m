@@ -77,6 +77,7 @@
 //            }
     
         ///save into db
+        [sessionDao clearAllDB];
         [self saveAllSessionsInDB:allSessions];
     
         } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -88,11 +89,6 @@
     
 
 }
-
-
-
-
-
 
 
 -(NSMutableArray*) getAllSessionsFromNetwork{

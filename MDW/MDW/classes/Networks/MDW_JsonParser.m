@@ -604,8 +604,40 @@
 }
 
 
+///////////// --3-- Parsing Attendee "AppUser" ---------------------
 
++ (AttendeeDTO *) parseToAttendeeObj : (NSDictionary *) attendeeJson{
 
+    AttendeeDTO * attendeeObj = [AttendeeDTO new];
+
+    
+    attendeeObj.firstName = [attendeeJson objectForKey:@"firstName"];
+    attendeeObj.middleName = [attendeeJson objectForKey:@"middleName"];
+    attendeeObj.lastName = [attendeeJson objectForKey:@"lastName"];
+    attendeeObj.title = [attendeeJson objectForKey:@"title"];
+    attendeeObj.companyName = [attendeeJson objectForKey:@"companyName"];
+    
+    attendeeObj.countryName = [attendeeJson objectForKey:@"countryName"];
+    attendeeObj.cityName = [attendeeJson objectForKey:@"cityName"];
+    
+    attendeeObj.email = [attendeeJson objectForKey:@"email"];
+    attendeeObj.imageURL = [attendeeJson objectForKey:@"imageURL"];
+    attendeeObj.code = [attendeeJson objectForKey:@"code"];
+    
+    attendeeObj.attendeeId = [[attendeeJson objectForKey:@"id"] intValue];
+    //attendeeObj.mobiles = [attendeeJson objectForKey:@"mobiles"];
+    //attendeeObj.phones = [attendeeJson objectForKey:@"phones"];
+    
+    attendeeObj.gender = [attendeeJson objectForKey:@"gender"];
+    
+    if ( [attendeeJson objectForKey:@"birthDate"] != (id)[NSNull null]  )
+    {
+        attendeeObj.birthDate = [[attendeeJson objectForKey:@"birthDate"] longValue];
+    }
+    
+
+    return attendeeObj;
+}
 
 
 @end

@@ -40,7 +40,7 @@
 + (NSMutableArray *) getExhibitors_v2 : (id) JsonObj;
 + (ExhiptorsDTO *) parseToExhibitorObj : (NSDictionary *) exhibitorJson;
 
-
++ (AttendeeDTO *) parseToAttendeeObj : (NSDictionary *) attendeeJson;
 
 
 

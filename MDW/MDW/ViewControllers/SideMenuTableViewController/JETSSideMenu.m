@@ -51,13 +51,13 @@
         printf("logout\n");
         
         //go to login view
+        
         [self dismissViewControllerAnimated:YES completion:^{
             //remove user data from nsuserdefaults
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults removeObjectForKey:@"user"];
             [defaults synchronize];
         }];
-
     }
 }
 @end

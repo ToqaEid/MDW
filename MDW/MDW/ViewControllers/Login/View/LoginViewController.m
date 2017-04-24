@@ -7,9 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "MDWServerURLs.h"
-#import <AFNetworking.h>
-#import "MDW_JsonParser.h"
 
 
 @implementation LoginViewController{
@@ -17,88 +14,36 @@
     
 }
 
--(instancetype)init{
-    return self;
+-(void)viewDidLoad{
+    model = [[LoginModel alloc]initWithController:self];
+}
+
+-(void) goToNextView{
+    printf("***************************\nLogin: login success\n***************************\n");
+    
+    SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
+    
+    [self presentViewController:home animated:YES completion:nil];
+}
+
+
+-(void) showErrorMsgWithMsg:(NSString *)msg usernameError:(BOOL) errorCheck{
+    UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:msg];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    _passwordFied.text = @"";
+    
+    if(errorCheck){
+        _usernameField.text = @"";
+    }
+
 }
 
 - (IBAction)loginAction:(id)sender {
     
+    AttendeeDTO * user =[model checkUserWithUsername:_usernameField.text AndPassword:_passwordFied.text];
     
-    
-      NSMutableString * loginUrl = [[NSMutableString alloc] initWithString:[MDWServerURLs getLoginURL]];
-    [loginUrl appendString: _usernameField.text];
-    [loginUrl appendString:@"&password="];
-    [loginUrl appendString: _passwordFied.text];
-    
-    printf("\n>> LoginURL is %s\n", [loginUrl UTF8String]);
-    
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET: [NSString stringWithString:loginUrl]  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        
-        
-        NSLog(@"JSON: %@", responseObject);
-        printf("Login Response recieved ... \n");
-        
-        NSDictionary * rootJson = responseObject;
-        NSString  * responseStatus = [rootJson objectForKey:@"status"];
-        
-        if (  [responseStatus isEqualToString:@"view.success"]  )
-        {
-            ///////// login Success
-            ///////// Going to the Home
-            
-            SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
-         
-            [self presentViewController:home animated:YES completion:nil];
-            
-        
-        }else{
-            //////// login Failed
-            //////// check failure reason
-            
-            NSString * failureStr = [rootJson objectForKey:@"result"];
-            
-            if ([failureStr isEqualToString:@"Invalid User Name"]){   ///// Email does not exists
-            
-                UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry! Email does not exists!"];
-                
-                [self presentViewController:alert animated:YES completion:nil];
-                
-                _usernameField.text = @"";
-                _passwordFied.text = @"";
-            
-            
-            }else{  /////// password is not correct "Invalid authentication"
-                
-                UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Sorry! Password is not correct"];
-                
-                [self presentViewController:alert animated:YES completion:nil];
-                
-                _passwordFied.text = @"";
-                
-            }
-            
-            
-        }
-        
-        
-        
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
-        
-        
-        UIAlertController * alert =[AlertClass infoAlertwithTitle:@"Login Failed" AndMsg:@"Check your internat connection!"];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        _usernameField.text = @"";
-        _passwordFied.text = @"";
-        
-
-        
-    }];
 
 //    
 //    

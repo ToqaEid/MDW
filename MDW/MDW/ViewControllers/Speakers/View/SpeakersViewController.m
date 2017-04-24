@@ -144,32 +144,6 @@
     
     
     
-//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        // Add code here to do background processing
-//        //
-//        //
-//        
-//        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: imageUrl  ]];
-//        
-//        dispatch_async( dispatch_get_main_queue(), ^{
-//            // Add code here to update the UI/send notifications based on the
-//            // results of the background processing
-//            UIImage *userImage =[UIImage imageWithData:imageData];
-//            
-//            if (userImage != nil) {
-//                
-//                icon.image =userImage;
-//            }else{
-//                
-//                
-//                 icon.image = [UIImage imageNamed:@"mario.jpg"];
-//            }
-//            
-//        });
-//    });
-    
-    
-    
     
     
     return cell;

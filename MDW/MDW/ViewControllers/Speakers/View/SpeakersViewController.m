@@ -144,29 +144,29 @@
     
     
     
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        // Add code here to do background processing
-        //
-        //
-        
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: imageUrl  ]];
-        
-        dispatch_async( dispatch_get_main_queue(), ^{
-            // Add code here to update the UI/send notifications based on the
-            // results of the background processing
-            UIImage *userImage =[UIImage imageWithData:imageData];
-            
-            if (userImage != nil) {
-                
-                icon.image =userImage;
-            }else{
-                
-                
-                 icon.image = [UIImage imageNamed:@"mario.jpg"];
-            }
-            
-        });
-    });
+//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        // Add code here to do background processing
+//        //
+//        //
+//        
+//        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString: imageUrl  ]];
+//        
+//        dispatch_async( dispatch_get_main_queue(), ^{
+//            // Add code here to update the UI/send notifications based on the
+//            // results of the background processing
+//            UIImage *userImage =[UIImage imageWithData:imageData];
+//            
+//            if (userImage != nil) {
+//                
+//                icon.image =userImage;
+//            }else{
+//                
+//                
+//                 icon.image = [UIImage imageNamed:@"mario.jpg"];
+//            }
+//            
+//        });
+//    });
     
     
     
@@ -302,11 +302,20 @@
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
         
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+        //NSLog(@"<<<<< %@ ++ %@", documentsDirectoryURL.path, [response suggestedFilename]);
+        
+        NSString * simage = @"Speaker_";
+        simage = [simage stringByAppendingFormat:@"%d",   ((SpeakerDTO *)object).speakerId   ];
+        
+        return [documentsDirectoryURL URLByAppendingPathComponent: simage];
+        
+        
         
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
         //Setting ImageView
+        
         NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
         UIImage *image = [UIImage imageWithData: imageData];
         imageView.image = image;
@@ -315,7 +324,7 @@
 //        //Adding In DB
 //        if([object isKindOfClass:[ExhibitorDTO class]]){
 //            ((ExhibitorDTO *) object).image = imageData;
-//            [[DBHandler getDB] addOrUpdateExhibitor:object];
+//            [[DBHandler getDB]- addOrUpdateExhibitor:object];
 //        }else if ([object isKindOfClass:[SpeakerDTO class]]){
 //            ((SpeakerDTO *) object).image = imageData;
 //            [[DBHandler getDB] addOrUpdateSpeaker:object];

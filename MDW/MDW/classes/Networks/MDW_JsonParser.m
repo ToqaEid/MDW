@@ -427,13 +427,10 @@
 
 
 
+///////// --------------- Optimized Methods ---------------------
 
 
-
-
-
-
-///////////// ---- Parsing SessionJson
+///////////// --1-- Parsing SessionJson ---------------------
 
 + (NSMutableArray *) getSessions_v2 : (id) JsonObj{
 
@@ -524,6 +521,90 @@
     
     return sessionObj;
 }
+
+
+
+
+
+///////////// --2-- Parsing ExhibitorJson ---------------------
+
+
++ (NSMutableArray *) getExhibitors_v2 : (id) JsonObj{
+
+    NSMutableArray * allExhibitors = [NSMutableArray new];
+    
+    
+    printf(">>>>> Inside new Exhibitors PARSER >> \n");
+    
+    if ([JsonObj isKindOfClass:[NSArray class]])
+    {
+        printf("Response is NSArray ... \n");
+        
+    }///end of isKindOf NSArray
+    else  if ([JsonObj isKindOfClass:[NSDictionary class]])
+    {
+        /////// 2. convert to NSDictionary & check Status
+        
+        NSDictionary * rootJson = JsonObj;
+        NSString  * responseStatus = [rootJson objectForKey:@"status"];
+        
+        if (  [responseStatus isEqualToString:@"view.success"]  )
+        {
+            /////3.  extract exhibitors jsonObj
+            
+            NSArray * ExsJson = [rootJson objectForKey:@"result"];
+            
+            
+            ////// get exhibitors
+            
+            for (int ex=0; ex < [ExsJson count]; ex++)
+            {
+                ///// get exhibitorObj
+                
+                NSDictionary * oneExhibitor = [ ExsJson objectAtIndex:ex ];
+                
+                ExhiptorsDTO * exhibitorObj = [self parseToExhibitorObj:oneExhibitor];
+                
+                printf("-- exh --  %s\n", [exhibitorObj.companyName UTF8String]);
+                
+                [allExhibitors addObject:exhibitorObj];
+                
+            }
+        }
+    }
+
+    return allExhibitors;
+}
+
++ (ExhiptorsDTO *) parseToExhibitorObj : (NSDictionary *) exhibitorJson{
+
+    ExhiptorsDTO * exhibitorObj = [ExhiptorsDTO new];
+    
+    
+    exhibitorObj.exhiptorId = [[exhibitorJson objectForKey:@"id"] intValue];
+    exhibitorObj.contactName = [exhibitorJson objectForKey:@"contactName"];
+    exhibitorObj.contactTitle = [exhibitorJson objectForKey:@"contactTitle"];
+    exhibitorObj.companyURL = [exhibitorJson objectForKey:@"companyUrl"];
+    
+    exhibitorObj.fax = [exhibitorJson objectForKey:@"fax"];
+    exhibitorObj.companyName = [exhibitorJson objectForKey:@"companyName"];
+    exhibitorObj.companyAbout = [exhibitorJson objectForKey:@"companyAbout"];
+    exhibitorObj.companyAddress = [exhibitorJson objectForKey:@"companyAddress"];
+    
+    exhibitorObj.imageURL = [exhibitorJson objectForKey:@"imageURL"];
+    
+    exhibitorObj.countryName = [exhibitorJson objectForKey:@"countryName"];
+    exhibitorObj.cityName = [exhibitorJson objectForKey:@"cityName"];
+    exhibitorObj.email = [exhibitorJson objectForKey:@"email"];
+    
+    //exhibitorObj.phones = [exhibitorJson objectForKey:@"phones"];
+    //exhibitorObj.mobiles = [exhibitorJson objectForKey:@"mobiles"];
+    
+    return exhibitorObj;
+}
+
+
+
 
 
 

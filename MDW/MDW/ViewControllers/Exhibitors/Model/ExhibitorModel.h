@@ -10,4 +10,10 @@
 
 @interface ExhibitorModel : NSObject
 
+
+
+
+-(void) getExhibitorsFromNetwork : (NSString *) username;
+
+
 @end

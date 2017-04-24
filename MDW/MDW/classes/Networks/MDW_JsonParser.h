@@ -20,6 +20,8 @@
 #import <Foundation/Foundation.h>
 
 #import "AttendeeDTO.h"
+#import "SessionDTO.h"
+#import "ExhiptorsDTO.h"
 
 @interface MDW_JsonParser : NSObject
 
@@ -29,7 +31,18 @@
 + (NSMutableArray *) getExhibitors : (id) JsonObj;
 + (AttendeeDTO *) getAttendee : (id) JsonObj;
 
+
+
+////////// ---- optimized methods -----
 + (NSMutableArray *) getSessions_v2 : (id) JsonObj;
++ (SessionDTO *) parseToSessionObj : (NSDictionary *) sessionJson;
+
++ (NSMutableArray *) getExhibitors_v2 : (id) JsonObj;
++ (ExhiptorsDTO *) parseToExhibitorObj : (NSDictionary *) exhibitorJson;
+
+
+
+
 
 
 @end

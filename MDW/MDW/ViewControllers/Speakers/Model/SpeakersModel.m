@@ -59,14 +59,6 @@
             
             [controller setAllSpeakers:allSpeakers];
             
-            
-            //printf("ALL_SPEAKERS = %ld\n ", [allSpeakers count]);
-            //printf("================== \n");
-    
-            //for (int i=0; i<[allSpeakers count]; i++)
-              //  printf("#%d , %s\n", i, [[[allSpeakers objectAtIndex:i] firstName] UTF8String]);
-    
-    
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);

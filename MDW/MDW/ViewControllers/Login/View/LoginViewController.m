@@ -14,16 +14,30 @@
     
 }
 
+-(void)dealloc{
+    printf("***********login dealloc********\n");
+    
+}
+
 -(void)viewDidLoad{
     model = [[LoginModel alloc]initWithController:self];
+    
 }
 
 -(void) goToNextView{
-    printf("***************************\nLogin: login success\n***************************\n");
+    printf("********Login: login success********\n");
     
     SWRevealViewController * home = [self.storyboard instantiateViewControllerWithIdentifier:@"home"];
-    [self dismissViewControllerAnimated:NO completion:nil];
-    [self presentViewController:home animated:YES completion:nil];
+    
+    [self.view.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+        printf("dismiss\n");
+    }];
+
+    [self presentViewController:home animated:YES completion:^{
+        
+            }];
+ 
+    
 }
 
 

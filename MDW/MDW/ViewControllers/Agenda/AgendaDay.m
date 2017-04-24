@@ -19,20 +19,10 @@
 }
 
 
-
-
-
--(void)viewWillAppear:(BOOL)animated{
-
-
-    printf("Testing Network .. \n");
+-(void)dealloc{
+    printf("********agenda dealloc*********\n");
     
-    [model getAllSessions:@"eng.medhat.cs.h@gmail.com"];
-    
-
-
 }
-
 
 
 -(void)viewDidLoad{
@@ -66,10 +56,10 @@
     model = [[AgendaDayModel alloc]initWithController:self];
     if([Connection checkInternetConnection]){
         
-        indicator = [self showProgressDialog];
-        [indicator startAnimating];
+        [self.view makeToastActivity:CSToastPositionCenter];
         
         [self getSessionsFromNetwork];
+        
         
         printf("Agenda View : checkInternetConnection\n");
         
@@ -89,23 +79,24 @@
     //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
         
-        dayAgenda = [model getDay1SessionsFromNetwork];
+        dayAgenda = [model getDay1SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
         
-        dayAgenda = [model getDay2SessionsFromNetwork];
+        dayAgenda = [model getDay1SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
         
-        dayAgenda = [model getDay3SessionsFromNetwork];
+        dayAgenda = [model getDay1SessionsFromDB];
+        
         
     }else{
         
-        dayAgenda = [model getAllSessionsFromNetwork];
+        [model getAllSessions];
         
     }
     //hide progress dialog
-    [indicator stopAnimating];
+    [self.view hideToastActivity];
     
     return dayAgenda;
 }
@@ -123,16 +114,6 @@
     return dayAgenda;
 }
 
-/*======================== Progress Dialog =========================*/
--(UIActivityIndicatorView *) showProgressDialog{
-    UIActivityIndicatorView *indicator1 = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    indicator1.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-    indicator1.center = self.view.center;
-    [self.view addSubview:indicator1];
-    [indicator1 bringSubviewToFront:self.view];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-    return indicator1;
-}
 /*============================= Table View ==============================*/
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -169,9 +150,7 @@
     if( sessionImage != nil){
         icon.image = sessionImage;
     }
-    
-    
-   
+
     
     return cell;
     
@@ -210,7 +189,7 @@
     //get Data
     if([Connection checkInternetConnection]){
         [self getSessionsFromNetwork];
-        printf("Agenda View : checkInternetConnection\n");
+        //printf("Agenda View : checkInternetConnection\n");
     }
     
     [self.tableView  reloadData];
@@ -236,12 +215,12 @@
 -(void) setAllSessionsArray : (NSMutableArray* ) sessions{
 
     
-    printf("Setting SessionNSMutableArray .. \n");
+    //printf("Setting SessionNSMutableArray .. \n");
     
     dayAgenda = sessions;
     [self.tableView  reloadData];
     
-    printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
+    //printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
     
     
 //    [self refreshMytableView];

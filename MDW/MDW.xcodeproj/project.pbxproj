@@ -127,6 +127,7 @@
 /* Begin PBXFileReference section */
 		3A713882B04D1CD33F898899 /* libPods-MDW.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MDW.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3216A7F669473E805AD772 /* Pods-MDW.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDW.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MDW/Pods-MDW.debug.xcconfig"; sourceTree = "<group>"; };
+		CC092B101EAE8CC3005555BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CC1035091EA4CB4700235BA5 /* SpeakersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeakersModel.h; path = ViewControllers/Speakers/Model/SpeakersModel.h; sourceTree = "<group>"; };
 		CC10350A1EA4CB4700235BA5 /* SpeakersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeakersModel.m; path = ViewControllers/Speakers/Model/SpeakersModel.m; sourceTree = "<group>"; };
 		CC10350D1EA4EE1100235BA5 /* MyAgendaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAgendaModel.h; path = ViewControllers/MyAgenda/Model/MyAgendaModel.h; sourceTree = "<group>"; };
@@ -146,7 +147,7 @@
 		CC1948571E9ABAEA00039C97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CC1948581E9ABAEA00039C97 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CC19485E1E9ABAEA00039C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CC1948601E9ABAEA00039C97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC1948601E9ABAEA00039C97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = MDW/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CC1948631E9ABAEA00039C97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC1948651E9ABAEA00039C97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4C669E1E9E44F100186523 /* JETSSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JETSSideMenu.h; path = ViewControllers/SideMenuTableViewController/JETSSideMenu.h; sourceTree = "<group>"; };
@@ -412,6 +413,7 @@
 				CC1948601E9ABAEA00039C97 /* Assets.xcassets */,
 				CC1948621E9ABAEA00039C97 /* LaunchScreen.storyboard */,
 				CC1948651E9ABAEA00039C97 /* Info.plist */,
+				CC092B101EAE8CC3005555BA /* Images.xcassets */,
 				CC1948541E9ABAE900039C97 /* Supporting Files */,
 			);
 			path = MDW;

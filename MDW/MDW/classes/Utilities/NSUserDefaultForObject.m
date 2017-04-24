@@ -10,7 +10,7 @@
 
 @implementation NSUserDefaultForObject
 
-+(void)saveObjectWithObject: (NSObject *)object key:(NSString *)key {
++(void)saveObjectWithObject: (AttendeeDTO *)object key:(NSString *)key {
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:object];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:encodedObject forKey:key];
@@ -19,7 +19,7 @@
 
 +(BOOL)checkObjectExistanceWithKey: (NSString*)key{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSObject * object = [defaults objectForKey:key];
+    AttendeeDTO * object = [defaults objectForKey:key];
     if(object != nil){
         return YES;
     }
@@ -30,5 +30,12 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:key];
     [defaults synchronize];
+}
+
++(AttendeeDTO *) getObjectForKey : (NSString *) key{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData * object = [defaults objectForKey:key];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:object];
+    
 }
 @end

@@ -21,7 +21,7 @@
     [aCoder encodeObject:_imageURL forKey:@"imageURL"];
     [aCoder encodeObject:_companyName forKey:@"companyName"];
     [aCoder encodeObject:_countryName forKey:@"countryName"];
-    [aCoder encodeInt: _birthDate  forKey:@"birthDate"];     //////// ramadan
+    //[aCoder encodeInt: _birthDate  forKey:@"birthDate"];     //////// ramadan
     [aCoder encodeObject:_phones forKey:@"phones"];
     [aCoder encodeObject:_mobiles forKey:@"mobiles"];
     [aCoder encodeInt:_attendeeId forKey:@"attendeeId"];

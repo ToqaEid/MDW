@@ -41,6 +41,7 @@
 }
 -(NSMutableArray*) getAllSessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSLog(@"sessions : %lu", (unsigned long)sessions.count);
     return sessions;
 
 }

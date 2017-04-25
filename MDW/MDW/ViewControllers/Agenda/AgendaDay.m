@@ -29,6 +29,8 @@
 -(void)viewDidLoad{
     
     dayAgenda = [NSMutableArray new];
+    model = [[AgendaDayModel alloc]initWithController:self];
+
     
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -55,15 +57,19 @@
     
     if(![VisitedViews getAgenda]){
         //getData
-        model = [[AgendaDayModel alloc]initWithController:self];
         [self.view makeToastActivity:CSToastPositionCenter];
         
         [self getSessions];
+        
         [VisitedViews setAgenda : YES];
     }else{
         [self getSessionsFromDB];
+        
+        NSLog(@"getSessionsFromDB");
+
     }
-    
+    [self.tableView reloadData];
+
 }
 
 /*====================== DATA =================================*/
@@ -94,22 +100,26 @@
 -(void) getSessionsFromDB{
     //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
-        
+        NSLog(@"getSessionsFromDB AgendaDay1");
         dayAgenda = [model getDay1SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
-        
+        NSLog(@"getSessionsFromDB AgendaDay2");
+
         dayAgenda = [model getDay1SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
-        
+        NSLog(@"getSessionsFromDB AgendaDay3");
+
         dayAgenda = [model getDay1SessionsFromDB];
         
         
     }else{
-        
+        NSLog(@"getSessionsFromDB AgendaALl");
+
         dayAgenda = [model getAllSessionsFromDB];
-        
+        printf("sessions : %lu\n", (unsigned long)dayAgenda.count);
+
     }
     
 }

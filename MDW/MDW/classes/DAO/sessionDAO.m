@@ -16,6 +16,13 @@ static sessionDAO* session=nil;
     }
     return session;
 }
+-(BOOL)updateSession:(SessionDTO *)session{
+    RLMRealm *realm=[RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:session];
+    [realm commitWriteTransaction];
+    return YES;
+}
 -(BOOL)saveSessions:(NSMutableArray *)sessions{
     RLMRealm *realm=[RLMRealm defaultRealm];
     [realm beginWriteTransaction];

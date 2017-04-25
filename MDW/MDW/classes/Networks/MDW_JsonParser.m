@@ -249,6 +249,7 @@
                     sessionObj.liked = [sessionJson objectForKey:@"liked"];
                     
                     sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longValue];
+                    printf("%s",[[NSString stringWithFormat:@"a7a ana hena ya welad el mara %ld", sessionObj.startDate] UTF8String]);
                     sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
                     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
                    

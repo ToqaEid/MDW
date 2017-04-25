@@ -508,7 +508,7 @@
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
     
-    printf("___SessionId  =  %d\n", sessionObj.sessionId);
+    printf("SessionId  =  %d\n", sessionObj.sessionId);
     
     
     ///////// speakers not parsed yet

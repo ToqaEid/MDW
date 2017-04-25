@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationField;
 - (IBAction)ratingAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *speakersView;
+@property (weak, nonatomic) IBOutlet UIButton *starButton;
 
 @property SessionDTO * session;
 

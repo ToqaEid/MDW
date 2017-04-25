@@ -53,6 +53,7 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
+    //if()
     //getData
     model = [[AgendaDayModel alloc]initWithController:self];
     [self.view makeToastActivity:CSToastPositionCenter];
@@ -138,6 +139,8 @@
     
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
     agendaDetails.session = session;
+    
+    printf("\nsession %d\n", session.status);
     
     agendaDetails.hidesBottomBarWhenPushed = YES;
     

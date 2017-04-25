@@ -20,9 +20,9 @@
     _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
     _detailsField.text = _session.SessionDescription;
     
-    
-    /////// Rating btn color?? ya toqa
-    
+        
+    [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+
 
 }
 
@@ -32,7 +32,7 @@
     
     printf(" +++ SessionDetails is Loaded .... \n");
     
-    
+    printf("\nsession details %d\n", _session.status);
 }
 
 - (IBAction)ratingAction:(id)sender {
@@ -42,7 +42,8 @@
     if(_session.status == 0){
         
         //register session
-        _session.status = [model registerSession:_session];
+        //_session.status =
+        [model registerSession:_session];
         
         //change star image
         [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];

@@ -1301,13 +1301,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="V8Y-j2-VdT">
                                         <rect key="frame" x="254" y="147" width="46" height="34"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7Z-3x-5Kr">
-                                        <rect key="frame" x="132" y="95" width="42" height="33"/>
-                                        <state key="normal" image="star.png"/>
-                                        <connections>
-                                            <action selector="ratingAction:" destination="4ho-cV-haT" eventType="touchUpInside" id="TYE-Sl-BbF"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYH-ck-Xu7">
                                         <rect key="frame" x="26" y="392" width="274" height="128"/>
                                         <subviews>
@@ -1335,6 +1328,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7Z-3x-5Kr">
+                                        <rect key="frame" x="132" y="95" width="42" height="33"/>
+                                        <state key="normal" image="star.png"/>
+                                        <connections>
+                                            <action selector="ratingAction:" destination="4ho-cV-haT" eventType="touchUpInside" id="TYE-Sl-BbF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XyB-yd-do6" firstAttribute="leading" secondItem="Lat-uP-mBS" secondAttribute="leading" constant="36" id="0u7-ag-Go2"/>
@@ -1369,6 +1369,7 @@
                         <outlet property="detailsField" destination="AOT-CJ-QG2" id="PY4-In-dtG"/>
                         <outlet property="locationField" destination="Nuo-0N-fz9" id="gUa-vy-Mia"/>
                         <outlet property="speakersView" destination="TYH-ck-Xu7" id="zpv-wi-QsQ"/>
+                        <outlet property="starButton" destination="L7Z-3x-5Kr" id="QVI-8y-r2C"/>
                         <outlet property="timeField" destination="zUM-fN-KVv" id="VlP-Ug-cEQ"/>
                         <outlet property="titleField" destination="XyB-yd-do6" id="tPr-KD-DZT"/>
                     </connections>

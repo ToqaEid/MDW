@@ -15,6 +15,7 @@
 #import "AgendaDetailsViewController.h"
 #import "Connection.h"
 #import "AgendaImages.h"
+#import "VisitedViews.h"
 
 @interface AgendaDay : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

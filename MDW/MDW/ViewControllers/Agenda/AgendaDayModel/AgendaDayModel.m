@@ -64,10 +64,14 @@
         //NSLog(@"JSON: %@", responseObject);
         //printf("Response recieved ... \n");
         
-        //NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
+       // NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
         NSMutableArray *allSessions=[MDW_JsonParser getSessions:responseObject];
         [controller setAllSessionsArray:allSessions];
-//        
+
+        
+        
+        
+        
 //        printf(">>>---- AllSessions are ====== %lu",  (unsigned long)[allSessions count] );
 //        for (int i=0; i<[allSessions count]; i++){
 //            
@@ -77,8 +81,6 @@
 //            }
     
         ///save into db
-        RLMRealm *realm=[RLMRealm defaultRealm];
-        printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
         [sessionDao clearAllDB];
         [self saveAllSessionsInDB:allSessions];
     

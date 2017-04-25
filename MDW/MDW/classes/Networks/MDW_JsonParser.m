@@ -254,6 +254,7 @@
                     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
                    
 
+                    printf("$$$ Sesseion StartDate >> %ld\n", sessionObj.startDate);
                     
                     //// get session speakers
                     
@@ -432,7 +433,7 @@
 
 
 
-///////////// -- ---- ------ --- Optimized Methods ----- ------ ----- -----
+///////////// -- ---- ------ --- Optimized Methods ----- ---   ------- -- ------- ----- -----
 
 
 ///////////// --1-- Parsing SessionJson ---------------------
@@ -519,18 +520,16 @@
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
     
-    printf("___SessionId  =  %d\n", sessionObj.sessionId);
+    printf("SessionId  =  %d\n", sessionObj.sessionId);
     
     
     ///////// speakers not parsed yet
 
-    //NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
-    
-   // printf("#of Speakers = %lu for Session %s\n",  (unsigned long)[speakersJson count], [sessionObj.name UTF8String] );
     
     if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
     
         printf("Speakers = NIL \n");
+        sessionObj.speakers = nil;
         
     }else{
         
@@ -793,7 +792,7 @@
 
 
 
-///////////// --4-- Parsing Session_Registeration_Status ---------------------
+///////////// --5-- Parsing Session_Registeration_Status ---------------------
 
 
 

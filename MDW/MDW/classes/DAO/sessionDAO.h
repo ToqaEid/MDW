@@ -19,4 +19,5 @@
 -(RLMResults*)day1Sessions;
 -(RLMResults*)day2Sessions;
 -(RLMResults*)day3Sessions;
+-(BOOL)updateSession:(SessionDTO*)session;
 @end

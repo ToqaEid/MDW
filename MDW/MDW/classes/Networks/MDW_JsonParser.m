@@ -287,11 +287,21 @@
                                 speakerObj.imageURL = [currentObj objectForKey:@"imageURL"];
                                 speakerObj.title = [currentObj objectForKey:@"title"];
                                 speakerObj.companyName = [currentObj objectForKey:@"companyName"];
-                            
-                            
-                                speakerObj.phones = [currentObj objectForKey:@"mobiles"];
-                                speakerObj.phones = [currentObj objectForKey:@"phones"];
-                            
+                                NSArray *mobiles=[currentObj objectForKey:@"mobiles"];
+                                NSArray *phones=[currentObj objectForKey:@"phones"];
+                                for(int m = 0; m< [mobiles count]; m++){
+                                    
+                                    Mobile * mobileObj = [Mobile new];
+                                    mobileObj.mobile = [mobiles objectAtIndex:m];
+                                    [speakerObj.mobiles addObject:mobileObj];
+                                }
+                                
+                                for(int p = 0; p< [phones count]; p++){
+                                    
+                                    Phone * phoneObj = [Phone new];
+                                    phoneObj.phone = [phones objectAtIndex:p];
+                                    [speakerObj.phones addObject:phoneObj];
+                                }
                                 speakerObj.speakerId = [[currentObj objectForKey:@"id"] intValue];
                             
                                 //[mySpeakers addObject:speakerObj];

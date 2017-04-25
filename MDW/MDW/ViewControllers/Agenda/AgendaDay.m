@@ -117,7 +117,7 @@
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     name.attributedText = [LabelRendering renderHTML:session.name];
     location.text = session.location;
-    
+    date.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate:session.startDate], [DateConverter stringFromDate:session.endDate]];
     //image
     UIImage * sessionImage = [AgendaImages getSessionImage:session];
     if( sessionImage != nil){

@@ -30,18 +30,18 @@ static BOOL Exhibitors = NO;
     return Exhibitors;
 }
 
--(void) setAgenda: (BOOL) _agenda{
++(void) setAgenda: (BOOL) _agenda{
     Agenda = _agenda;
 }
--(void) setMyAgenda: (BOOL) _myAgenda{
++(void) setMyAgenda: (BOOL) _myAgenda{
     MyAgenda = _myAgenda;
 }
 
--(void) setSpeakers: (BOOL) _speakers{
++(void) setSpeakers: (BOOL) _speakers{
     Speakers = _speakers;
 }
 
--(void) setExhibitors: (BOOL) _exhibitors{
++(void) setExhibitors: (BOOL) _exhibitors{
     Exhibitors = _exhibitors;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpeakerDTO.h"
 
 @interface SpeakerDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -15,10 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *company;
 @property (weak, nonatomic) IBOutlet UILabel *details;
 
-@property NSString * speakerName;
-@property NSString * speakerJob;
-@property NSString * speakerCompany;
-@property NSString * speakerDetails;
-@property UIImage * speakerImage;
+
+@property SpeakerDTO * speaker;
 
 @end

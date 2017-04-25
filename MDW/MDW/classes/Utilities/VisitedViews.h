@@ -16,9 +16,9 @@
 +(BOOL) getSpeakers;
 +(BOOL) getExhibitors;
 
--(void) setAgenda: (BOOL) _agenda;
--(void) setMyAgenda: (BOOL) _myAgenda;
--(void) setSpeakers: (BOOL) _speakers	;
--(void) setExhibitors: (BOOL) _exhibitors;
++(void) setAgenda: (BOOL) _agenda;
++(void) setMyAgenda: (BOOL) _myAgenda;
++(void) setSpeakers: (BOOL) _speakers	;
++(void) setExhibitors: (BOOL) _exhibitors;
 
 @end

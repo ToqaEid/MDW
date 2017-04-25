@@ -53,12 +53,16 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    //if()
-    //getData
-    model = [[AgendaDayModel alloc]initWithController:self];
-    [self.view makeToastActivity:CSToastPositionCenter];
+    if(![VisitedViews getAgenda]){
+        //getData
+        model = [[AgendaDayModel alloc]initWithController:self];
+        [self.view makeToastActivity:CSToastPositionCenter];
         
-    [self getSessions];
+        [self getSessions];
+        [VisitedViews setAgenda : YES];
+    }else{
+        [self getSessionsFromDB];
+    }
     
 }
 
@@ -83,6 +87,28 @@
     }else{
         
         [model getAllSessions];
+        
+    }
+    
+}
+-(void) getSessionsFromDB{
+    //get data accorging the view controller
+    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+        
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+        
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+        
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+        
+    }else{
+        
+        dayAgenda = [model getAllSessionsFromDB];
         
     }
     

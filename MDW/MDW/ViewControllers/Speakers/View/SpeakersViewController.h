@@ -11,6 +11,9 @@
 #import "SpeakersModel.h"
 #import "SpeakerDTO.h"
 #import "SpeakerDetailsViewController.h"
+#import "VisitedViews.h"
+#import "UIView+Toast.h"
+
 
 @interface SpeakersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

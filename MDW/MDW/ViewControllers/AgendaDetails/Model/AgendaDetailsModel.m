@@ -22,7 +22,7 @@
     
     ///register using network
         //if network returned error show error toast
-    NSString * error = @"hello";
+    NSString * error = @"registered";
     [controller showToast : error];
         //if no error save in db
     

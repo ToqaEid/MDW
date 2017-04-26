@@ -29,6 +29,8 @@
 -(void)viewDidLoad{
     
     dayAgenda = [NSMutableArray new];
+    model = [[AgendaDayModel alloc]initWithController:self];
+
     
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -53,12 +55,21 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    //getData
-    model = [[AgendaDayModel alloc]initWithController:self];
-    [self.view makeToastActivity:CSToastPositionCenter];
+    if(![VisitedViews getAgenda]){
+        //getData
+        [self.view makeToastActivity:CSToastPositionCenter];
         
-    [self getSessions];
-    
+        [self getSessions];
+        
+        [VisitedViews setAgenda : YES];
+    }else{
+        [self getSessionsFromDB];
+        
+        NSLog(@"getSessionsFromDB");
+
+    }
+    [self.tableView reloadData];
+
 }
 
 /*====================== DATA =================================*/
@@ -83,6 +94,32 @@
         
         [model getAllSessions];
         
+    }
+    
+}
+-(void) getSessionsFromDB{
+    //get data accorging the view controller
+    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+        NSLog(@"getSessionsFromDB AgendaDay1");
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+        NSLog(@"getSessionsFromDB AgendaDay2");
+
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+        NSLog(@"getSessionsFromDB AgendaDay3");
+
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+        
+    }else{
+        NSLog(@"getSessionsFromDB AgendaALl");
+
+        dayAgenda = [model getAllSessionsFromDB];
+        printf("sessions : %lu\n", (unsigned long)dayAgenda.count);
+
     }
     
 }
@@ -133,11 +170,10 @@
     
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     
-    //AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
-    
-    
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
     agendaDetails.session = session;
+    
+    printf("\nsession %s\n", [session.description UTF8String]);
     
     agendaDetails.hidesBottomBarWhenPushed = YES;
     
@@ -202,5 +238,12 @@
 }
 
 
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+
+}
 
 @end

@@ -39,8 +39,7 @@
     
     //QR
     QRBarController * qr = [QRBarController new];
-    model= [MyContactModel new];
-    AttendeeDTO * user = [model getUserInfo];
+    AttendeeDTO * user = [MyContactModel getUser];
     CGImageRef cgImage = [qr encodeQRCode : [self formEncodedData : user]];    UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
     _QRImage.image = qrImage;
     
@@ -48,7 +47,7 @@
     //data
     _mobile.text = [user.mobiles objectAtIndex:0];
     _email.text = user.email;
-
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 //    return [NSString stringWithFormat:@"BEGIN:VCARD\nVERSION:3.0\nN:%@;%@\nFN:\nORG:%@\nTITLE:%@\nADR:;;;%@;;;%@\nTEL;WORK;VOICE:%@\nTEL;CELL:%@\nTEL;FAX:\nEMAIL;WORK;INTERNET:%@\nURL:\nEND:VCARD", @"sdf", @"sdffdsa", @"comp", @"stu", @"cairo", @"egy", @"010065565", @"5655656565", @"t.e@gmail.com" ];

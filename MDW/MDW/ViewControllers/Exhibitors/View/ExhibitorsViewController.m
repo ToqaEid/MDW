@@ -56,8 +56,15 @@
     
     
     ///////////////// get data to populate tableView
-    
-    [model getExhibitorsFromNetwork:@"eng.medhat.cs.h@gmail.com"];
+    if(![VisitedViews getExhibitors]){
+
+        [self.view makeToastActivity:CSToastPositionCenter];
+
+        [model getExhibitorsFromNetwork];
+        [VisitedViews setExhibitors:YES];
+    }else{
+        exibitors = [model getExhibitorsFromDB];
+    }
     
 }
 
@@ -126,6 +133,10 @@
 
     exibitors = exhibitors;
     [self.tableView reloadData];
+    
+    //hide progress dialog
+    [self.view hideToastActivity];
+
 
 }
 

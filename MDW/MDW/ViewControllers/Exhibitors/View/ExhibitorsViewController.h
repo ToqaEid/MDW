@@ -11,6 +11,9 @@
 #import <UIKit/UIKit.h>
 #import "ExhiptorsDTO.h"
 #import "ExhibitorModel.h"
+#import "VisitedViews.h"
+#import "UIView+Toast.h"
+
 
 @interface ExhibitorsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

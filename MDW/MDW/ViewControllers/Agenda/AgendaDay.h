@@ -15,6 +15,7 @@
 #import "AgendaDetailsViewController.h"
 #import "Connection.h"
 #import "AgendaImages.h"
+#import "VisitedViews.h"
 
 @interface AgendaDay : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -23,6 +24,7 @@
 
 
 -(void) setAllSessionsArray : (NSMutableArray* ) sessions;
+-(void)showErrorToast : (NSString *)toastMsg;
 
 
 @end

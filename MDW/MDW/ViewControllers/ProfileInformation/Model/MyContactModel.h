@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "AttendeeDTO.h"
+#import "NSUserDefaultForObject.h"
+
+
+static AttendeeDTO * user ;
 
 @interface MyContactModel : NSObject
 
--(AttendeeDTO *)getUserInfo;
+
+-(void)getUserInfoFromUserDefault;
++(AttendeeDTO * )getUser;
+
 
 @end

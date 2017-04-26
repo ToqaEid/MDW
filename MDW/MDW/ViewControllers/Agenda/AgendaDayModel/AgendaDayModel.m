@@ -41,6 +41,7 @@
 }
 -(NSMutableArray*) getAllSessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
+    NSLog(@"sessions : %lu", (unsigned long)sessions.count);
     return sessions;
 
 }
@@ -87,6 +88,7 @@
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
+            [controller showErrorToast : @"Please Check Network Connection"];
             
         }];
     

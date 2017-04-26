@@ -26,13 +26,13 @@
 
 -(void)viewDidLoad{
     
+    
     //intialize model
     model =[[SpeakersModel alloc]initWithController:self];
     
+
     speakers = [NSMutableArray new];
-    
-    //navigation bar
-    
+        
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
     
@@ -61,17 +61,13 @@
 }
 
 -(void) getInitialData{
-    if([Connection checkInternetConnection]){
+    if(![VisitedViews getSpeakers]){
         
-        indicator = [self showProgressDialog];
-        [indicator startAnimating];
+        [self.view makeToastActivity:CSToastPositionCenter];
         
-        //speakers = [model getSpeakersFromNetwork];
-        printf("%lu\n", (unsigned long)speakers.count);
-        [self.tableView  reloadData];
+        [model getSpeakersFromNetwork];
         
-        [indicator stopAnimating];
-        printf("Speakers View : checkInternetConnection\n");
+        [VisitedViews setSpeakers:YES];
         
     }else{
         
@@ -83,16 +79,7 @@
     }
 
 }
-/*======================== Progress Dialog =========================*/
--(UIActivityIndicatorView *) showProgressDialog{
-    UIActivityIndicatorView *indicator1 = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    indicator1.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-    indicator1.center = self.view.center;
-    [self.view addSubview:indicator1];
-    [indicator1 bringSubviewToFront:self.view];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
-    return indicator1;
-}
+
 /*================================ Table View ========================================*/
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
@@ -157,12 +144,7 @@
     SpeakerDetailsViewController *speakerDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SpeakerDetailsViewController"];
     
     //pass data to detailed view
-    
-    //speakerDetails.speakerImage = speaker.imageUrl;
-    speakerDetails.speakerName = [NSString stringWithFormat:@"%@ %@ %@", speaker.firstName, speaker.middleName, speaker.lastName];
-    speakerDetails.speakerJob = speaker.title;
-    speakerDetails.speakerCompany = speaker.companyName;
-    
+    speakerDetails.speaker = speaker;
     
     
     //open detailed view
@@ -217,26 +199,6 @@
 
 
 
-
-
-
-
-
-
-
-
--(void)viewWillAppear:(BOOL)animated{
-    
-    
-    printf("Testing Network .. \n");
-    
-    [model getSpeakersFromNetwork:@"eng.medhat.cs.h@gmail.com"];
-    
-    
-    
-}
-
-
 -(void) setAllSpeakers : (NSMutableArray *) sp{
 
     
@@ -245,6 +207,9 @@
     speakers = sp;
     [self.tableView  reloadData];
     
+    //hide progress dialog
+    [self.view hideToastActivity];
+
     printf("Array Size is >> %lu\n", (unsigned long)[speakers count]);
     
     

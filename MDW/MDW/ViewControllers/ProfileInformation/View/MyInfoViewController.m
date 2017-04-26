@@ -15,6 +15,9 @@
 
 
 -(void)viewDidLoad{
+    
+    
+    
     //side menu
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -32,7 +35,9 @@
     
     model = [MyContactModel new];
     
-    user = [model getUserInfo];
+    [model getUserInfoFromUserDefault];
+    
+    user = [MyContactModel getUser];
     
     _myName.text = [NSString stringWithFormat:@"%@ %@ %@", user.firstName, user.middleName, user.lastName];
     _myTitle.text = user.title;

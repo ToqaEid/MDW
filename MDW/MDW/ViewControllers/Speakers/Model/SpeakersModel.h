@@ -11,6 +11,8 @@
 #import "SpeakersViewController.h"
 #import "Connection.h"
 #import "speakerDAO.h"
+#import "NSUserDefaultForObject.h"
+
 
 @interface SpeakersModel : NSObject
 
@@ -20,9 +22,7 @@
 
 -(void) saveSpeakersInDB:(NSMutableArray *)sessions;
 
--(void) getSpeakersFromNetwork : (NSString *) username;
-
-//-(void) getAllSpea
+-(void) getSpeakersFromNetwork ;
 
 
 @end

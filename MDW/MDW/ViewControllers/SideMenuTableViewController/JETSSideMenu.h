@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
 #import "NSUserDefaultForObject.h"
+#import "VisitedViews.h"
 
 @interface JETSSideMenu : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

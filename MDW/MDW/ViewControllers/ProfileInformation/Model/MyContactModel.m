@@ -10,10 +10,14 @@
 
 @implementation MyContactModel
 
--(AttendeeDTO *)getUserInfo{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *encodedObject = [defaults objectForKey:@"user"];
-    return [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
+-(void)getUserInfoFromUserDefault{
+    user = [NSUserDefaultForObject getObjectForKey:@"user"];
+    
+    printf("firstName : %s\n", [user.firstName UTF8String]);
+}
+
++(AttendeeDTO * )getUser{
+    return user;
 }
 
 

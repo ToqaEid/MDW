@@ -69,6 +69,11 @@
         //remove user data from nsuserdefaults
         [NSUserDefaultForObject removeObjectWithKey:@"user"];
         
+        //make all views unvisited
+        [VisitedViews setAllViewsAsUnVisited];
+        
+        
+        
         
     }
 }

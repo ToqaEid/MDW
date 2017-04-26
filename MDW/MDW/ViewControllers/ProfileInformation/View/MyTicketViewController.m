@@ -9,7 +9,7 @@
 #import "MyTicketViewController.h"
 
 @implementation MyTicketViewController{
-
+    
     MyContactModel * model;
 }
 
@@ -34,13 +34,14 @@
     //QR
     QRBarController * qr = [QRBarController new];
     
-     model= [MyContactModel new];
-//    AttendeeDTO * user = [model getUserInfo];
-//    CGImageRef cgImage = [qr encodeQRCode : user.code];
-//    UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
-//    _ticketImage.image = qrImage;
     
-
+    
+    AttendeeDTO * user = user = [MyContactModel getUser];;
+    CGImageRef cgImage = [qr encodeQRCode : user.code];
+    UIImage * qrImage = [[UIImage alloc]initWithCGImage:cgImage];
+    _ticketImage.image = qrImage;
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 

@@ -16,11 +16,17 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     _titleField.text = _session.name;
-    _dateField.text = [DateConverter dayStringFromDate: _session.startDate];
-    _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
-    _detailsField.text = _session.SessionDescription;
+    _titleField.numberOfLines = 0;
+    _titleField.adjustsFontSizeToFitWidth = YES;
     
-        
+    _dateField.text = [DateConverter dayStringFromDate: _session.startDate];
+    
+    _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
+    
+    _detailsField.text = _session.SessionDescription;
+    _detailsField.numberOfLines = 0;
+    _detailsField.adjustsFontSizeToFitWidth = YES;
+    
     [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
 
 

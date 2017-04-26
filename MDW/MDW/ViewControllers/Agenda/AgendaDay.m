@@ -170,13 +170,10 @@
     
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     
-    //AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
-    
-    
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
     agendaDetails.session = session;
     
-    printf("\nsession %d\n", session.status);
+    printf("\nsession %s\n", [session.description UTF8String]);
     
     agendaDetails.hidesBottomBarWhenPushed = YES;
     
@@ -241,5 +238,12 @@
 }
 
 
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+
+}
 
 @end

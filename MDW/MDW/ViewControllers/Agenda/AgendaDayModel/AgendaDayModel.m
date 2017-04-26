@@ -88,6 +88,7 @@
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
+            [controller showErrorToast : @"Please Check Network Connection"];
             
         }];
     

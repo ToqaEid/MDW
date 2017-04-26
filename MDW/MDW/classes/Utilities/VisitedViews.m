@@ -45,6 +45,11 @@ static BOOL Exhibitors = NO;
     Exhibitors = _exhibitors;
 }
 
-
++(void) setAllViewsAsUnVisited {
+    Agenda = NO;
+    MyAgenda = NO;
+    Speakers = NO;
+    Exhibitors = NO;
+}
 
 @end

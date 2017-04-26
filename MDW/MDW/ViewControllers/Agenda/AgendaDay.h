@@ -24,6 +24,7 @@
 
 
 -(void) setAllSessionsArray : (NSMutableArray* ) sessions;
+-(void)showErrorToast : (NSString *)toastMsg;
 
 
 @end

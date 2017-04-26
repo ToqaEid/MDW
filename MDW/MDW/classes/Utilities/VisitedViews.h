@@ -20,5 +20,6 @@
 +(void) setMyAgenda: (BOOL) _myAgenda;
 +(void) setSpeakers: (BOOL) _speakers	;
 +(void) setExhibitors: (BOOL) _exhibitors;
++(void) setAllViewsAsUnVisited;
 
 @end

@@ -29,6 +29,8 @@
 -(void)viewDidLoad{
     
     dayAgenda = [NSMutableArray new];
+    model = [[AgendaDayModel alloc]initWithController:self];
+
     
     //set background image
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -53,12 +55,27 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    //getData
-    model = [[AgendaDayModel alloc]initWithController:self];
-    [self.view makeToastActivity:CSToastPositionCenter];
+    if(![VisitedViews getAgenda]){
+        //getData
+        [self.view makeToastActivity:CSToastPositionCenter];
         
-    [self getSessions];
-    
+        [model getAllSessions : NO : nil];
+        
+        [VisitedViews setAgenda : YES];
+    }else{
+        
+        if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
+            dayAgenda = [model getAllSessionsFromDB];
+        }else{
+            [self getSessionsFromDB];
+        }
+        
+        
+        NSLog(@"getSessionsFromDB");
+
+    }
+    [self.tableView reloadData];
+
 }
 
 /*====================== DATA =================================*/
@@ -72,16 +89,36 @@
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
         
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay2SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
         
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay3SessionsFromDB];
         
         
     }else{
         
         [model getAllSessions];
+        
+    }
+    
+}
+-(void) getSessionsFromDB{
+    //get data accorging the view controller
+    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+        NSLog(@"getSessionsFromDB AgendaDay1");
+        dayAgenda = [model getDay1SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+        NSLog(@"getSessionsFromDB AgendaDay2");
+
+        dayAgenda = [model getDay2SessionsFromDB];
+        
+    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+        NSLog(@"getSessionsFromDB AgendaDay3");
+
+        dayAgenda = [model getDay3SessionsFromDB];
+        
         
     }
     
@@ -112,6 +149,7 @@
     UILabel * name = [cell viewWithTag:2];
     UILabel * location = [cell viewWithTag:3];
     UILabel * date = [cell viewWithTag:4];
+    UILabel * dateImage = [cell viewWithTag:7];
     
     //fill fields in the cell with data
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
@@ -123,7 +161,8 @@
     if( sessionImage != nil){
         icon.image = sessionImage;
     }
-
+    //date in image
+    dateImage.text = [DateConverter dayStringFromDate:session.startDate];
     
     return cell;
     
@@ -133,11 +172,10 @@
     
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     
-    //AgendaDetailsViewController * agendaDetails = [AgendaDetailsViewController new];
-    
-    
     AgendaDetailsViewController *agendaDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"AgendaDetailsViewController"];
     agendaDetails.session = session;
+    
+    printf("\nsession %s\n", [session.description UTF8String]);
     
     agendaDetails.hidesBottomBarWhenPushed = YES;
     
@@ -154,18 +192,26 @@
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
-    
     //get Data
-    [self getSessions];
+    [model getAllSessions: YES : self.restorationIdentifier];
     
-    
+}
+
+-(void) endRefresh : (NSMutableArray *) dayAgenda1 : (NSString *) viewID{
+    if([viewID isEqualToString: @"AgendaAll"]){
+        NSLog(@"allday");
+        dayAgenda = dayAgenda1;
+    }else{
+        [self getSessionsFromDB];
+    }
     [self.tableView  reloadData];
     [refreshControl endRefreshing];
-    
-    
 }
 
 -(void) prepareRefreshControlForTableView{
@@ -202,5 +248,12 @@
 }
 
 
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+
+}
 
 @end

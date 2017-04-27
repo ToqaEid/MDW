@@ -16,19 +16,21 @@
 @implementation ExhibitorModel{
 
      ExhibitorsViewController * controller;
+    exhiptorDAO * exhibitor;
     
 }
 
 -(id)initWithController: (ExhibitorsViewController*) exhibitorController{
     
     controller = exhibitorController;
+    exhibitor = [exhiptorDAO sharedInstance];
     return [self init];
 }
 
--(void) getExhibitorsFromNetwork : (NSString *) username{
+-(void) getExhibitorsFromNetwork{
 
-
-    NSString * exhibitorssURL =  [[MDWServerURLs getGetExhibitorsURL]  stringByAppendingString: username  ];
+    AttendeeDTO * user = [NSUserDefaultForObject getObjectForKey:@"user"];
+    NSString * exhibitorssURL =  [[MDWServerURLs getGetExhibitorsURL]  stringByAppendingString: user.email  ];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET: exhibitorssURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -51,6 +53,8 @@
     
     
 }
-
+-(NSMutableArray *) getExhibitorsFromDB{
+    return (NSMutableArray*)[exhibitor getAllExhiptors];
+}
 
 @end

@@ -137,6 +137,15 @@
                 exhibitorObj.contactTitle = [currentObj objectForKey:@"contactTitle"];
                 exhibitorObj.companyURL = [currentObj objectForKey:@"companyUrl"];
                 
+                if([exhibitorObj.companyURL rangeOfString:@"http://"].location == NSNotFound){
+                    
+                    NSLog(@"company url format");
+                    exhibitorObj.companyURL = [NSString stringWithFormat:@"http://%@", exhibitorObj.companyURL];
+                }else{
+                    NSLog(@"company url format found");
+
+                }
+                
                 exhibitorObj.fax = [currentObj objectForKey:@"fax"];
                 exhibitorObj.companyName = [currentObj objectForKey:@"companyName"];
                 exhibitorObj.companyAbout = [currentObj objectForKey:@"companyAbout"];
@@ -247,9 +256,13 @@
                     sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
                     sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
                     sessionObj.liked = [sessionJson objectForKey:@"liked"];
-                    
-                    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longValue];
-                    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
+                    NSString * str1=[sessionJson objectForKey:@"startDate"];
+                    long long  ssr=[str1 longLongValue];
+                    NSString * str2=[sessionJson objectForKey:@"endDate"];
+                    long long  ssr2=[str2 longLongValue];
+
+                    sessionObj.startDate =ssr; //[[sessionJson objectForKey:@"startDate"] longValue];
+                    sessionObj.endDate = ssr2;//[[sessionJson objectForKey:@"endDate"] longValue];
                     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
                    
 
@@ -513,9 +526,13 @@
     sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
     sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
     sessionObj.liked = [sessionJson objectForKey:@"liked"];
-    
-    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longValue];
-    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
+//    NSString * str1=[sessionJson objectForKey:@"startDate"];
+//    long long  ssr=[str1 longLongValue];
+//    NSString * str2=[sessionJson objectForKey:@"endDate"];
+//    long long  ssr2=[str2 longLongValue];
+
+    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longLongValue];
+    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longLongValue];
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
     
@@ -616,6 +633,11 @@
     exhibitorObj.contactName = [exhibitorJson objectForKey:@"contactName"];
     exhibitorObj.contactTitle = [exhibitorJson objectForKey:@"contactTitle"];
     exhibitorObj.companyURL = [exhibitorJson objectForKey:@"companyUrl"];
+    
+    if([exhibitorObj.companyURL rangeOfString:@"http://"].location == NSNotFound){
+        
+        exhibitorObj.companyURL = [NSString stringWithFormat:@"http://%@", exhibitorObj.companyURL];
+    }
     
     exhibitorObj.fax = [exhibitorJson objectForKey:@"fax"];
     exhibitorObj.companyName = [exhibitorJson objectForKey:@"companyName"];

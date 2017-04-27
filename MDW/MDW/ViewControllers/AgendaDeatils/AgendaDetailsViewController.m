@@ -16,13 +16,20 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     _titleField.text = _session.name;
-    _dateField.text = [DateConverter dayStringFromDate: _session.startDate];
+    _titleField.numberOfLines = 0;
+    _titleField.adjustsFontSizeToFitWidth = YES;
+    
+    _dateField.text = [DateConverter dateStringFromDate: _session.startDate];
+    
     _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
+    
     _detailsField.text = _session.SessionDescription;
+    _detailsField.numberOfLines = 0;
+    _detailsField.adjustsFontSizeToFitWidth = YES;
     
-    
-    /////// Rating btn color?? ya toqa
-    
+    _locationField.text = _session.location;
+    [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+
 
 }
 
@@ -32,7 +39,7 @@
     
     printf(" +++ SessionDetails is Loaded .... \n");
     
-    
+    printf("\nsession details %d\n", _session.status);
 }
 
 - (IBAction)ratingAction:(id)sender {

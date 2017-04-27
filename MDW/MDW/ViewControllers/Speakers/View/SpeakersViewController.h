@@ -11,6 +11,9 @@
 #import "SpeakersModel.h"
 #import "SpeakerDTO.h"
 #import "SpeakerDetailsViewController.h"
+#import "VisitedViews.h"
+#import "UIView+Toast.h"
+
 
 @interface SpeakersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,6 +24,8 @@
 -(void)downloadSpeakerImage:(SpeakerDTO *) object;
 
 -(void) setAllSpeakers : (NSMutableArray *) sp;
+
+-(void)showErrorToast : (NSString *)toastMsg;
 
 
 @end

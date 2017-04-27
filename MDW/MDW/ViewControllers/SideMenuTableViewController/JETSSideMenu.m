@@ -59,7 +59,7 @@
         
         AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
-        [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+
         
         app.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
         
@@ -68,6 +68,11 @@
         
         //remove user data from nsuserdefaults
         [NSUserDefaultForObject removeObjectWithKey:@"user"];
+        
+        //make all views unvisited
+        [VisitedViews setAllViewsAsUnVisited];
+        
+        
         
         
     }

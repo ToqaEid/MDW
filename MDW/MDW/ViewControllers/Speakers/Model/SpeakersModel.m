@@ -38,13 +38,12 @@
 }
 
 
--(void) getSpeakersFromNetwork : (NSString *) username{
+-(void) getSpeakersFromNetwork{
     
     
-    
-   // NSString * username = @"eng.medhat.cs.h@gmail.com";
-    
-    NSString * speakersURL =  [[MDWServerURLs getGetSpeakersURL]  stringByAppendingString: username  ];
+    AttendeeDTO * user = [NSUserDefaultForObject getObjectForKey:@"user"];
+
+    NSString * speakersURL =  [[MDWServerURLs getGetSpeakersURL]  stringByAppendingString: user.email  ];
     
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager GET: speakersURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -62,6 +61,7 @@
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
+            [controller showErrorToast : @"Please Check Network Connection"];
             
         }];
     

@@ -21,19 +21,19 @@
 
 /*=======================Sessions from DB ========================*/
 -(NSMutableArray*) getDay1SessionsFromDB{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessions];
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessionsDay1];
     return sessions;
 }
 -(NSMutableArray*) getDay2SessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessionsDay2];
     return sessions;
 }
 -(NSMutableArray*) getDay3SessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessionsDay3];
     return sessions;
 }
 -(NSMutableArray*) getAllSessionsFromDB{
-    NSMutableArray * sessions = nil;
+    NSMutableArray * sessions = (NSMutableArray *)[sessionDao getMySessions];
     return sessions;
     
 }

@@ -29,13 +29,7 @@
     
     //refresh table
     
-    refreshControl=[[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self
-                       action:@selector(refreshMytableView)
-             forControlEvents:UIControlEventValueChanged];
-    refreshControl.tintColor = [UIColor whiteColor];
-    refreshControl.backgroundColor = [UIColor orangeColor];
-    [self.tableView addSubview:refreshControl];
+    [self prepareRefreshControlForTableView];
     
     
     //side menu
@@ -67,17 +61,6 @@
     }
     
 }
-
-
-
--(void) refreshMytableView
-{
-    
-    [self.tableView  reloadData];
-    [refreshControl endRefreshing];
-    
-}
-
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -116,8 +99,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ExhiptorsDTO * exhibitor = [exibitors objectAtIndex:indexPath.row];
+    if(![exhibitor.companyURL isEqualToString: @""]){
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: exhibitor.companyURL]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: exhibitor.companyURL]];
+    }else{
+        [self.view makeToast:@"No Avaliable URL"];
+    }
+    
+    
 }
 
 -(NSAttributedString*) renderHTML:(NSString*) htmlString{
@@ -128,6 +117,25 @@
     return attrStr;
 }
 
+/* ============================= Refresh Table =============================*/
+-(void) refreshMytableView{
+    
+    //get Data
+    [model getExhibitorsFromNetwork];
+    
+}
+
+-(void) prepareRefreshControlForTableView{
+    
+    refreshControl=[[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(refreshMytableView)
+             forControlEvents:UIControlEventValueChanged];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor orangeColor];
+    [self.tableView addSubview:refreshControl];
+}
+
 
 -(void)setAllExhibitors:(NSMutableArray *)exhibitors{
 
@@ -136,6 +144,7 @@
     
     //hide progress dialog
     [self.view hideToastActivity];
+    [refreshControl endRefreshing];
 
 
 }

@@ -175,18 +175,14 @@
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
-    
     //get Data
-    
     [model getAllSessions: YES : self.restorationIdentifier];
     
-//    [self.tableView  reloadData];
-//    [refreshControl endRefreshing];
-    
-    
 }
+
 -(void) endRefresh : (NSMutableArray *) dayAgenda1 : (NSString *) viewID{
     if([viewID isEqualToString: @"AgendaAll"]){
+        NSLog(@"allday");
         dayAgenda = dayAgenda1;
     }else{
         [self getSessionsFromDB];

@@ -20,8 +20,6 @@
 
 -(NSMutableArray*) getSpeakersFromDB;
 
--(void) saveSpeakersInDB:(NSMutableArray *)sessions;
-
 -(void) getSpeakersFromNetwork ;
 
 

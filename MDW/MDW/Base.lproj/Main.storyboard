@@ -783,7 +783,7 @@
         <!--AgendaAll-->
         <scene sceneID="zdO-0d-Mcf">
             <objects>
-                <viewController storyboardIdentifier="AgendaAllDays" title="AgendaAll" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6XJ-Ur-dLT" customClass="AgendaDay" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AgendaAll" title="AgendaAll" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6XJ-Ur-dLT" customClass="AgendaDay" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aId-wa-hqQ"/>
                         <viewControllerLayoutGuide type="bottom" id="RBq-i0-JgW"/>
@@ -1304,15 +1304,6 @@
                                         <color key="textColor" red="0.96935516595840454" green="0.72446459531784058" blue="0.047613009810447693" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Into Virtual Museum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyB-yd-do6">
-                                        <rect key="frame" x="36" y="13" width="235" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="oSr-WF-gRX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nuo-0N-fz9">
                                         <rect key="frame" x="26" y="147" width="268" height="34"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1371,6 +1362,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Into Virtual Museum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyB-yd-do6">
+                                        <rect key="frame" x="36" y="13" width="235" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="oSr-WF-gRX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XyB-yd-do6" firstAttribute="leading" secondItem="Lat-uP-mBS" secondAttribute="leading" constant="36" id="0u7-ag-Go2"/>

@@ -23,5 +23,7 @@
 
 -(void) setAllSpeakers : (NSMutableArray *) sp;
 
+-(void)showErrorToast : (NSString *)toastMsg;
+
 
 @end

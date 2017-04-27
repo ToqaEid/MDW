@@ -137,6 +137,15 @@
                 exhibitorObj.contactTitle = [currentObj objectForKey:@"contactTitle"];
                 exhibitorObj.companyURL = [currentObj objectForKey:@"companyUrl"];
                 
+                if([exhibitorObj.companyURL rangeOfString:@"http://"].location == NSNotFound){
+                    
+                    NSLog(@"company url format");
+                    exhibitorObj.companyURL = [NSString stringWithFormat:@"http://%@", exhibitorObj.companyURL];
+                }else{
+                    NSLog(@"company url format found");
+
+                }
+                
                 exhibitorObj.fax = [currentObj objectForKey:@"fax"];
                 exhibitorObj.companyName = [currentObj objectForKey:@"companyName"];
                 exhibitorObj.companyAbout = [currentObj objectForKey:@"companyAbout"];
@@ -616,6 +625,11 @@
     exhibitorObj.contactName = [exhibitorJson objectForKey:@"contactName"];
     exhibitorObj.contactTitle = [exhibitorJson objectForKey:@"contactTitle"];
     exhibitorObj.companyURL = [exhibitorJson objectForKey:@"companyUrl"];
+    
+    if([exhibitorObj.companyURL rangeOfString:@"http://"].location == NSNotFound){
+        
+        exhibitorObj.companyURL = [NSString stringWithFormat:@"http://%@", exhibitorObj.companyURL];
+    }
     
     exhibitorObj.fax = [exhibitorJson objectForKey:@"fax"];
     exhibitorObj.companyName = [exhibitorJson objectForKey:@"companyName"];

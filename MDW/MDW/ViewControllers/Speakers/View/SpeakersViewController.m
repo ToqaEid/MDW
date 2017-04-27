@@ -73,8 +73,6 @@
         
         speakers = [model getSpeakersFromDB];
         [self.tableView  reloadData];
-        //TODO : toast with check your connection
-        printf("Speakers View : !checkInternetConnection\n");
         
     }
 
@@ -170,19 +168,8 @@
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
-    
     //get Data
-    if([Connection checkInternetConnection]){
-        
-        //speakers = [model getSpeakersFromNetwork];
-        printf("Speakers View : checkInternetConnection\n");
-    
-    }else{
-        //TODO: add toast with check internet connection
-    }
-    
-    [self.tableView  reloadData];
-    [refreshControl endRefreshing];
+    [model getSpeakersFromNetwork];
     
 }
 
@@ -209,6 +196,7 @@
     
     //hide progress dialog
     [self.view hideToastActivity];
+    [refreshControl endRefreshing];
 
     printf("Array Size is >> %lu\n", (unsigned long)[speakers count]);
     
@@ -218,8 +206,13 @@
 
 
 
-
-
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+    
+}
 
 
 

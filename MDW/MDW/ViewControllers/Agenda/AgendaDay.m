@@ -83,11 +83,11 @@
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
         
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay2SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
         
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay3SessionsFromDB];
         
         
     }else{
@@ -106,12 +106,12 @@
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
         NSLog(@"getSessionsFromDB AgendaDay2");
 
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay2SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
         NSLog(@"getSessionsFromDB AgendaDay3");
 
-        dayAgenda = [model getDay1SessionsFromDB];
+        dayAgenda = [model getDay3SessionsFromDB];
         
         
     }else{

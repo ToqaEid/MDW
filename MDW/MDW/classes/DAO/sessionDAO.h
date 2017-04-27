@@ -15,9 +15,13 @@
 -(BOOL)saveSessions:(NSMutableArray*) sessions;
 -(RLMResults*)getAllSessions;
 -(BOOL)clearAllDB;
+-(RLMResults*)getMySessionsDay1;
+-(RLMResults*)getMySessionsDay2;
+-(RLMResults*)getMySessionsDay3;
 -(RLMResults*)getMySessions;
 -(RLMResults*)day1Sessions;
 -(RLMResults*)day2Sessions;
 -(RLMResults*)day3Sessions;
+-(BOOL)addSpeaker:(SpeakerDTO*)speaker;
 -(BOOL)updateSession:(SessionDTO*)session;
 @end

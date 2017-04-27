@@ -11,7 +11,7 @@
 
 @interface SessionDTO : RLMObject
 @property int sessionId,status;
-@property long startDate,endDate;
+@property long long startDate,endDate;
 @property BOOL liked;
 @property NSString *sessionType,*name,*SessionDescription,*location, *tags;
 @property RLMArray<SpeakerDTO *><SpeakerDTO> *speakers;

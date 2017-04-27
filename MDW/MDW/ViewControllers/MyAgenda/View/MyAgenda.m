@@ -46,22 +46,22 @@
     
     //getData
     model = [[MyAgendaModel alloc]initWithController:self];
-    if([Connection checkInternetConnection]){
-        
-        indicator = [self showProgressDialog];
-        [indicator startAnimating];
-        
-        [self getSessionsFromNetwork];
-        
-        printf("Agenda View : checkInternetConnection\n");
-        
-    }else{
-        
+//    if([Connection checkInternetConnection]){
+//        
+//        indicator = [self showProgressDialog];
+//        [indicator startAnimating];
+//        
+//        [self getSessionsFromNetwork];
+//        
+//        printf("Agenda View : checkInternetConnection\n");
+//        
+//    }else{
+    
         [self getSessionsFromDB];
         
         printf("Agenda View : !checkInternetConnection\n");
         
-    }
+    //}
 }
 
 /*====================== DATA =================================*/

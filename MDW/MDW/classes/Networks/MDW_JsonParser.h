@@ -22,6 +22,7 @@
 #import "AttendeeDTO.h"
 #import "SessionDTO.h"
 #import "ExhiptorsDTO.h"
+#import "sessionDAO.h"
 
 @interface MDW_JsonParser : NSObject
 

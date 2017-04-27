@@ -66,7 +66,7 @@
         //printf("Response recieved ... \n");
         
        // NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
-        NSMutableArray *allSessions=[MDW_JsonParser getSessions:responseObject];
+        NSMutableArray *allSessions=[MDW_JsonParser getSessions_v2:responseObject];
         [controller setAllSessionsArray:allSessions];
 
         

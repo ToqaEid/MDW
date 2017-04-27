@@ -247,10 +247,13 @@
                     sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
                     sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
                     sessionObj.liked = [sessionJson objectForKey:@"liked"];
-                    
-                    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longValue];
-                    printf("%s",[[NSString stringWithFormat:@"a7a ana hena ya welad el mara %ld", sessionObj.startDate] UTF8String]);
-                    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
+                    NSString * str1=[sessionJson objectForKey:@"startDate"];
+                    long long  ssr=[str1 longLongValue];
+                    NSString * str2=[sessionJson objectForKey:@"endDate"];
+                    long long  ssr2=[str2 longLongValue];
+
+                    sessionObj.startDate =ssr; //[[sessionJson objectForKey:@"startDate"] longValue];
+                    sessionObj.endDate = ssr2;//[[sessionJson objectForKey:@"endDate"] longValue];
                     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
                    
 
@@ -514,9 +517,13 @@
     sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
     sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
     sessionObj.liked = [sessionJson objectForKey:@"liked"];
-    
-    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longValue];
-    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longValue];
+//    NSString * str1=[sessionJson objectForKey:@"startDate"];
+//    long long  ssr=[str1 longLongValue];
+//    NSString * str2=[sessionJson objectForKey:@"endDate"];
+//    long long  ssr2=[str2 longLongValue];
+
+    sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longLongValue];
+    sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longLongValue];
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
 
     
@@ -543,7 +550,9 @@
             
             printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
             
-            [sessionObj.speakers addObject:speakerObj];
+            //[sessionObj.speakers addObject:speakerObj];
+            sessionDAO *sessiondao=[sessionDAO sharedInstance ];
+            [sessiondao addSpeaker:speakerObj];
             
         }
         

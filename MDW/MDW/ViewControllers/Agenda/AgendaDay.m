@@ -59,11 +59,17 @@
         //getData
         [self.view makeToastActivity:CSToastPositionCenter];
         
-        [self getSessions];
+        [model getAllSessions : NO : nil];
         
         [VisitedViews setAgenda : YES];
     }else{
-        [self getSessionsFromDB];
+        
+        if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
+            dayAgenda = [model getAllSessionsFromDB];
+        }else{
+            [self getSessionsFromDB];
+        }
+        
         
         NSLog(@"getSessionsFromDB");
 
@@ -74,29 +80,6 @@
 
 /*====================== DATA =================================*/
 
--(void)getSessions{
-    
-    //get data accorging the view controller
-    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
-        
-        dayAgenda = [model getDay1SessionsFromDB];
-        
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
-        
-        dayAgenda = [model getDay1SessionsFromDB];
-        
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
-        
-        dayAgenda = [model getDay1SessionsFromDB];
-        
-        
-    }else{
-        
-        [model getAllSessions];
-        
-    }
-    
-}
 -(void) getSessionsFromDB{
     //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
@@ -114,12 +97,6 @@
         dayAgenda = [model getDay1SessionsFromDB];
         
         
-    }else{
-        NSLog(@"getSessionsFromDB AgendaALl");
-
-        dayAgenda = [model getAllSessionsFromDB];
-        printf("sessions : %lu\n", (unsigned long)dayAgenda.count);
-
     }
     
 }
@@ -149,6 +126,7 @@
     UILabel * name = [cell viewWithTag:2];
     UILabel * location = [cell viewWithTag:3];
     UILabel * date = [cell viewWithTag:4];
+    UILabel * dateImage = [cell viewWithTag:7];
     
     //fill fields in the cell with data
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
@@ -160,7 +138,8 @@
     if( sessionImage != nil){
         icon.image = sessionImage;
     }
-
+    //date in image
+    dateImage.text = [DateConverter dayStringFromDate:session.startDate];
     
     return cell;
     
@@ -190,18 +169,30 @@
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
     
     //get Data
-    [self getSessions];
+    
+    [model getAllSessions: YES : self.restorationIdentifier];
+    
+//    [self.tableView  reloadData];
+//    [refreshControl endRefreshing];
     
     
+}
+-(void) endRefresh : (NSMutableArray *) dayAgenda1 : (NSString *) viewID{
+    if([viewID isEqualToString: @"AgendaAll"]){
+        dayAgenda = dayAgenda1;
+    }else{
+        [self getSessionsFromDB];
+    }
     [self.tableView  reloadData];
     [refreshControl endRefreshing];
-    
-    
 }
 
 -(void) prepareRefreshControlForTableView{

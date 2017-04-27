@@ -48,7 +48,16 @@
     if(_session.status == 0){
         
         //register session
-        //_session.status =
+        [self.view makeToast:@"Registering Session"
+                    duration:2.0
+                    position:CSToastPositionCenter
+                    title:nil
+                    image:nil
+                    style:nil
+                    completion:^(BOOL didTap) {
+                      [self.view makeToastActivity:CSToastPositionCenter];
+                  }];
+        
         [model registerSession:_session];
         
         //change star image

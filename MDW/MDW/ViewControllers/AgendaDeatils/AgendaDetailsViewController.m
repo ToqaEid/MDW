@@ -37,29 +37,24 @@
 
 - (IBAction)ratingAction:(id)sender {
     
-    printf("SessionStatus is %d\n", _session.status);
-
+    
     if(_session.status == 0){
         
         //register session
-        _session.status = [model registerSession:_session];
+        [model registerSessionWithSessionObj:_session AndEnforce:false];
         
         //change star image
-        [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
-        
-        
-        
+       // [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
         
     }else{
         
         //unregister session
         [model unregisterSession:_session];
-        _session.status = 0;
+      //  _session.status = 0;
         
         //change star image
-        
-        UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
-        [sender setBackgroundImage:registerStar forState:UIControlStateNormal];
+        //UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
+        //[sender setBackgroundImage:registerStar forState:UIControlStateNormal];
     }
     
 }
@@ -80,5 +75,60 @@
 -(void) showToast : (NSString *) msg{
     [self.view makeToast:msg];
 }
+
+
+
+
+-(void) setStatusFromServer : (NSMutableDictionary*) dict{
+
+    printf("### old = %d , status = %d\n",  [[dict objectForKey:@"oldSession"]intValue], [[dict objectForKey:@"status"]intValue] );
+    
+    int oldSession =  [[dict objectForKey:@"oldSession"]intValue];
+    int status =  [[dict objectForKey:@"status"]intValue];
+    
+    
+    if(oldSession == 0){
+        
+        ///1. register session
+       // _session.status = status;
+        
+        ///2. change star image
+        //[sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+        
+        ///
+        
+    }else{
+        
+        //// alert dialoge
+        
+        
+        
+        
+        
+        /// Replace or Cancel
+        
+        ///// replace >>> req ::: enforce = true
+                
+        
+        ////// cancel >> do nothing
+        
+        //        //unregister session
+        //        [model unregisterSession:_session];
+        //        _session.status = 0;
+        //
+        //        //change star image
+        //        UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
+        //        [sender setBackgroundImage:registerStar forState:UIControlStateNormal];
+                
+                
+            }
+
+    
+    
+
+}
+
+
+
 
 @end

@@ -31,8 +31,8 @@ static NSString * GET_EXHIBITORS_URL =
     @"http://mobiledeveloperweekend.net/service/getExhibitors?userName=";
 
 static NSString * REGISTER_SESSION_URL =
-    @"http://mobiledeveloperweekend.net/service/registerSession?userName=eng.medhat.cs.h@gmail.com&sessionId=4482&enforce=false&status=0";
-
+    @"http://mobiledeveloperweekend.net/service/registerSession?userName=";
+   // @"http://mobiledeveloperweekend.net/service/registerSession?userName=toqa.eid@gmail.com&sessionId=69146&enforce=false&status=0";
 
 
 

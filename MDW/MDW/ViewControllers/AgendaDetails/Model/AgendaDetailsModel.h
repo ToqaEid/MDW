@@ -17,7 +17,7 @@
 
 -(id)initWithController: (AgendaDetailsViewController*) agendaCont;
 
--(int)registerSession : (SessionDTO*) session;
+-(void)registerSessionWithSessionObj : (SessionDTO*)session  AndEnforce : (BOOL) enforce;
 
 -(void)unregisterSession : (SessionDTO*) session;
 @end

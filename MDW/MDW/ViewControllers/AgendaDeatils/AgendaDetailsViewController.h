@@ -25,4 +25,8 @@
 @property SessionDTO * session;
 
 -(void) showToast : (NSString *) msg;
+
+-(void) setStatusFromServer : (NSMutableDictionary*) dict;
+
+
 @end

@@ -13,6 +13,9 @@
 #import <AFNetworking.h>
 #import <AFImageDownloader.h>
 #import <UIImageView+AFNetworking.h>
+#import "speakerDAO.h"
+#import <Realm/Realm.h>
+
 
 @implementation SpeakersViewController{
     
@@ -124,26 +127,20 @@
     description.text = speakerDTO.companyName;
     name.text = [NSString stringWithFormat:@"%@ %@ %@", speakerDTO.firstName, speakerDTO.middleName, speakerDTO.lastName];
 
-    //icon.image = speakerDTO.imageUrl;
     
     
-    NSString * imageUrl = [[speakers objectAtIndex:[indexPath row]] imageURL] ;
-    imageUrl = [imageUrl stringByReplacingOccurrencesOfString:@"www."    withString:@""];
-    //printf(">>>>>>>>>>>>>>>>>>>>>> %s\n", [imageUrl UTF8String]);
     
     
-//    [icon setImageWithURL:[NSURL URLWithString: imageUrl  ]
-//              placeholderImage:[UIImage imageNamed:@"mario.jpg"] ];
-//    
-   
-    if (speakerDTO.imageURL)
-    {
-        [self setImageFromURLString:imageUrl intoImageView:icon andSaveObject:speakerDTO];
+    if ( speakerDTO.image == nil ){
+    
+        [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
+
+        
+    }else{
+        
+        icon.image = [UIImage imageWithData:  speakerDTO.image   ];
+    
     }
-    
-    
-    
-    
     
     
     return cell;
@@ -243,7 +240,16 @@
     printf("Setting SpeakersNSMutableArray .. \n");
     
     speakers = sp;
+    
+    ///// dpwnload all images and store them in db
+//    for (int i=0; i<[speakers count]; i++)
+//    {
+//        [self downloadSpeakerImage: [speakers objectAtIndex:i] ];
+//    }
+//    
+    
     [self.tableView  reloadData];
+    
     
     printf("Array Size is >> %lu\n", (unsigned long)[speakers count]);
     
@@ -252,19 +258,13 @@
 }
 
 
-
-
-
-
-
-
-
-
 -(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject:(id)object{
 
 
     printf("___________ setting image:: %s\n", [url UTF8String]);
 
+    
+    /////----------
 
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -294,17 +294,20 @@
         UIImage *image = [UIImage imageWithData: imageData];
         imageView.image = image;
         
-        
-//        //Adding In DB
-//        if([object isKindOfClass:[ExhibitorDTO class]]){
-//            ((ExhibitorDTO *) object).image = imageData;
-//            [[DBHandler getDB]- addOrUpdateExhibitor:object];
-//        }else if ([object isKindOfClass:[SpeakerDTO class]]){
-//            ((SpeakerDTO *) object).image = imageData;
-//            [[DBHandler getDB] addOrUpdateSpeaker:object];
-//        }
-//        
+        //Adding ImageToDb
+        SpeakerDTO * speaker =  ((SpeakerDTO *) object);
+        speaker.image = imageData;
+       
+        RLMRealm *realm=[RLMRealm defaultRealm];
+        printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
+        SpeakerDTO *myspeaker=[SpeakerDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: speaker.speakerId ]];
+        [realm beginWriteTransaction];
+        myspeaker.image=imageData;
+        [realm addOrUpdateObject:myspeaker];
+        [realm commitWriteTransaction];
 
+        
+        [self.tableView  reloadData];
     
     }];
     [downloadTask resume];

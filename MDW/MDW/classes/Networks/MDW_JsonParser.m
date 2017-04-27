@@ -524,29 +524,29 @@
     
     ///////// speakers not parsed yet
 
-    
-    if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
-    
-        printf("Speakers = NIL \n");
-        sessionObj.speakers = nil;
-        
-    }else{
-        
-        NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
-        
-        for (int i=0; i < [speakersJson count]; i++){
-            
-            NSDictionary * currObjJson = [speakersJson objectAtIndex:i];
-            
-            SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
-            
-            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
-            
-            [sessionObj.speakers addObject:speakerObj];
-            
-        }
-        
-    }
+//    
+//    if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
+//    
+//        printf("Speakers = NIL \n");
+//        sessionObj.speakers = nil;
+//        
+//    }else{
+//        
+//        NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
+//        
+//        for (int i=0; i < [speakersJson count]; i++){
+//            
+//            NSDictionary * currObjJson = [speakersJson objectAtIndex:i];
+//            
+//            SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
+//            
+//            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
+//            
+//            [sessionObj.speakers addObject:speakerObj];
+//            
+//        }
+//        
+//    }
     
     
     
@@ -723,7 +723,9 @@
     speakerObj.gender = [speakerJson objectForKey:@"gender"];
     
     speakerObj.biography = [speakerJson objectForKey:@"biography"];
-    speakerObj.imageURL = [speakerJson objectForKey:@"imageURL"];
+    NSString * tempURL = [speakerJson objectForKey:@"imageURL"];
+   speakerObj.imageURL = [tempURL stringByReplacingOccurrencesOfString:@"www."    withString:@""];
+    
     speakerObj.title = [speakerJson objectForKey:@"title"];
     speakerObj.companyName = [speakerJson objectForKey:@"companyName"];
     
@@ -795,8 +797,9 @@
 
 
 
-+ (int) getSesstionRegisterationStatus : (id) JsonObj{
++ (NSMutableDictionary *) getSesstionRegisterationStatus : (id) JsonObj{
 
+    NSMutableDictionary * result = [NSMutableDictionary new];
     int status = 0;
 
     
@@ -821,19 +824,22 @@
             NSDictionary * resultJson = [rootJson objectForKey:@"result"];
             
             int oldsession = [[resultJson objectForKey:@"oldSessionId"] intValue];
+            [result setValue: [[NSNumber alloc] initWithInt:oldsession] forKey:@"oldSession"];
+            
             if(oldsession != 0)
             {
                 ////// Already registered in another session at the same time
             
-                
                 status = -1;
+                [result setValue: [[NSNumber alloc] initWithInt:status] forKey:@"status"];
                 
                 
             }else{
                 /////// Registration Status is
                 
-                  status = [[resultJson objectForKey:@"status"] intValue];
-            
+                status = [[resultJson objectForKey:@"status"] intValue];
+                [result setValue: [[NSNumber alloc] initWithInt:status] forKey:@"status"];
+                
             }
             
         }
@@ -842,7 +848,7 @@
     
     
     
-    return status;
+    return result;
 }
 
 @end

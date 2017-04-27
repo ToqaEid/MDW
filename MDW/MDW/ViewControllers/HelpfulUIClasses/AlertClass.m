@@ -34,4 +34,39 @@
 }
 
 
+
+
++(UIAlertController*)registerAlert{
+    
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@""
+                                 message:@"You are registered in another session at the same time !"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    //Add Buttons
+    
+    UIAlertAction* replaceButton = [UIAlertAction
+                               actionWithTitle:@"Replace"
+                               style:UIAlertActionStyleDefault
+                               handler:nil];
+    
+    UIAlertAction* cancelButton = [UIAlertAction
+                                    actionWithTitle:@"Cancel"
+                                    style:UIAlertActionStyleDefault
+                                    handler:nil];
+    
+ 
+    
+    //Add your buttons to alert controller
+    
+    [alert addAction:replaceButton];
+    [alert addAction:cancelButton];
+    
+    return alert;
+}
+
+
+
+
+
 @end

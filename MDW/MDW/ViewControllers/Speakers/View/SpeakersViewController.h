@@ -18,6 +18,8 @@
 
 -(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject: (id)object;
 
+-(void)downloadSpeakerImage:(SpeakerDTO *) object;
+
 -(void) setAllSpeakers : (NSMutableArray *) sp;
 
 

@@ -19,7 +19,7 @@
     _titleField.numberOfLines = 0;
     _titleField.adjustsFontSizeToFitWidth = YES;
     
-    _dateField.text = [DateConverter dayStringFromDate: _session.startDate];
+    _dateField.text = [DateConverter dateStringFromDate: _session.startDate];
     
     _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
     
@@ -27,6 +27,7 @@
     _detailsField.numberOfLines = 0;
     _detailsField.adjustsFontSizeToFitWidth = YES;
     
+    _locationField.text = _session.location;
     [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
 
 
@@ -48,7 +49,16 @@
     if(_session.status == 0){
         
         //register session
-        //_session.status =
+        [self.view makeToast:@"Registering Session"
+                    duration:2.0
+                    position:CSToastPositionCenter
+                    title:nil
+                    image:nil
+                    style:nil
+                    completion:^(BOOL didTap) {
+                      [self.view makeToastActivity:CSToastPositionCenter];
+                  }];
+        
         [model registerSession:_session];
         
         //change star image

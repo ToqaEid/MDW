@@ -23,15 +23,9 @@
 -(NSMutableArray*) getDay1SessionsFromDB;
 -(NSMutableArray*) getDay2SessionsFromDB;
 -(NSMutableArray*) getDay3SessionsFromDB;
--(void) saveAllSessionsInDB:(NSMutableArray *)sessions;
+
 //Sessions from Network
--(NSMutableArray*) getAllSessionsFromNetwork;
--(NSMutableArray*) getDay1SessionsFromNetwork;
--(NSMutableArray*) getDay2SessionsFromNetwork;
--(NSMutableArray*) getDay3SessionsFromNetwork;
-
-
--(void) getAllSessions;
+-(void) getAllSessions : (BOOL)refresh : (NSString *) viewID;
 
 
 @end

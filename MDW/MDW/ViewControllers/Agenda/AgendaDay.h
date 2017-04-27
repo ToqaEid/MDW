@@ -24,6 +24,7 @@
 
 
 -(void) setAllSessionsArray : (NSMutableArray* ) sessions;
+-(void) endRefresh : (NSMutableArray *) dayAgenda : (NSString *) viewID;
 -(void)showErrorToast : (NSString *)toastMsg;
 
 

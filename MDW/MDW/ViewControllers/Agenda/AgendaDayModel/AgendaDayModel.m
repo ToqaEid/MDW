@@ -15,33 +15,41 @@
 #import "MDW_JsonParser.h"
 #import "SessionDTO.h"
 
+static NSMutableArray * dayAgenda;
+
 @implementation AgendaDayModel{
     sessionDAO * sessionDao;
     AgendaDay* controller;
+    
+    
 }
 
 -(id)initWithController: (AgendaDay*) agendacontroller{
     sessionDao = [sessionDAO sharedInstance];
     controller = agendacontroller;
+    dayAgenda = [NSMutableArray new];
     return [self init];
 }
 
 /*=======================Sessions from DB ========================*/
 -(NSMutableArray*) getDay1SessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao day1Sessions];
+    NSLog(@"sessions : %lu\n", (unsigned long)sessions.count);
     return sessions;
 }
 -(NSMutableArray*) getDay2SessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao day2Sessions];
+    NSLog(@"sessions : %lu\n", (unsigned long)sessions.count);
     return sessions;
 }
 -(NSMutableArray*) getDay3SessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao day3Sessions];
+    NSLog(@"sessions : %lu\n", (unsigned long)sessions.count);
     return sessions;
 }
 -(NSMutableArray*) getAllSessionsFromDB{
     NSMutableArray * sessions = (NSMutableArray *)[sessionDao getAllSessions];
-    NSLog(@"sessions : %lu", (unsigned long)sessions.count);
+    NSLog(@"sessions : %lu\n", (unsigned long)sessions.count);
     return sessions;
 
 }
@@ -50,7 +58,7 @@
 }
 
 
--(void) getAllSessions{
+-(void) getAllSessions : (BOOL)refresh : (NSString *) viewID{
 
     //////// GET ALL SESSTION FROM BACKEND
 
@@ -83,39 +91,21 @@
     
         ///save into db
         [sessionDao clearAllDB];
-        [self saveAllSessionsInDB:allSessions];
-    
+        [self saveAllSessionsInDB:dayAgenda];
+//
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);
             [controller showErrorToast : @"Please Check Network Connection"];
             
         }];
-    
-    
 
 }
 
 
--(NSMutableArray*) getAllSessionsFromNetwork{
-    NSMutableArray * sessions = nil;
-
-    return sessions;
+-(NSMutableArray*) filterArrayAccordingToDate : (long) date{
+    NSPredicate * sessionDatePredicate = [NSPredicate predicateWithFormat:@"SELF.startDate == %ll", date];
+    NSMutableArray * filteredArr = (NSMutableArray*) [dayAgenda filteredArrayUsingPredicate : sessionDatePredicate];
+    return filteredArr;
 }
-
--(NSMutableArray*) getDay1SessionsFromNetwork{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day1Sessions];
-    return sessions;
-}
-
--(NSMutableArray*) getDay2SessionsFromNetwork{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day2Sessions];
-    return sessions;
-}
-
--(NSMutableArray*) getDay3SessionsFromNetwork{
-    NSMutableArray * sessions = (NSMutableArray *)[sessionDao day3Sessions];
-    return sessions;
-}
-
 @end

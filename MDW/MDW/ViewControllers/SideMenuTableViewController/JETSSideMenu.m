@@ -59,7 +59,7 @@
         
         AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
-        [app.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+
         
         app.window.rootViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
         

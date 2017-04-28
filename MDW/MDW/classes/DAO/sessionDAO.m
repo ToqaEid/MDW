@@ -37,6 +37,7 @@ static sessionDAO* session=nil;
 }
 -(BOOL)addSpeaker:(SpeakerDTO *)speaker{
     RLMRealm *realm=[RLMRealm defaultRealm];
+    printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
     [realm beginWriteTransaction];
     [realm addOrUpdateObject:speaker];
     [realm commitWriteTransaction];
@@ -70,6 +71,7 @@ static sessionDAO* session=nil;
 -(RLMResults *)day1Sessions{
     
     RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"startDate >1492642800000 AND endDate <1492729200000"];
+    printf("%lu",(unsigned long)sessions.count);
     return sessions;
 }
 -(RLMResults *)day2Sessions{

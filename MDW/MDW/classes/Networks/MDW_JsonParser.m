@@ -13,433 +13,15 @@
 #import "ExhiptorsDTO.h"
 #import "Mobile.h"
 #import "Phone.h"
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+#import "speakerDAO.h"
+#import "exhiptorDAO.h"
+#import <Realm/Realm.h>
 
 
 @implementation MDW_JsonParser
-
-
-
-
-+ (NSMutableArray *) getSpeakers : (id) responseObject{
-
-    
-    printf(">>>>> Inside PARSER >> \n");
-    
-    NSMutableArray * speakers = [NSMutableArray new];
-    
-    
-    /////// 1. get json object from server
-    
-    if ([responseObject isKindOfClass:[NSArray class]])
-    {
-        printf("Response is NSArray ... \n");
-        
-    } else  if ([responseObject isKindOfClass:[NSDictionary class]])
-    {
-        /////// 2. convert to NSDictionary & check Status
-        
-        NSDictionary * rootJson = responseObject;
-        NSString  * responseStatus = [rootJson objectForKey:@"status"];
-        
-        if (  [responseStatus isEqualToString:@"view.success"]  )
-        {
-            /////3.  extract speakers jsonObj
-            
-            NSArray * speakersJson = [rootJson objectForKey:@"result"];
-            
-            
-            for(int i=0; i< [speakersJson count]; i++){
-                
-                SpeakerDTO * speakerObj = [SpeakerDTO new];
-                
-                NSDictionary * currentObj = [speakersJson objectAtIndex:i];
-                
-                speakerObj.firstName = [currentObj objectForKey:@"firstName"];
-                speakerObj.middleName = [currentObj objectForKey:@"middleName"];
-                speakerObj.lastName = [currentObj objectForKey:@"lastName"];
-                speakerObj.gender = [currentObj objectForKey:@"gender"];
-                
-                speakerObj.biography = [currentObj objectForKey:@"biography"];
-                speakerObj.imageURL = [currentObj objectForKey:@"imageURL"];
-                speakerObj.title = [currentObj objectForKey:@"title"];
-                speakerObj.companyName = [currentObj objectForKey:@"companyName"];
-                
-                
-                //speakerObj.phones = [currentObj objectForKey:@"mobiles"];
-                //speakerObj.phones = [currentObj objectForKey:@"phones"];
-                
-                speakerObj.speakerId = [[currentObj objectForKey:@"id"] intValue];
-                
-                printf(">>>>>> Speakers is %d\n", speakerObj.speakerId );
-                
-                [speakers addObject:speakerObj];
-                
-            }
-            
-            
-        }else{
-            printf(">>>> ERROR\n ");
-            
-        }
-        
-        
-        
-    }
-    
-    
-    printf("ARRAY SIZE IS %lu", (unsigned long)[speakers count]);
-    
-    return speakers;
-    
-}
-
-
-
-
-
-
-
-
-+ (NSMutableArray *) getExhibitors : (id) responseObject{
-    
-    NSMutableArray * allExhibitors = [NSMutableArray new];
-    
-    
-    
-    /////// 1. get json object from server
-    
-    if ([responseObject isKindOfClass:[NSArray class]])
-    {
-        printf("Response is NSArray ... \n");
-        
-    } else  if ([responseObject isKindOfClass:[NSDictionary class]])
-    {
-        /////// 2. convert to NSDictionary & check Status
-        
-        NSDictionary * rootJson = responseObject;
-        NSString  * responseStatus = [rootJson objectForKey:@"status"];
-        
-        if (  [responseStatus isEqualToString:@"view.success"]  )
-        {
-            /////3.  extract speakers jsonObj
-            
-            NSArray * exhibitorsJson = [rootJson objectForKey:@"result"];
-            
-            
-            for(int i=0; i< [exhibitorsJson count]; i++){
-            
-                ExhiptorsDTO * exhibitorObj = [ExhiptorsDTO new];
-                
-                NSDictionary * currentObj = [exhibitorsJson objectAtIndex:i];
-                
-                
-                exhibitorObj.contactName = [currentObj objectForKey:@"contactName"];
-                exhibitorObj.contactTitle = [currentObj objectForKey:@"contactTitle"];
-                exhibitorObj.companyURL = [currentObj objectForKey:@"companyUrl"];
-                
-                if([exhibitorObj.companyURL rangeOfString:@"http://"].location == NSNotFound){
-                    
-                    NSLog(@"company url format");
-                    exhibitorObj.companyURL = [NSString stringWithFormat:@"http://%@", exhibitorObj.companyURL];
-                }else{
-                    NSLog(@"company url format found");
-
-                }
-                
-                exhibitorObj.fax = [currentObj objectForKey:@"fax"];
-                exhibitorObj.companyName = [currentObj objectForKey:@"companyName"];
-                exhibitorObj.companyAbout = [currentObj objectForKey:@"companyAbout"];
-                exhibitorObj.companyAddress = [currentObj objectForKey:@"companyAddress"];
-                //exhibitorObj.imageUrl = [currentObj objectForKey:@"imageURL"];
-                
-                exhibitorObj.countryName = [currentObj objectForKey:@"countryName"];
-                exhibitorObj.cityName = [currentObj objectForKey:@"cityName"];
-                exhibitorObj.email = [currentObj objectForKey:@"email"];
-                exhibitorObj.exhiptorId = [[currentObj objectForKey:@"id"] intValue];
-                
-                exhibitorObj.phones = [currentObj objectForKey:@"phones"];
-                exhibitorObj.mobiles = [currentObj objectForKey:@"mobiles"];
-                
-                
-                
-                printf("Exhibitors ID = %d\n",  exhibitorObj.exhiptorId );
-                
-                [allExhibitors addObject:exhibitorObj];
-                
-            }
-            
-            
-        }else{
-            printf(">>>> ERROR\n ");
-            
-        }
-        
-        
-        
-    }
-    
-    
-    printf("ARRAY SIZE IS %lu", (unsigned long)[allExhibitors count]);
-    
-    
-    
-    
-    
-    
-    
-    return allExhibitors;
-}
-
-
-
-
-
-
-
-
-+ (NSMutableArray *) getSessions : (id) responseObject{
-
-    
-    printf(">>>>> Inside PARSER >> \n");
-    
-    NSMutableArray * allSessions = [NSMutableArray new];
-    
-    /////// 1. get json object from server
-    
-    if ([responseObject isKindOfClass:[NSArray class]])
-    {
-        printf("Response is NSArray ... \n");
-        
-    }///end of isKindOf NSArray
-    else  if ([responseObject isKindOfClass:[NSDictionary class]])
-    {
-        /////// 2. convert to NSDictionary & check Status
-        
-        NSDictionary * rootJson = responseObject;
-        NSString  * responseStatus = [rootJson objectForKey:@"status"];
-        
-        if (  [responseStatus isEqualToString:@"view.success"]  )
-        {
-            
-            /////3.  extract agendas jsonObj
-            
-            NSDictionary * resultJson = [rootJson objectForKey:@"result"];
-            
-            NSArray * agendasJson = [resultJson objectForKey:@"agendas"];
-            
-            for(int i=0; i< [agendasJson count]; i++)
-            {
-                ////////// SIZE = 3 >> why? >> 3 days MDW Event
-                
-                //////////// get sessions for every day and append to allSessionsArray
-                
-                NSArray * specificDayJson = [[ agendasJson objectAtIndex:i ] objectForKey:@"sessions"];
-                
-                printf(">>>> Day # %d >>>>   %lu  Session\n",  i   , (unsigned long)[specificDayJson count]);
-
-                printf("----------------------------\n");
-                
-                SessionDTO  * sessionObj = [SessionDTO new];
-                
-                
-                for (int j=0; j< 2; j++ )
-                {
-                   // printf(">>>> Day # %d >>>>   %lu  Session\n",  i   , (unsigned long)[specificDayJson count]);
-
-                    NSDictionary * sessionJson = [  specificDayJson objectAtIndex:j  ];
-                
-                    sessionObj.name = [sessionJson objectForKey:@"name"];
-                    sessionObj.location = [sessionJson objectForKey:@"location"];
-                    sessionObj.SessionDescription = [sessionJson objectForKey:@"description"];
-                    sessionObj.sessionType = [sessionJson objectForKey:@"sessionType"];
-                    
-                    sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
-                    sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
-                    sessionObj.liked = [sessionJson objectForKey:@"liked"];
-                    NSString * str1=[sessionJson objectForKey:@"startDate"];
-                    long long  ssr=[str1 longLongValue];
-                    NSString * str2=[sessionJson objectForKey:@"endDate"];
-                    long long  ssr2=[str2 longLongValue];
-
-                    sessionObj.startDate =ssr; //[[sessionJson objectForKey:@"startDate"] longValue];
-                    sessionObj.endDate = ssr2;//[[sessionJson objectForKey:@"endDate"] longValue];
-                    sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
-                   
-
-                    printf("$$$ Sesseion StartDate >> %ld\n", sessionObj.startDate);
-                    
-                    //// get session speakers
-                    
-                    
-                        if ( [sessionJson objectForKey:@"speakers"] == (id)[NSNull null]  )
-                        {
-                        
-                            sessionObj.speakers = nil;
-                        
-                           // printf("#of Speakers >> 0\n");
-                        
-                        }else{
-                    
-                        
-                            NSArray * sessionSpeakers = [sessionJson objectForKey:@"speakers"];
-                        
-                            //sessionObj.speakers = [NSMutableArray new];
-                            //NSMutableArray * mySpeakers = [NSMutableArray new];
-                        
-                            for (int s=0; s<[sessionSpeakers count]; s++)
-                            {
-                                SpeakerDTO * speakerObj = [SpeakerDTO new];
-                            
-                                NSDictionary * currentObj = [sessionSpeakers objectAtIndex:s];
-                            
-                                speakerObj.firstName = [currentObj objectForKey:@"firstName"];
-                                speakerObj.middleName = [currentObj objectForKey:@"middleName"];
-                                speakerObj.lastName = [currentObj objectForKey:@"lastName"];
-                                speakerObj.gender = [currentObj objectForKey:@"gender"];
-                            
-                                speakerObj.biography = [currentObj objectForKey:@"biography"];
-                                speakerObj.imageURL = [currentObj objectForKey:@"imageURL"];
-                                speakerObj.title = [currentObj objectForKey:@"title"];
-                                speakerObj.companyName = [currentObj objectForKey:@"companyName"];
-                                NSArray *mobiles=[currentObj objectForKey:@"mobiles"];
-                                NSArray *phones=[currentObj objectForKey:@"phones"];
-                                for(int m = 0; m< [mobiles count]; m++){
-                                    
-                                    Mobile * mobileObj = [Mobile new];
-                                    mobileObj.mobile = [mobiles objectAtIndex:m];
-                                    [speakerObj.mobiles addObject:mobileObj];
-                                }
-                                
-                                for(int p = 0; p< [phones count]; p++){
-                                    
-                                    Phone * phoneObj = [Phone new];
-                                    phoneObj.phone = [phones objectAtIndex:p];
-                                    [speakerObj.phones addObject:phoneObj];
-                                }
-                                speakerObj.speakerId = [[currentObj objectForKey:@"id"] intValue];
-                            
-                                //[mySpeakers addObject:speakerObj];
-                                
-                                [sessionObj.speakers addObject:speakerObj];
-                            
-                            }//// end of sessionSpeakers looop
-                        
-                          //  printf("Session name is %s AND #of Speakers >> %lu\n", [sessionObj.name UTF8String]  , (unsigned long)[sessionObj.speakers count] );
-                        
-                            //sessionObj.speakers = mySpeakers;
-                        
-                    } //// end of session have speakers if condition
-                    printf(" - - - \n");
-                    [allSessions addObject:sessionObj];
-                    //printf(" - - - Session %s is Added Successfully\n", [sessionObj.name UTF8String]);
-                    
-                }//////// end of specifc day sessions
-                
-                
-            }////// end of 3 days agenda
-            
-            
-        
-        }///// end of response SUCCESS
-        else{
-            printf(">>>> ERROR\n ");
-            
-        }//// end of response ERROR
-        
-        
-        
-    }/// end of isKindOf NSDict
-    
-    
-    //printf("\n\n ????? ARRAY SIZE IS %lu\n\n", (unsigned long)[allSessions count]);
-    
-    for (int i=0; i< [allSessions count]; i++){
-        
-        //printf("%s\n",  [[[allSessions objectAtIndex:i] name] UTF8String] );
-    
-    }
-    
-    
-    
-    
-    
-    return allSessions;
-}
-
-
-+ (AttendeeDTO *) getAttendee : (id) responseObject{
-    
-    AttendeeDTO * attendeeObj = [AttendeeDTO new];
-    
-    
-    
-    printf(">>>>> Inside PARSER >> \n");
-    
-    
-    /////// 1. get json object from server
-    
-    if ([responseObject isKindOfClass:[NSArray class]])
-    {
-        printf("Response is NSArray ... \n");
-        
-    } else  if ([responseObject isKindOfClass:[NSDictionary class]])
-    {
-        printf("Response is NSDictionary ... \n");
-        
-        
-        /////// 2. convert to NSDictionary & check Status
-        
-        NSDictionary * rootJson = responseObject;
-        NSString  * responseStatus = [rootJson objectForKey:@"status"];
-        
-        if (  [responseStatus isEqualToString:@"view.success"]  )
-        {
-            /////3.  extract speakers jsonObj
-            
-            NSDictionary * attendeeJson = [rootJson objectForKey:@"result"];
-            
-            
-            attendeeObj.firstName = [attendeeJson objectForKey:@"firstName"];
-            attendeeObj.middleName = [attendeeJson objectForKey:@"middleName"];
-            attendeeObj.lastName = [attendeeJson objectForKey:@"lastName"];
-            attendeeObj.title = [attendeeJson objectForKey:@"title"];
-            attendeeObj.companyName = [attendeeJson objectForKey:@"companyName"];
-            
-            attendeeObj.countryName = [attendeeJson objectForKey:@"countryName"];
-            attendeeObj.cityName = [attendeeJson objectForKey:@"cityName"];
-            
-            attendeeObj.email = [attendeeJson objectForKey:@"email"];
-            //attendeeObj.imageUrl = [attendeeJson objectForKey:@"imageURL"];
-            attendeeObj.code = [attendeeJson objectForKey:@"code"];
-
-            attendeeObj.attendeeId = [[attendeeJson objectForKey:@"id"] intValue];
-            attendeeObj.mobiles = [attendeeJson objectForKey:@"mobiles"];
-            attendeeObj.phones = [attendeeJson objectForKey:@"phones"];
-            
-            attendeeObj.gender = [attendeeJson objectForKey:@"gender"];
-            
-            if ( [attendeeJson objectForKey:@"birthDate"] != (id)[NSNull null]  )
-            {
-                attendeeObj.birthDate = [[attendeeJson objectForKey:@"birthDate"] longValue];
-            }
-            
-            //printf(">>>> attendee >>> %s\n",    [attendeeObj.firstName UTF8String]  );
-            
-            
-        }else{
-            printf(">>>> ERROR\n ");
-            
-        }
-        
-        
-        
-    }
-    
-    
-    
-    return attendeeObj;
-}
-
 
 
 
@@ -541,31 +123,37 @@
     
     ///////// speakers not parsed yet
 
-//    
-//    if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
-//    
-//        printf("Speakers = NIL \n");
-//        sessionObj.speakers = nil;
-//        
-//    }else{
-//        
-//        NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
-//        
-//        for (int i=0; i < [speakersJson count]; i++){
-//            
-//            NSDictionary * currObjJson = [speakersJson objectAtIndex:i];
-//            
-//            SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
-//            
-//            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
-//            
-//            [sessionObj.speakers addObject:speakerObj];
-//            
-//        }
-//        
-//    }
     
+    if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
     
+        printf("Speakers = NIL \n");
+        sessionObj.speakers = nil;
+        
+    }else{
+        
+        NSArray * speakersJson = [sessionJson objectForKey:@"speakers"];
+        
+        for (int i=0; i < [speakersJson count]; i++){
+            
+            NSDictionary * currObjJson = [speakersJson objectAtIndex:i];
+            
+            SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
+            
+            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
+            
+            sessionDAO *sessiondao=[sessionDAO sharedInstance ];
+            [sessiondao addSpeaker:speakerObj];
+            
+            
+            ////// download speaker image
+            
+            [self downloadImages:speakerObj.imageURL forObjCode:@"S" andObjectId:speakerObj.speakerId];
+            
+            
+            
+        }
+        
+    }
     
     return sessionObj;
 }
@@ -616,6 +204,20 @@
                 printf("-- exh --  %s\n", [exhibitorObj.companyName UTF8String]);
                 
                 [allExhibitors addObject:exhibitorObj];
+                
+                
+                
+                exhiptorDAO * exhibitorD=[exhiptorDAO sharedInstance ];
+                [exhibitorD addExhiptor:exhibitorObj];
+                
+
+                
+                ////// download speaker image
+                
+                [self downloadImages:exhibitorObj.imageURL forObjCode:@"E" andObjectId:exhibitorObj.exhiptorId];
+                
+                
+                
                 
             }
         }
@@ -872,5 +474,100 @@
     
     return result;
 }
+
+
+
+
+
++(void)downloadImages:(NSString *)url forObjCode: (NSString *)code  andObjectId: (int)oid{
+
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    NSURL *URL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+        
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        
+        //NSLog(@"<<<<< %@ ++ %@", documentsDirectoryURL.path, [response suggestedFilename]);
+        
+        if( [code isEqualToString:@"S"] )
+        {
+            
+            NSString * simage = @"Speaker_";
+            simage = [simage stringByAppendingFormat:@"%d",   oid  ];
+            return [documentsDirectoryURL URLByAppendingPathComponent: simage];
+            
+        }else{
+            
+            NSString * eimage = @"Exhibitor_";
+            eimage = [eimage stringByAppendingFormat:@"%d",   oid  ];
+            return [documentsDirectoryURL URLByAppendingPathComponent: eimage];
+            
+        }
+        
+        
+        
+        
+    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+        
+        //Setting ImageView
+        
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
+        
+        UIImage *image = [UIImage imageWithData: imageData];
+        
+        NSData *compressedData= UIImageJPEGRepresentation(image,0.1 /*compressionQuality*/);
+        
+        
+        //Adding ImageToDb
+        
+        RLMRealm *realm=[RLMRealm defaultRealm];
+        printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
+        
+        
+        if( [code isEqualToString:@"S"] )
+        {
+            
+            SpeakerDTO *myspeaker=[SpeakerDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: oid ]];
+            [realm beginWriteTransaction];
+            myspeaker.image=compressedData;
+            [realm addOrUpdateObject:myspeaker];
+            [realm commitWriteTransaction];
+            printf("SpeakerImage Downloaded Successcfully ...  \n");
+            
+        }else{
+            
+            ExhiptorsDTO * exhibitor =[ExhiptorsDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: oid ]];
+            
+            [realm beginWriteTransaction];
+            exhibitor.image=compressedData;
+            [realm addOrUpdateObject:exhibitor];
+            [realm commitWriteTransaction];
+            printf("ExhibitorImage Downloaded Successcfully ...  \n");
+            
+        }
+        
+        
+//        SpeakerDTO *myspeaker=[SpeakerDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: oid ]];
+//        [realm beginWriteTransaction];
+//        myspeaker.image=compressedData;
+//        [realm addOrUpdateObject:myspeaker];
+//        [realm commitWriteTransaction];
+        
+        
+        
+    }];
+    [downloadTask resume];
+
+
+}
+
+
+
+
 
 @end

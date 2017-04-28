@@ -50,6 +50,7 @@
         //register session
         [model registerSessionWithSessionObj:_session AndEnforce:false];
         
+        
         //change star image
        // [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
         

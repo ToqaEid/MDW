@@ -16,6 +16,13 @@ static exhiptorDAO* exhiptor=nil;
     }
     return exhiptor;
 }
+-(BOOL)addExhiptor:(ExhiptorsDTO *)ex{
+    RLMRealm *realm=[RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm addOrUpdateObject:ex];
+    [realm commitWriteTransaction];
+    return YES;
+}
 -(BOOL)saveExhiptors:(NSMutableArray *)exhiptors{
     RLMRealm *realm=[RLMRealm defaultRealm];
     [realm beginWriteTransaction];

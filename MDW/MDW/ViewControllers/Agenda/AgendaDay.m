@@ -98,7 +98,7 @@
         
     }else{
         
-        [model getAllSessions];
+       dayAgenda = [model getAllSessionsFromDB];
         
     }
     
@@ -118,7 +118,6 @@
         NSLog(@"getSessionsFromDB AgendaDay3");
 
         dayAgenda = [model getDay3SessionsFromDB];
-        
         
     }
     

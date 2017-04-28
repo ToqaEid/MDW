@@ -15,4 +15,5 @@
 -(BOOL)saveExhiptors:(NSMutableArray*) exhiptors;
 -(RLMResults*)getAllExhiptors;
 -(BOOL)updateImage:(ExhiptorsDTO*)ex;
+-(BOOL)addExhiptor:(ExhiptorsDTO*)ex;
 @end

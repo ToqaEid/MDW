@@ -64,20 +64,30 @@
 }
 
 -(void) getInitialData{
-    if(![VisitedViews getSpeakers]){
-        
-        [self.view makeToastActivity:CSToastPositionCenter];
-        
-        [model getSpeakersFromNetwork];
-        
-        [VisitedViews setSpeakers:YES];
-        
-    }else{
-        
-        speakers = [model getSpeakersFromDB];
-        [self.tableView  reloadData];
-        
-    }
+    
+    
+    ////// we will always get speakers from DB because they are
+    ///////   already downloaded while downloading their corresponding sessions
+    
+            speakers = [model getSpeakersFromDB];
+            [self.tableView  reloadData];
+    
+    
+    
+//    if(![VisitedViews getSpeakers]){
+//        
+//        [self.view makeToastActivity:CSToastPositionCenter];
+//        
+//        [model getSpeakersFromNetwork];
+//        
+//        [VisitedViews setSpeakers:YES];
+//        
+//    }else{
+//        
+//        speakers = [model getSpeakersFromDB];
+//        [self.tableView  reloadData];
+//        
+  //  }
 
 }
 
@@ -118,8 +128,8 @@
     
     if ( speakerDTO.image == nil ){
     
-        [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
-
+       // [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
+        icon.image = [UIImage imageNamed:@"mario.jpg"];
         
     }else{
         
@@ -199,12 +209,28 @@
     
     [self.tableView  reloadData];
     
-    
+    //hide progress dialog
+    [self.view hideToastActivity];
+    [refreshControl endRefreshing];
+
     printf("Array Size is >> %lu\n", (unsigned long)[speakers count]);
     
     
     
 }
+
+
+
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+    
+}
+
+
+
 
 
 -(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject:(id)object{
@@ -241,7 +267,12 @@
         
         NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
         UIImage *image = [UIImage imageWithData: imageData];
-        imageView.image = image;
+        
+        NSData *imgData= UIImageJPEGRepresentation(image,0.1 /*compressionQuality*/);
+        
+        UIImage * compressedImage =[UIImage imageWithData:imgData];
+        
+        imageView.image = compressedImage;
         
         //Adding ImageToDb
         SpeakerDTO * speaker =  ((SpeakerDTO *) object);

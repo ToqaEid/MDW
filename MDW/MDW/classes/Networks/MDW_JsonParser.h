@@ -27,15 +27,6 @@
 @interface MDW_JsonParser : NSObject
 
 
-
-
-+ (NSMutableArray *) getSpeakers : (id) JsonObj;
-+ (NSMutableArray *) getSessions : (id) JsonObj;
-+ (NSMutableArray *) getExhibitors : (id) JsonObj;
-+ (AttendeeDTO *) getAttendee : (id) JsonObj;
-
-
-
 ////////// ---- optimized methods -----
 + (NSMutableArray *) getSessions_v2 : (id) JsonObj;
 + (SessionDTO *) parseToSessionObj : (NSDictionary *) sessionJson;
@@ -50,6 +41,10 @@
 + (AttendeeDTO *) parseToAttendeeObj : (NSDictionary *) attendeeJson;
 
 + (NSMutableDictionary *) getSesstionRegisterationStatus : (id) JsonObj;
+
+
++(void)downloadImages:(NSString *)url forObjCode: (NSString *)code  andObjectId: (int)oid;
+
 
 
 @end

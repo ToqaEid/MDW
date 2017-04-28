@@ -89,8 +89,24 @@
     //fill fields in the cell with data
     ExhiptorsDTO * exhibitor = [exibitors objectAtIndex:indexPath.row];
 
-    icon.image = [[UIImage alloc]initWithData:exhibitor.image];
+    //icon.image = [[UIImage alloc]initWithData:exhibitor.image];
     name.text = exhibitor.companyName;
+    
+    
+    
+    if ( exhibitor.image == nil ){
+        
+        icon.image = [UIImage imageNamed:@"mario.jpg"];
+        
+    }else{
+        
+        icon.image = [UIImage imageWithData: exhibitor.image  ];
+        
+    }
+    
+    
+    
+    
     
     return cell;
     

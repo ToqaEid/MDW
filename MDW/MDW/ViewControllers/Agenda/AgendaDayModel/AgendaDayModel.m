@@ -71,28 +71,19 @@ static NSMutableArray * dayAgenda;
     
         
         //NSLog(@"JSON: %@", responseObject);
-        //printf("Response recieved ... \n");
+      
+        [sessionDao clearAllDB];
         
-        NSMutableArray * allSessions  =  [MDW_JsonParser getSessions_v2 : responseObject];
-       // NSMutableArray *allSessions=[MDW_JsonParser getSessions:responseObject];
+        NSMutableArray *allSessions=[MDW_JsonParser getSessions_v2:responseObject];
+     
+        dayAgenda = allSessions;
+        
+        ///save into db
+        [self saveAllSessionsInDB:dayAgenda];
+        
         [controller setAllSessionsArray:allSessions];
 
-        
-        
-        
-        
-        printf(">>>---- AllSessions are ====== %lu",  (unsigned long)[allSessions count] );
-        for (int i=0; i<[allSessions count]; i++){
-            
-                SessionDTO * sessionObj = [allSessions objectAtIndex:i];
-               printf("***  %s\n", [sessionObj.name UTF8String]);
-            
-            }
-    
-        ///save into db
-//        [sessionDao clearAllDB];
-//        [self saveAllSessionsInDB:allSessions];
-    
+//
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             
             NSLog(@"Error: %@", error);

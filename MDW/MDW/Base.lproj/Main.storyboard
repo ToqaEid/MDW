@@ -976,7 +976,7 @@
         <!--MyAgendaDay1-->
         <scene sceneID="VWl-hA-GZn">
             <objects>
-                <viewController restorationIdentifier="AgendaDay1" title="MyAgendaDay1" automaticallyAdjustsScrollViewInsets="NO" id="Rb1-Vd-Iv8" customClass="MyAgenda" sceneMemberID="viewController">
+                <viewController title="MyAgendaDay1" automaticallyAdjustsScrollViewInsets="NO" id="Rb1-Vd-Iv8" customClass="MyAgenda" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NYF-dx-6wu"/>
                         <viewControllerLayoutGuide type="bottom" id="XGH-g1-2Hw"/>
@@ -1075,7 +1075,7 @@
         <!--MyAgendaDay2-->
         <scene sceneID="NES-PL-smS">
             <objects>
-                <viewController restorationIdentifier="AgendaDay2" title="MyAgendaDay2" automaticallyAdjustsScrollViewInsets="NO" id="PGi-cq-Kxt" customClass="MyAgenda" sceneMemberID="viewController">
+                <viewController title="MyAgendaDay2" automaticallyAdjustsScrollViewInsets="NO" id="PGi-cq-Kxt" customClass="MyAgenda" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zwo-5E-djq"/>
                         <viewControllerLayoutGuide type="bottom" id="RQP-8g-DXP"/>
@@ -1171,7 +1171,7 @@
         <!--MyAgendaDay3-->
         <scene sceneID="F8p-0e-yVz">
             <objects>
-                <viewController restorationIdentifier="AgendaDay3" title="MyAgendaDay3" automaticallyAdjustsScrollViewInsets="NO" id="xWN-fk-URT" customClass="MyAgenda" sceneMemberID="viewController">
+                <viewController title="MyAgendaDay3" automaticallyAdjustsScrollViewInsets="NO" id="xWN-fk-URT" customClass="MyAgenda" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Zj-bf-gQb"/>
                         <viewControllerLayoutGuide type="bottom" id="Syd-5E-bxA"/>

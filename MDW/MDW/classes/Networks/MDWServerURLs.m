@@ -25,7 +25,7 @@ static NSString * GET_ATTENDEE_PROFILE_URL =
     @"http://www.mobiledeveloperweekend.net/service/getAttendeeProfile?userName=";
 
 static NSString * GET_PROFILE_IMAGE_URL =
-    @" http://mobiledeveloperweekend.net/service/profileImage?userName=eng.medhat.cs.h@gmail.com";
+    @" http://mobiledeveloperweekend.net/service/profileImage?userName=";
 
 static NSString * GET_EXHIBITORS_URL =
     @"http://mobiledeveloperweekend.net/service/getExhibitors?userName=";

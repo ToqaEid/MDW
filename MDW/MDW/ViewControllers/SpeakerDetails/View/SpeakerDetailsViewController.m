@@ -17,7 +17,7 @@
     
     _jobTitle.text = _speaker.title;
     
-    _details.text = _speaker.description;
+    _details.text = _speaker.biography;
     _details.numberOfLines = 0;
     _details.adjustsFontSizeToFitWidth = YES;
     
@@ -28,7 +28,7 @@
     printf("SpeakerDetailsViewController view :viewWillAppear\n");
     
     
-    
+    printf(">>> %s", [_speaker.description UTF8String] );
 
 }
 

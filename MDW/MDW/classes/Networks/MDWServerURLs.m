@@ -22,10 +22,10 @@ static NSString * GET_SPEAKERS_URL =
     @"http://mobiledeveloperweekend.net/service/getSpeakers?userName=";
 
 static NSString * GET_ATTENDEE_PROFILE_URL =
-    @"http://www.mobiledeveloperweekend.net/MDW/service/getAttendeeProfile?userName=";
+    @"http://www.mobiledeveloperweekend.net/service/getAttendeeProfile?userName=";
 
 static NSString * GET_PROFILE_IMAGE_URL =
-    @" http://www.mobiledeveloperweekend.net/MDW/service/profileImage?userName=eng.medhat.cs.h@gmail.com";
+    @" http://mobiledeveloperweekend.net/service/profileImage?userName=eng.medhat.cs.h@gmail.com";
 
 static NSString * GET_EXHIBITORS_URL =
     @"http://mobiledeveloperweekend.net/service/getExhibitors?userName=";
@@ -38,8 +38,8 @@ static NSString * REGISTER_SESSION_URL =
 
 @implementation MDWServerURLs
 
-//--- getters for URLs
 
+//--- getters for URLs
 + (NSString *) getLoginURL{
 
     return LOGIN_URL;

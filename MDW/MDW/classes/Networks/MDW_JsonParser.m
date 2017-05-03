@@ -124,10 +124,11 @@
             
             SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
             
-            sessionDAO *sessiondao=[sessionDAO sharedInstance ];
+            //sessionDAO *sessiondao=[sessionDAO sharedInstance ];
 
-            [sessiondao addSpeaker:speakerObj];
+            //[sessiondao addSpeaker:speakerObj];
             
+            [sessionObj.speakers addObject:speakerObj];
             ////// download speaker image
             
             [self downloadImages:speakerObj.imageURL forObjCode:@"S" andObjectId:speakerObj.speakerId];

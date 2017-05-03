@@ -27,7 +27,7 @@ static sessionDAO* session=nil;
     RLMRealm *realm=[RLMRealm defaultRealm];
     printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
     [realm beginWriteTransaction];
-    [realm addObjects:sessions];
+    [realm addOrUpdateObjectsFromArray:sessions];
     [realm commitWriteTransaction];
     return YES;
 }
@@ -52,19 +52,19 @@ static sessionDAO* session=nil;
 }
 
 -(RLMResults *)getMySessionsDay1{
-    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"status==2 AND startDate >1492642800000 AND endDate <1492729200000"];
+    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"startDate >1492642800000 AND endDate <1492729200000 AND (status==2 OR status==1) "];
     return sessions;
 }
 -(RLMResults *)getMySessionsDay2{
-    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"status==2 AND startDate >1492729200000 AND endDate <1492815600000"];
+    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"startDate >1492729200000 AND endDate <1492815600000 AND (status==2 OR status==1) "];
     return sessions;
 }
 -(RLMResults *)getMySessionsDay3{
-    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"status==2 AND startDate >1492815600000 AND endDate <1492902000000"];
+    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@" startDate >1492815600000 AND endDate <1492902000000 AND (status==2 OR status==1) "];
     return sessions;
 }
 -(RLMResults *)getMySessions{
-    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"status==2"];
+    RLMResults<SessionDTO*> *sessions=[SessionDTO objectsWhere:@"status==2 OR status==1"];
     return sessions;
 
 }

@@ -46,24 +46,31 @@
     
     //getData
     model = [[MyAgendaModel alloc]initWithController:self];
-//    if([Connection checkInternetConnection]){
-//        
-//        indicator = [self showProgressDialog];
-//        [indicator startAnimating];
-//        
-//        [self getSessionsFromNetwork];
-//        
-//        printf("Agenda View : checkInternetConnection\n");
-//        
-//    }else{
-    
-        [self getSessionsFromDB];
-        
-        printf("Agenda View : !checkInternetConnection\n");
-        
     //}
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+    
+
+    //    if([Connection checkInternetConnection]){
+    //
+    //        indicator = [self showProgressDialog];
+    //        [indicator startAnimating];
+    //
+    //        [self getSessionsFromNetwork];
+    //
+    //        printf("Agenda View : checkInternetConnection\n");
+    //
+    //    }else{
+    
+    [self getSessionsFromDB];
+    
+    [self.tableView reloadData];
+    printf("Agenda View : !checkInternetConnection\n");
+
+    
+}
 /*====================== DATA =================================*/
 
 -(NSMutableArray*)getSessionsFromNetwork{
@@ -71,15 +78,15 @@
     //get data accorging the view controller
     if([self.restorationIdentifier isEqualToString:@"MyAgendaDay1"]){
         
-        dayAgenda = [model getDay1SessionsFromNetwork];
+        dayAgenda = [model getDay1SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay2"]){
         
-        dayAgenda = [model getDay2SessionsFromNetwork];
+        dayAgenda = [model getDay2SessionsFromDB];
         
     }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay3"]){
         
-        dayAgenda = [model getDay3SessionsFromNetwork];
+        dayAgenda = [model getDay3SessionsFromDB];
         
     }else{
         

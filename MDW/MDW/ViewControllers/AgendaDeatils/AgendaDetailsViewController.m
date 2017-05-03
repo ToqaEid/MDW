@@ -78,7 +78,7 @@
     
     
     //prepare speakers table view
-    if(!(_session.speakers.count > 0)){
+    if((_session.speakers.count > 0)){
         speakersTable = [[UITableView alloc] initWithFrame:CGRectMake(6, 0, 260, 300)];
         speakersTable.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         speakersTable.delegate = self;
@@ -100,7 +100,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return _session.speakers.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -112,11 +112,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     [cell setBackgroundColor:[UIColor clearColor]];
-    cell.imageView.image = [UIImage imageNamed:@"speaker.png"];
-    cell.textLabel.text = @"ftyhujkl";
+    cell.imageView.image = [UIImage imageWithData:[_session.speakers objectAtIndex:indexPath.row].image];
+    cell.textLabel.text = [_session.speakers objectAtIndex:indexPath.row].firstName;
     return cell;
 
 }
+
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return @"Speakers";
@@ -159,7 +160,10 @@
         
         //unregister session
         [model unregisterSession:_session];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
         _session.status = 0;
+        [realm commitWriteTransaction];
         
         //change star image
         [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
@@ -198,8 +202,10 @@
     if(oldSession == 0){
         
         ///1. register session
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
         _session.status = status;
-        
+        [realm commitWriteTransaction];
         ///2. change star image
         [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
         

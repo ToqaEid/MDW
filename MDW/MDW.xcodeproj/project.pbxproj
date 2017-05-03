@@ -254,7 +254,7 @@
 		CCBF3DA11EA13D2B0015BE01 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo1.png; path = Resources/Icons/logo1.png; sourceTree = "<group>"; };
 		CCBF3DA21EA13D2B0015BE01 /* MDW 2016 Mobile APP150-47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MDW 2016 Mobile APP150-47.png"; path = "Resources/Icons/MDW 2016 Mobile APP150-47.png"; sourceTree = "<group>"; };
 		CCC44C731EA239A000676365 /* AgendaDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDetailsViewController.h; path = ViewControllers/AgendaDeatils/AgendaDetailsViewController.h; sourceTree = "<group>"; };
-		CCC44C741EA239A000676365 /* AgendaDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDetailsViewController.m; path = ViewControllers/AgendaDeatils/AgendaDetailsViewController.m; sourceTree = "<group>"; };
+		CCC44C741EA239A000676365 /* AgendaDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AgendaDetailsViewController.m; path = ViewControllers/AgendaDeatils/AgendaDetailsViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		CCF768691E9B20C000134359 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = SWRevealViewController/SWRevealViewController.h; sourceTree = "<group>"; };
 		CCF7686A1E9B20CD00134359 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = SWRevealViewController/SWRevealViewController.m; sourceTree = "<group>"; };
 		CCFD78891EA296F100B0FF9D /* SpeakerDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeakerDetailsViewController.h; path = ViewControllers/SpeakerDetails/View/SpeakerDetailsViewController.h; sourceTree = "<group>"; };
@@ -978,7 +978,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

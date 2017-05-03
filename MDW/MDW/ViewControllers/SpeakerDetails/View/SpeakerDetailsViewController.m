@@ -15,16 +15,33 @@
     _name.numberOfLines = 0;
     _name.adjustsFontSizeToFitWidth = YES;
     
+    _jobTitle.numberOfLines = 0;
+    _jobTitle.adjustsFontSizeToFitWidth = YES;
     _jobTitle.text = _speaker.title;
     
-    _details.text = _speaker.description;
+    _details.attributedText = [LabelRendering renderHTML:_speaker.biography];
+   // _details.text = _speaker.biography;
     _details.numberOfLines = 0;
     _details.adjustsFontSizeToFitWidth = YES;
     
+    
+    _company.numberOfLines = 0;
+    _company.adjustsFontSizeToFitWidth = YES;
     _company.text = _speaker.companyName;
     
-    _image.image = [UIImage imageWithData:_speaker.image ];
+    
 
+    
+    if ( _speaker.image == nil ){
+        
+        // [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
+        _image.image = [UIImage imageNamed:@"speaker.png"];
+        
+    }else{
+        
+        _image.image = [UIImage imageWithData:_speaker.image ];
+        
+    }
     printf("SpeakerDetailsViewController view :viewWillAppear\n");
     
     

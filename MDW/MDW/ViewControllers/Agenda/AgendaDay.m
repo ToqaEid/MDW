@@ -130,7 +130,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return 3;
     return dayAgenda.count;
 }
 
@@ -251,6 +250,13 @@
     
     [self.view hideToastActivity];
     [self.view makeToast : toastMsg];
+    
+    if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
+        dayAgenda = [model getAllSessionsFromDB];
+    }else{
+        [self getSessionsFromDB];
+    }
+
     
 
 }

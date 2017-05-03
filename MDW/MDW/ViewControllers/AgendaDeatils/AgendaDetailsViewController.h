@@ -12,8 +12,11 @@
 #import "SessionDTO.h"
 #import "DateConverter.h"
 #import "UIView+Toast.h"
+#import "LabelRendering.h"
+#import "SpeakerDetailsViewController.h"
 
-@interface AgendaDetailsViewController : UIViewController
+
+@interface AgendaDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleField;
 @property (weak, nonatomic) IBOutlet UILabel *dateField;
 @property (weak, nonatomic) IBOutlet UILabel *timeField;
@@ -24,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *starButton;
 
 @property SessionDTO * session;
+
+
 
 -(void) showToast : (NSString *) msg;
 

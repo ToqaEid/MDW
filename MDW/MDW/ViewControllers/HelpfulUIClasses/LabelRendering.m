@@ -10,14 +10,20 @@
 
 @implementation LabelRendering
 
-+(NSAttributedString*) renderHTML:(NSString*) htmlString{
++(NSMutableAttributedString*) renderHTML:(NSString*) htmlString{
     
-    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding]
+    NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[htmlString dataUsingEncoding:NSUTF8StringEncoding]
                                                                 options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
                                                                 documentAttributes:nil
                                                                 error:nil];
+    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragrahStyle setLineBreakMode:NSLineBreakByWordWrapping];
     
+    [paragrahStyle setAlignment:NSTextAlignmentCenter];
     
+    [attrStr addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, [attrStr length])];
+    
+    printf("\n\n********%lu********\nn", (unsigned long)attrStr.length);
     return attrStr;
 }
 

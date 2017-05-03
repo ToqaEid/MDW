@@ -129,7 +129,7 @@
     if ( speakerDTO.image == nil ){
     
        // [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
-        icon.image = [UIImage imageNamed:@"mario.jpg"];
+        icon.image = [UIImage imageNamed:@"speaker.png"];
         
     }else{
         

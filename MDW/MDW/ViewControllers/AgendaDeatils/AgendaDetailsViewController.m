@@ -11,21 +11,61 @@
 
 @implementation AgendaDetailsViewController{
     AgendaDetailsModel * model;
+    UITableView *speakersTable;
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    _titleField.text = _session.name;
+    
+    _titleField.attributedText = [LabelRendering renderHTML:_session.name];
+    [_titleField setTextAlignment:NSTextAlignmentCenter];
+    
+    UIFont *font = _titleField.font;
+    _titleField.font = [font fontWithSize:16];
+
+    
     _titleField.numberOfLines = 0;
     _titleField.adjustsFontSizeToFitWidth = YES;
+    [_titleField sizeToFit];
+    
+    
+    
     
     _dateField.text = [DateConverter dateStringFromDate: _session.startDate];
     
+    
+    
+    
     _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
     
-    _detailsField.text = _session.SessionDescription;
-    _detailsField.numberOfLines = 0;
-    _detailsField.adjustsFontSizeToFitWidth = YES;
+    
+    
+    
+//    _detailsField.numberOfLines = 0;
+//    _detailsField.lineBreakMode= NSLineBreakByWordWrapping;
+
+    _detailsField.attributedText = [LabelRendering renderHTML:_session.SessionDescription];
+    
+    
+    
+//    CGRect frame = _detailsField.frame;
+//    frame.size.height = 1;
+//    _detailsField.frame = frame;
+//    CGSize fittingSize = [_detailsField sizeThatFits:frame.size];
+//    frame.size.height = fittingSize.height;
+//    _detailsField.frame = frame;
+//    _detailsField.adjustsFontSizeToFitWidth = YES;
+    
+    
+//    CGSize maximumLabelSize = CGSizeMake(296, FLT_MAX);
+//    
+//    CGSize expectedLabelSize = [yourString sizeWithFont:yourLabel.font constrainedToSize:maximumLabelSize lineBreakMode:yourLabel.lineBreakMode];
+//    
+//    //adjust the label the the new height.
+//    CGRect newFrame = yourLabel.frame;
+//    newFrame.size.height = expectedLabelSize.height;
+//    _detailsField.frame = newFrame;
+//    
     
     _locationField.text = _session.location;
     [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
@@ -37,10 +77,74 @@
     model = [[AgendaDetailsModel alloc]initWithController:self];
     
     
+    //prepare speakers table view
+    if(!(_session.speakers.count > 0)){
+        speakersTable = [[UITableView alloc] initWithFrame:CGRectMake(6, 0, 260, 300)];
+        speakersTable.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        speakersTable.delegate = self;
+        speakersTable.dataSource = self;
+        //set background image
+        speakersTable.backgroundColor = [UIColor clearColor];
+        UIView * speakersView = [self.view viewWithTag:9];
+    
+        [speakersView addSubview:speakersTable];
+    }
     printf(" +++ SessionDetails is Loaded .... \n");
     
     printf("\nsession details %d\n", _session.status);
 }
+
+/*========================== Speakers Table ======================*/
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 3;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    
+    [cell setBackgroundColor:[UIColor clearColor]];
+    cell.imageView.image = [UIImage imageNamed:@"speaker.png"];
+    cell.textLabel.text = @"ftyhujkl";
+    return cell;
+
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Speakers";
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SpeakerDTO * speaker = [_session.speakers objectAtIndex:indexPath.row];
+    
+    SpeakerDetailsViewController *speakerDetails = [self.storyboard instantiateViewControllerWithIdentifier:@"SpeakerDetailsViewController"];
+    
+    //pass data to detailed view
+    speakerDetails.speaker = speaker;
+    
+    
+    //open detailed view
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"MDW"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    [self.navigationController pushViewController:speakerDetails animated:YES ];
+    
+}
+
+/*==== End of Speakers Table ====*/
 
 - (IBAction)ratingAction:(id)sender {
     
@@ -49,20 +153,16 @@
         
         //register session
         [model registerSessionWithSessionObj:_session AndEnforce:false];
-        
-        
-        //change star image
-       // [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+     
         
     }else{
         
         //unregister session
         [model unregisterSession:_session];
-      //  _session.status = 0;
+        _session.status = 0;
         
         //change star image
-        //UIImage *registerStar = [UIImage imageNamed:@"sessionnotadded.png"];
-        //[sender setBackgroundImage:registerStar forState:UIControlStateNormal];
+        [sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
     }
     
 }
@@ -98,10 +198,10 @@
     if(oldSession == 0){
         
         ///1. register session
-       // _session.status = status;
+        _session.status = status;
         
         ///2. change star image
-        //[sender setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
+        [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
         
         ///
         
@@ -109,16 +209,8 @@
         
         //// alert dialoge
         
-        
-        
-        
-        
-        /// Replace or Cancel
-        
-        ///// replace >>> req ::: enforce = true
-                
-        
-        ////// cancel >> do nothing
+        [self presentViewController:[self registerAlert] animated:YES completion:nil];
+    
         
         //        //unregister session
         //        [model unregisterSession:_session];
@@ -131,12 +223,45 @@
                 
             }
 
-    
-    
 
 }
 
 
+-(UIAlertController*)registerAlert{
+    
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@""
+                                 message:@"You are registered in another session at the same time !"
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    //Add Buttons
+    
+    UIAlertAction* replaceButton = [UIAlertAction
+                                    actionWithTitle:@"Replace"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action){
+                                        [[AgendaDetailsViewController self] replaceSession];
+                                    
+                                    }];
+    
+    UIAlertAction* cancelButton = [UIAlertAction
+                                   actionWithTitle:@"Cancel"
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+    
+    
+    
+    //Add your buttons to alert controller
+    
+    [alert addAction:replaceButton];
+    [alert addAction:cancelButton];
+    
+    return alert;
+}
 
+-(void) replaceSession{
+    
+    [model registerSessionWithSessionObj:_session AndEnforce:true];
+}
 
 @end

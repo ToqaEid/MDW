@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SpeakerDTO.h"
+#import "LabelRendering.h"
 
 @interface SpeakerDetailsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *image;

@@ -69,15 +69,15 @@
 -(NSMutableArray*)getSessionsFromNetwork{
     
     //get data accorging the view controller
-    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+    if([self.restorationIdentifier isEqualToString:@"MyAgendaDay1"]){
         
         dayAgenda = [model getDay1SessionsFromNetwork];
         
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+    }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay2"]){
         
         dayAgenda = [model getDay2SessionsFromNetwork];
         
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+    }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay3"]){
         
         dayAgenda = [model getDay3SessionsFromNetwork];
         
@@ -93,11 +93,11 @@
 }
 
 -(NSMutableArray*)getSessionsFromDB{
-    if([self.restorationIdentifier isEqualToString:@"AgendaDay1"]){
+    if([self.restorationIdentifier isEqualToString:@"MyAgendaDay1"]){
         dayAgenda = [model getDay1SessionsFromDB];
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay2"]){
+    }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay2"]){
         dayAgenda = [model getDay2SessionsFromDB];
-    }else if([self.restorationIdentifier isEqualToString:@"AgendaDay3"]){
+    }else if([self.restorationIdentifier isEqualToString:@"MyAgendaDay3"]){
         dayAgenda = [model getDay3SessionsFromDB];
     }else{
         dayAgenda = [model getAllSessionsFromDB];

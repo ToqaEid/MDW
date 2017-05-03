@@ -160,7 +160,12 @@
         icon.image = sessionImage;
     }
     //date in image
-    dateImage.text = [DateConverter dayStringFromDate:session.startDate];
+    if([session.sessionType isEqualToString:@"Break"]){
+        dateImage.text = @"";
+    }else{
+        dateImage.text = [DateConverter dayStringFromDate:session.startDate];
+    }
+    
     
     return cell;
     

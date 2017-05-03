@@ -8,6 +8,10 @@
 
 #import "ExhibitorsViewController.h"
 #import "SWRevealViewController.h"
+#import <AFNetworking.h>
+#import <AFImageDownloader.h>
+#import <UIImageView+AFNetworking.h>
+#import "speakerDAO.h"
 
 @implementation ExhibitorsViewController{
     
@@ -96,7 +100,7 @@
     
     if ( exhibitor.image == nil ){
         
-        icon.image = [UIImage imageNamed:@"mario.jpg"];
+        icon.image = [UIImage imageNamed:@"exihiptors.png"];
         
     }else{
         
@@ -104,11 +108,7 @@
         
     }
     
-    
-    
-    
-    
-    return cell;
+      return cell;
     
 }
 
@@ -164,5 +164,70 @@
 
 
 }
+
+
+
+
+//
+//-(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject:(id)object{
+//    
+//    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+//    
+//    NSURL *URL = [NSURL URLWithString:url];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//    
+//    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+//        
+//        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+//        
+//        NSString * simage = @"Exh_";
+//        simage = [simage stringByAppendingFormat:@"%d",   ((ExhiptorsDTO *)object).exhiptorId   ];
+//        
+//        return [documentsDirectoryURL URLByAppendingPathComponent: simage];
+//        
+//        
+//        
+//    } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+//        
+//        //Setting ImageView
+//        
+//        NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
+//        UIImage *image = [UIImage imageWithData: imageData];
+//        
+//        NSData *imgData= UIImageJPEGRepresentation(image,0.1 /*compressionQuality*/);
+//        
+//        UIImage * compressedImage =[UIImage imageWithData:imgData];
+//        
+//        imageView.image = compressedImage;
+//        
+//        
+//        
+//        
+//        //Adding ImageToDb
+////        ExhiptorsDTO * exhibitor =  ((ExhiptorsDTO *) object);
+////        exhibitor.image = imageData;
+////        
+////        RLMRealm *realm=[RLMRealm defaultRealm];
+////        printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
+////        ExhiptorsDTO * currExh = [ExhiptorsDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: exhibitor.exhiptorId ]];
+////        [realm beginWriteTransaction];
+////        currExh.image=imageData;
+////        [realm addOrUpdateObject:currExh];
+////        [realm commitWriteTransaction];
+////        
+////        
+////        [self.tableView  reloadData];
+//        
+//    }];
+//    [downloadTask resume];
+//    
+//    
+//}
+
+
+
+
 
 @end

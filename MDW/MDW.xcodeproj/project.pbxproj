@@ -32,6 +32,8 @@
 		CC75DCD11EA41A3A0016C89C /* LabelRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD01EA41A3A0016C89C /* LabelRendering.m */; };
 		CC75DCD61EA41BB30016C89C /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD51EA41BB30016C89C /* Connection.m */; };
 		CC75DCD91EA42F0C0016C89C /* DateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC75DCD81EA42F0C0016C89C /* DateConverter.m */; };
+		CC7856AF1EB52896000E979F /* speakerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CC7856AE1EB52896000E979F /* speakerImage.png */; };
+		CC7856B11EB52C92000E979F /* exhibitorsImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CC7856B01EB52C92000E979F /* exhibitorsImage.png */; };
 		CC83C2201EAFF4DA003A5BD8 /* VisitedViews.m in Sources */ = {isa = PBXBuildFile; fileRef = CC83C21F1EAFF4DA003A5BD8 /* VisitedViews.m */; };
 		CCBF3C831EA0DE210015BE01 /* AgendaDay.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3C821EA0DE210015BE01 /* AgendaDay.m */; };
 		CCBF3CF51EA100670015BE01 /* MyAgenda.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBF3CF41EA100670015BE01 /* MyAgenda.m */; };
@@ -173,6 +175,8 @@
 		CC75DCD51EA41BB30016C89C /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connection.m; path = classes/Utilities/Connection.m; sourceTree = "<group>"; };
 		CC75DCD71EA42F0C0016C89C /* DateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateConverter.h; path = classes/Utilities/DateConverter.h; sourceTree = "<group>"; };
 		CC75DCD81EA42F0C0016C89C /* DateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateConverter.m; path = classes/Utilities/DateConverter.m; sourceTree = "<group>"; };
+		CC7856AE1EB52896000E979F /* speakerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speakerImage.png; sourceTree = "<group>"; };
+		CC7856B01EB52C92000E979F /* exhibitorsImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exhibitorsImage.png; sourceTree = "<group>"; };
 		CC83C21E1EAFF4DA003A5BD8 /* VisitedViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisitedViews.h; path = classes/Utilities/VisitedViews.h; sourceTree = "<group>"; };
 		CC83C21F1EAFF4DA003A5BD8 /* VisitedViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VisitedViews.m; path = classes/Utilities/VisitedViews.m; sourceTree = "<group>"; };
 		CCBF3C811EA0DE210015BE01 /* AgendaDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AgendaDay.h; path = ViewControllers/Agenda/AgendaDay.h; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 		CC1948481E9ABAE900039C97 = {
 			isa = PBXGroup;
 			children = (
+				CC7856B01EB52C92000E979F /* exhibitorsImage.png */,
+				CC7856AE1EB52896000E979F /* speakerImage.png */,
 				CC3704741EB0C91300225D7C /* LaunchScreen.storyboard */,
 				CC6AFBEC1EA7BBE20024625B /* mario.jpg */,
 				CC1948531E9ABAE900039C97 /* MDW */,
@@ -902,12 +908,14 @@
 				CCBF3DA31EA13D2B0015BE01 /* jetsmoblab.PNG in Resources */,
 				CCBF3D621EA1210F0015BE01 /* breakicon.png in Resources */,
 				CCBF3D941EA125570015BE01 /* loginButton.png in Resources */,
+				CC7856B11EB52C92000E979F /* exhibitorsImage.png in Resources */,
 				CCBF3D2F1EA11FC30015BE01 /* Icon-Small@2x.png in Resources */,
 				CCBF3D701EA1210F0015BE01 /* phoneIcon.png in Resources */,
 				CCBF3D6E1EA1210F0015BE01 /* loginTextBoxsBackGround.png in Resources */,
 				CCBF3D271EA11FC30015BE01 /* Icon-76.png in Resources */,
 				CCBF3D8B1EA122B40015BE01 /* loginHeader.png in Resources */,
 				CCBF3D891EA122B40015BE01 /* leftSideMenuBackground.png in Resources */,
+				CC7856AF1EB52896000E979F /* speakerImage.png in Resources */,
 				CCBF3D7D1EA1210F0015BE01 /* workshop.png in Resources */,
 				CCBF3D911EA122B40015BE01 /* splash.png in Resources */,
 				CCBF3D261EA11FC30015BE01 /* Icon-76 2.png in Resources */,

@@ -57,4 +57,14 @@
     return (NSMutableArray*)[exhibitor getAllExhiptors];
 }
 
+
+
+-(BOOL)isConnected{
+
+    return [MDW_JsonParser connected];
+
+}
+
+
+
 @end

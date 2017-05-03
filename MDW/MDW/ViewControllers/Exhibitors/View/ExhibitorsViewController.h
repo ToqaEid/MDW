@@ -16,12 +16,12 @@
 
 
 @interface ExhibitorsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
-
 
 -(void) setAllExhibitors : (NSMutableArray *)exhibitors;
 
+//-(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView andSaveObject:(id)object;
 
 @end

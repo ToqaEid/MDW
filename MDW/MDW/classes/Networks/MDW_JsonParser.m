@@ -24,10 +24,9 @@
 @implementation MDW_JsonParser
 
 
-
-
-
-///////////// -- ---- ------ --- Optimized Methods ----- ---   ------- -- ------- ----- -----
++ (BOOL)connected {
+    return [AFNetworkReachabilityManager sharedManager].reachable;
+}
 
 
 ///////////// --1-- Parsing SessionJson ---------------------
@@ -37,8 +36,6 @@
 
     NSMutableArray * allSessions = [NSMutableArray new];
 
-    
-    printf(">>>>> Inside new Sessions PARSER >> \n");
     
     if ([JsonObj isKindOfClass:[NSArray class]])
     {
@@ -78,8 +75,6 @@
                     
                     SessionDTO * sessionObj = [self parseToSessionObj:oneSession];
                     
-                    //printf("-- %s\n", [sessionObj.name UTF8String]);
-                    
                     [allSessions addObject:sessionObj];
                     
                 }
@@ -108,21 +103,11 @@
     sessionObj.sessionId = [[sessionJson objectForKey:@"id"] intValue];
     sessionObj.status = [[sessionJson objectForKey:@"status"] intValue];
     sessionObj.liked = [sessionJson objectForKey:@"liked"];
-//    NSString * str1=[sessionJson objectForKey:@"startDate"];
-//    long long  ssr=[str1 longLongValue];
-//    NSString * str2=[sessionJson objectForKey:@"endDate"];
-//    long long  ssr2=[str2 longLongValue];
-
     sessionObj.startDate = [[sessionJson objectForKey:@"startDate"] longLongValue];
     sessionObj.endDate = [[sessionJson objectForKey:@"endDate"] longLongValue];
     sessionObj.tags = [sessionJson objectForKey:@"sessionTags"];
-
-    
-    printf("SessionId  =  %d\n", sessionObj.sessionId);
-    
     
     ///////// speakers not parsed yet
-
     
     if ( [sessionJson objectForKey:@"speakers"] ==  (id)[NSNull null] ){
     
@@ -139,17 +124,13 @@
             
             SpeakerDTO * speakerObj = [self parseToSpeakerObj:currObjJson];
             
-            printf("Speaket is >> %s\n",  [speakerObj.firstName UTF8String] );
-            
             sessionDAO *sessiondao=[sessionDAO sharedInstance ];
+
             [sessiondao addSpeaker:speakerObj];
-            
             
             ////// download speaker image
             
             [self downloadImages:speakerObj.imageURL forObjCode:@"S" andObjectId:speakerObj.speakerId];
-            
-            
             
         }
         
@@ -168,9 +149,6 @@
 + (NSMutableArray *) getExhibitors_v2 : (id) JsonObj{
 
     NSMutableArray * allExhibitors = [NSMutableArray new];
-    
-    
-    printf(">>>>> Inside new Exhibitors PARSER >> \n");
     
     if ([JsonObj isKindOfClass:[NSArray class]])
     {
@@ -201,23 +179,15 @@
                 
                 ExhiptorsDTO * exhibitorObj = [self parseToExhibitorObj:oneExhibitor];
                 
-                printf("-- exh --  %s\n", [exhibitorObj.companyName UTF8String]);
-                
                 [allExhibitors addObject:exhibitorObj];
                 
-                
-                
                 exhiptorDAO * exhibitorD=[exhiptorDAO sharedInstance ];
+    
                 [exhibitorD addExhiptor:exhibitorObj];
                 
-
-                
-                ////// download speaker image
+                ////// download exhibitor image
                 
                 [self downloadImages:exhibitorObj.imageURL forObjCode:@"E" andObjectId:exhibitorObj.exhiptorId];
-                
-                
-                
                 
             }
         }
@@ -245,20 +215,16 @@
     exhibitorObj.companyName = [exhibitorJson objectForKey:@"companyName"];
     exhibitorObj.companyAbout = [exhibitorJson objectForKey:@"companyAbout"];
     exhibitorObj.companyAddress = [exhibitorJson objectForKey:@"companyAddress"];
-    
     exhibitorObj.imageURL = [exhibitorJson objectForKey:@"imageURL"];
-    
     exhibitorObj.countryName = [exhibitorJson objectForKey:@"countryName"];
     exhibitorObj.cityName = [exhibitorJson objectForKey:@"cityName"];
     exhibitorObj.email = [exhibitorJson objectForKey:@"email"];
     
-   
+    ///// parsing mobiles and phones "Array of Objects"
     
     NSArray * mobiles = [exhibitorJson objectForKey:@"mobiles"];
+    
     NSArray * phones= [exhibitorJson objectForKey:@"phones"];
-    
-    printf("^^^ Mobiles = %lu & Phones = %lu \n",  (unsigned long)[mobiles count], (unsigned long)[phones count] );
-    
     
     for(int m = 0; m< [mobiles count]; m++){
         
@@ -273,10 +239,6 @@
         phoneObj.phone = [phones objectAtIndex:p];
         [exhibitorObj.phones addObject:phoneObj];
     }
-    
-
-    
-    
     
     return exhibitorObj;
 }
@@ -345,19 +307,16 @@
     speakerObj.middleName = [speakerJson objectForKey:@"middleName"];
     speakerObj.lastName = [speakerJson objectForKey:@"lastName"];
     speakerObj.gender = [speakerJson objectForKey:@"gender"];
-    
     speakerObj.biography = [speakerJson objectForKey:@"biography"];
+    
     NSString * tempURL = [speakerJson objectForKey:@"imageURL"];
-   speakerObj.imageURL = [tempURL stringByReplacingOccurrencesOfString:@"www."    withString:@""];
+    speakerObj.imageURL = [tempURL stringByReplacingOccurrencesOfString:@"www."    withString:@""];
     
     speakerObj.title = [speakerJson objectForKey:@"title"];
     speakerObj.companyName = [speakerJson objectForKey:@"companyName"];
     
     NSArray * mobiles = [speakerJson objectForKey:@"mobiles"];
     NSArray * phones= [speakerJson objectForKey:@"phones"];
-    
-    printf("^^^ Mobiles = %lu & Phones = %lu \n",  (unsigned long)[mobiles count], (unsigned long)[phones count] );
-    
     
     for(int m = 0; m< [mobiles count]; m++){
         
@@ -401,8 +360,6 @@
     attendeeObj.code = [attendeeJson objectForKey:@"code"];
     
     attendeeObj.attendeeId = [[attendeeJson objectForKey:@"id"] intValue];
-    //attendeeObj.mobiles = [attendeeJson objectForKey:@"mobiles"];
-    //attendeeObj.phones = [attendeeJson objectForKey:@"phones"];
     
     attendeeObj.gender = [attendeeJson objectForKey:@"gender"];
     
@@ -426,8 +383,6 @@
     NSMutableDictionary * result = [NSMutableDictionary new];
     int status = 0;
 
-    
-    printf(">>>>> Inside sessionRegisteration PARSER >> \n");
     
     if ([JsonObj isKindOfClass:[NSArray class]])
     {
@@ -492,8 +447,6 @@
         
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         
-        //NSLog(@"<<<<< %@ ++ %@", documentsDirectoryURL.path, [response suggestedFilename]);
-        
         if( [code isEqualToString:@"S"] )
         {
             
@@ -510,23 +463,21 @@
         }
         
         
-        
-        
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
         
-        //Setting ImageView
+        ///// compressing images
         
         NSData *imageData = [[NSData alloc] initWithContentsOfURL:filePath];
         
         UIImage *image = [UIImage imageWithData: imageData];
         
-        NSData *compressedData= UIImageJPEGRepresentation(image,0.1 /*compressionQuality*/);
+        NSData *compressedData= UIImageJPEGRepresentation(image,0.1 );
         
         
         //Adding ImageToDb
         
         RLMRealm *realm=[RLMRealm defaultRealm];
-        printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
+       // printf("%s",[realm.configuration.fileURL.absoluteString UTF8String]);
         
         
         if( [code isEqualToString:@"S"] )
@@ -537,7 +488,7 @@
             myspeaker.image=compressedData;
             [realm addOrUpdateObject:myspeaker];
             [realm commitWriteTransaction];
-            printf("SpeakerImage Downloaded Successcfully ...  \n");
+           // printf("SpeakerImage Downloaded Successcfully ...  \n");
             
         }else{
             
@@ -547,27 +498,15 @@
             exhibitor.image=compressedData;
             [realm addOrUpdateObject:exhibitor];
             [realm commitWriteTransaction];
-            printf("ExhibitorImage Downloaded Successcfully ...  \n");
+          //  printf("ExhibitorImage Downloaded Successcfully ...  \n");
             
         }
-        
-        
-//        SpeakerDTO *myspeaker=[SpeakerDTO objectForPrimaryKey:[[NSNumber alloc] initWithInt: oid ]];
-//        [realm beginWriteTransaction];
-//        myspeaker.image=compressedData;
-//        [realm addOrUpdateObject:myspeaker];
-//        [realm commitWriteTransaction];
-        
-        
         
     }];
     [downloadTask resume];
 
 
 }
-
-
-
 
 
 @end

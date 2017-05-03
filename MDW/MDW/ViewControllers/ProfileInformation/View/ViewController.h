@@ -17,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *mobile;
 @property (weak, nonatomic) IBOutlet UILabel *email;
 @property (weak, nonatomic) IBOutlet UIImageView *QRImage;
+
+-(void)setImageFromURLString:(NSString *)url intoImageView:(UIImageView *)imageView;
+
 @end
 

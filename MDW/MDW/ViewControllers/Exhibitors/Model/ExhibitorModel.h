@@ -24,4 +24,7 @@
 -(NSMutableArray *) getExhibitorsFromDB;
 
 
+-(BOOL)isConnected;
+
+
 @end

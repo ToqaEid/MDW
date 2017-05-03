@@ -48,6 +48,11 @@
     _mobile.text = [user.mobiles objectAtIndex:0];
     _email.text = user.email;
     
+    
+    
+    
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 //    return [NSString stringWithFormat:@"BEGIN:VCARD\nVERSION:3.0\nN:%@;%@\nFN:\nORG:%@\nTITLE:%@\nADR:;;;%@;;;%@\nTEL;WORK;VOICE:%@\nTEL;CELL:%@\nTEL;FAX:\nEMAIL;WORK;INTERNET:%@\nURL:\nEND:VCARD", @"sdf", @"sdffdsa", @"comp", @"stu", @"cairo", @"egy", @"010065565", @"5655656565", @"t.e@gmail.com" ];
@@ -62,5 +67,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
+
+
 
 @end

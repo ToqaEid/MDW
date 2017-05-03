@@ -130,7 +130,6 @@
     
        // [self setImageFromURLString: speakerDTO.imageURL  intoImageView:icon andSaveObject:speakerDTO];
         icon.image = [UIImage imageNamed:@"speaker.png"];
-        
     }else{
         
         icon.image = [UIImage imageWithData:  speakerDTO.image   ];

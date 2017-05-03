@@ -45,7 +45,7 @@
     printf("SpeakerDetailsViewController view :viewWillAppear\n");
     
     
-    
+    printf(">>> %s", [_speaker.description UTF8String] );
 
 }
 

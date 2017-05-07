@@ -17,6 +17,8 @@
 
 
 @interface AgendaDetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightDetails;
+@property (weak, nonatomic) IBOutlet UITextView *sessionDetailsFied;
 @property (weak, nonatomic) IBOutlet UILabel *titleField;
 @property (weak, nonatomic) IBOutlet UILabel *dateField;
 @property (weak, nonatomic) IBOutlet UILabel *timeField;

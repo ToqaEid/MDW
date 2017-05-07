@@ -11,6 +11,10 @@
 #import <Foundation/Foundation.h>
 #import "sessionDAO.h"
 #import "MyAgenda.h"
+#import "AttendeeDTO.h"
+#import "NSUserDefaultForObject.h"
+#import "MDWServerURLs.h"
+#import "MDW_JsonParser.h"
 
 @interface MyAgendaModel : NSObject
 
@@ -28,5 +32,7 @@
 -(NSMutableArray*) getDay2SessionsFromNetwork;
 -(NSMutableArray*) getDay3SessionsFromNetwork;
 
+
+-(void) getAllSessions;
 
 @end

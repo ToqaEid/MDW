@@ -8,6 +8,7 @@
 
 #import "MyAgenda.h"
 
+
 @implementation MyAgenda{
     
     NSMutableArray * dayAgenda;
@@ -90,7 +91,7 @@
         
     }else{
         
-        dayAgenda = [model getAllSessionsFromNetwork];
+        [model getAllSessionsFromNetwork];
         
     }
     //hide progress dialog
@@ -129,7 +130,6 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    //    return 3;
     return dayAgenda.count;
 }
 
@@ -137,6 +137,7 @@
     
     NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     
     //set cell color to clear
     [cell setBackgroundColor: [UIColor clearColor]];
@@ -147,19 +148,27 @@
     UILabel * name = [cell viewWithTag:2];
     UILabel * location = [cell viewWithTag:3];
     UILabel * date = [cell viewWithTag:4];
+    UILabel * dateImage = [cell viewWithTag:7];
     
     //fill fields in the cell with data
     SessionDTO * session = [dayAgenda objectAtIndex:indexPath.row];
     name.attributedText = [LabelRendering renderHTML:session.name];
     location.text = session.location;
-    
+    date.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate:session.startDate], [DateConverter stringFromDate:session.endDate]];
     //image
     UIImage * sessionImage = [AgendaImages getSessionImage:session];
     if( sessionImage != nil){
         icon.image = sessionImage;
     }
+    //date in image
+    if([session.sessionType isEqualToString:@"Break"]){
+        dateImage.text = @"";
+    }else{
+        dateImage.text = [DateConverter dayStringFromDate:session.startDate];
+    }
     
     
+
     return cell;
     
 }
@@ -187,18 +196,14 @@
     
     
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
+}
 /* ============================= Refresh Table =============================*/
 -(void) refreshMytableView{
     
-    [dayAgenda addObject:@"hello"];
-    
     //get Data
-    if([Connection checkInternetConnection]){
-        [self getSessionsFromNetwork];
-        printf("Agenda View : checkInternetConnection\n");
-    }
-    
+    [self getSessionsFromNetwork];
     [self.tableView  reloadData];
     [refreshControl endRefreshing];
     
@@ -213,6 +218,43 @@
     refreshControl.tintColor = [UIColor whiteColor];
     refreshControl.backgroundColor = [UIColor orangeColor];
     [self.tableView addSubview:refreshControl];
+}
+
+
+
+
+-(void) setAllSessionsArray : (NSMutableArray* ) sessions{
+    
+    
+    //printf("Setting SessionNSMutableArray .. \n");
+    
+    dayAgenda = sessions;
+    [self.tableView  reloadData];
+    
+    //hide progress dialog
+    [self.view hideToastActivity];
+    
+    //printf("Array Size is >> %lu\n", (unsigned long)[dayAgenda count]);
+    
+    
+    //    [self refreshMytableView];
+    
+}
+
+
+-(void)showErrorToast : (NSString *)toastMsg{
+    
+    [self.view hideToastActivity];
+    [self.view makeToast : toastMsg];
+    
+    if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
+        dayAgenda = [model getAllSessionsFromDB];
+    }else{
+        [self getSessionsFromDB];
+    }
+    
+    
+    
 }
 
 @end

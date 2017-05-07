@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
--(void) getDayAgendaArray :(NSMutableArray*) agenda;
-
+-(void) setAllSessionsArray : (NSMutableArray* ) sessions;
+-(void) endRefresh : (NSMutableArray *) dayAgenda : (NSString *) viewID;
+-(void)showErrorToast : (NSString *)toastMsg;
 @end

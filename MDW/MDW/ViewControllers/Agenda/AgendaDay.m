@@ -55,25 +55,25 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    if(![VisitedViews getAgenda]){
+//    if(![VisitedViews getAgenda]){
         //getData
         [self.view makeToastActivity:CSToastPositionCenter];
         
         [model getAllSessions : NO : nil];
         
-        [VisitedViews setAgenda : YES];
-    }else{
-        
-        if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
-            dayAgenda = [model getAllSessionsFromDB];
-        }else{
-            [self getSessionsFromDB];
-        }
-        
-        
-        NSLog(@"getSessionsFromDB");
-
-    }
+//        [VisitedViews setAgenda : YES];
+//    }else{
+//        
+//        if([self.restorationIdentifier isEqualToString:@"AgendaAll"]){
+//            dayAgenda = [model getAllSessionsFromDB];
+//        }else{
+//            [self getSessionsFromDB];
+//        }
+//        
+//        
+//        NSLog(@"getSessionsFromDB");
+//
+//    }
     [self.tableView reloadData];
 
 }

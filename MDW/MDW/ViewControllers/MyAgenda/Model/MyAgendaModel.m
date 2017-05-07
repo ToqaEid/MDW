@@ -8,6 +8,8 @@
 
 #import "MyAgendaModel.h"
 
+static NSMutableArray * dayAgenda;
+
 @implementation MyAgendaModel{
     sessionDAO * sessionDao;
     MyAgenda* controller;
@@ -16,6 +18,7 @@
 -(id)initWithController: (MyAgenda*) agendacontroller{
     sessionDao = [sessionDAO sharedInstance];
     controller = agendacontroller;
+    dayAgenda = [NSMutableArray new];
     return [self init];
 }
 
@@ -40,9 +43,37 @@
 -(void) saveAllSessionsInDB:(NSMutableArray *)sessions{
     
 }
--(NSMutableArray*) getAllSessionsFromNetwork{
-    NSMutableArray * sessions = nil;
-    return sessions;
+-(void) getAllSessionsFromNetwork{
+    //////// GET ALL SESSTION FROM BACKEND
+    
+    AttendeeDTO * user = [NSUserDefaultForObject getObjectForKey:@"user"];
+    
+    NSString * sessionsURL =  [[MDWServerURLs getGetSessionsURL]  stringByAppendingString: user.email  ];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET: sessionsURL  parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        
+        
+        //NSLog(@"JSON: %@", responseObject);
+        
+        [sessionDao clearAllDB];
+        
+        NSMutableArray *allSessions=[MDW_JsonParser getSessions_v2:responseObject];
+        
+        dayAgenda = allSessions;
+        
+        ///save into db
+        [self saveAllSessionsInDB:dayAgenda];
+        
+        [controller setAllSessionsArray:allSessions];
+        
+        //
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        [controller showErrorToast : @"Please Check Network Connection"];
+        
+    }];
 }
 
 -(NSMutableArray*) getDay1SessionsFromNetwork{
@@ -59,5 +90,9 @@
     NSMutableArray * sessions = nil;
     return sessions;
 }
+
+
+
+
 
 @end

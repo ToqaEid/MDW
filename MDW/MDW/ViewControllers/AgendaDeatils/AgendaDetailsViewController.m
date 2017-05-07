@@ -34,38 +34,13 @@
     _dateField.text = [DateConverter dateStringFromDate: _session.startDate];
     
     
-    
-    
     _timeField.text = [NSString stringWithFormat:@"%@ - %@", [DateConverter stringFromDate: _session.startDate] , [DateConverter stringFromDate: _session.endDate]];
     
     
-    
-    
-//    _detailsField.numberOfLines = 0;
-//    _detailsField.lineBreakMode= NSLineBreakByWordWrapping;
+    _sessionDetailsFied.attributedText = [LabelRendering renderHTML:_session.SessionDescription];
 
-    _detailsField.attributedText = [LabelRendering renderHTML:_session.SessionDescription];
-    
-    
-    
-//    CGRect frame = _detailsField.frame;
-//    frame.size.height = 1;
-//    _detailsField.frame = frame;
-//    CGSize fittingSize = [_detailsField sizeThatFits:frame.size];
-//    frame.size.height = fittingSize.height;
-//    _detailsField.frame = frame;
-//    _detailsField.adjustsFontSizeToFitWidth = YES;
-    
-    
-//    CGSize maximumLabelSize = CGSizeMake(296, FLT_MAX);
-//    
-//    CGSize expectedLabelSize = [yourString sizeWithFont:yourLabel.font constrainedToSize:maximumLabelSize lineBreakMode:yourLabel.lineBreakMode];
-//    
-//    //adjust the label the the new height.
-//    CGRect newFrame = yourLabel.frame;
-//    newFrame.size.height = expectedLabelSize.height;
-//    _detailsField.frame = newFrame;
-//    
+    CGSize sizeThatFitsTextView = [_sessionDetailsFied sizeThatFits:_sessionDetailsFied.frame.size];
+    _heightDetails.constant = sizeThatFitsTextView.height;
     
     _locationField.text = _session.location;
     [_starButton setBackgroundImage:[self getSessionStatusImage] forState:UIControlStateNormal];
@@ -112,7 +87,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     
     [cell setBackgroundColor:[UIColor clearColor]];
-    cell.imageView.image = [UIImage imageWithData:[_session.speakers objectAtIndex:indexPath.row].image];
+    
+    
+    if([_session.speakers objectAtIndex:indexPath.row].image == nil){
+        cell.imageView.image = [UIImage imageNamed:@"speaker.png"];
+
+    }else{
+        cell.imageView.image = [UIImage imageWithData:[_session.speakers objectAtIndex:indexPath.row].image];
+
+    }
     cell.textLabel.text = [_session.speakers objectAtIndex:indexPath.row].firstName;
     return cell;
 

@@ -39,7 +39,8 @@
                                                                             target:revealViewController
                                                                             action:@selector(revealToggle:)];
         
-        
+        self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+
         self.navigationItem.leftBarButtonItem = revealButtonItem;
         
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];

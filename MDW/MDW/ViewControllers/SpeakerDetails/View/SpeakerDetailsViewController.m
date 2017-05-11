@@ -19,11 +19,10 @@
     _jobTitle.adjustsFontSizeToFitWidth = YES;
     _jobTitle.text = _speaker.title;
     
-    _details.attributedText = [LabelRendering renderHTML:_speaker.biography];
-   // _details.text = _speaker.biography;
-    _details.numberOfLines = 0;
-    _details.adjustsFontSizeToFitWidth = YES;
-    
+    _detailsField.attributedText = [LabelRendering renderHTML:_speaker.biography];
+     CGSize sizeThatFitsTextView = [_detailsField sizeThatFits:_detailsField.frame.size];
+    _heightDetails.constant = sizeThatFitsTextView.height;
+
     
     _company.numberOfLines = 0;
     _company.adjustsFontSizeToFitWidth = YES;

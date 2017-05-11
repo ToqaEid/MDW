@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *jobTitle;
 @property (weak, nonatomic) IBOutlet UILabel *company;
-@property (weak, nonatomic) IBOutlet UILabel *details;
+@property (weak, nonatomic) IBOutlet UITextView *detailsField;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightDetails;
 
 
 @property SpeakerDTO * speaker;

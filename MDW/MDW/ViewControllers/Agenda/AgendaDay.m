@@ -58,8 +58,15 @@
 //    if(![VisitedViews getAgenda]){
         //getData
         [self.view makeToastActivity:CSToastPositionCenter];
-        
-        [model getAllSessions : NO : nil];
+    
+    
+        if([self.restorationIdentifier isEqualToString: @"AgendaAll"]){
+            [model getAllSessions : NO : self.restorationIdentifier];
+        }else{
+            [self getSessionsFromDB];
+            [self.view hideToastActivity];
+        }
+    
         
 //        [VisitedViews setAgenda : YES];
 //    }else{
@@ -208,7 +215,7 @@
 
 -(void) endRefresh : (NSMutableArray *) dayAgenda1 : (NSString *) viewID{
     if([viewID isEqualToString: @"AgendaAll"]){
-        NSLog(@"allday");
+        NSLog(@"**************allday*******************");
         dayAgenda = dayAgenda1;
     }else{
         [self getSessionsFromDB];

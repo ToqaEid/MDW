@@ -16,14 +16,7 @@
                                                                 options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
                                                                 documentAttributes:nil
                                                                 error:nil];
-//    NSMutableParagraphStyle *paragrahStyle = [[NSMutableParagraphStyle alloc] init];
-//    [paragrahStyle setLineBreakMode:NSLineBreakByWordWrapping];
-//    
-//    [paragrahStyle setAlignment:NSTextAlignmentCenter];
     
-//    [attrStr addAttribute:NSParagraphStyleAttributeName value:paragrahStyle range:NSMakeRange(0, [attrStr length])];
-    
-    printf("\n\n********%lu********\nn", (unsigned long)attrStr.length);
     return attrStr;
 }
 

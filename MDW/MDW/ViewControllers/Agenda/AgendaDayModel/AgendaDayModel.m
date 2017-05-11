@@ -80,8 +80,14 @@ static NSMutableArray * dayAgenda;
         
         ///save into db
         [self saveAllSessionsInDB:dayAgenda];
+        if(!refresh){
+           [controller setAllSessionsArray:dayAgenda];
+
+        }else{
+           [controller endRefresh:dayAgenda : viewID];
+        }
         
-        [controller setAllSessionsArray:allSessions];
+//        [controller setAllSessionsArray:allSessions];
 
 //
         } failure:^(NSURLSessionTask *operation, NSError *error) {
